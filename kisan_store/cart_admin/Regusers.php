@@ -118,7 +118,7 @@ $usercount=mysqli_num_rows($sql);
         <div class="col-sm-15 col-md-12 col-lg-8 col-xl-8 tm-block-col">
           <div class="tm-bg-primary-dark tm-block tm-block-products">
             <div class="tm-product-table-container">
-              <form action="remove/remove_mutiple_user.php" method="POST">
+              <form action="remove/remove_mutiple_user.php" method="POST" >
               <table class="table table-hover tm-table-small tm-product-table">
               <?php if ($usercount > 0) { ?>
                 

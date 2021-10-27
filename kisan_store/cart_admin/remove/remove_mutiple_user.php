@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
         $extra =implode(',' , $id1);
         echo $extra;
     
-      foreach($id1 as $id){
+      foreach($id1 as $id){ 
         
 
         $removeqry = "delete from  store_customer_registration where user_id=".$id;
