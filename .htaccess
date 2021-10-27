@@ -1,0 +1,12 @@
+RewriteEngine on
+
+
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^ %{REQUEST_URI}.php [NC,L]
+
+RewriteRule ^HOME index.html [NC,L]
+RewriteRule ^ABOUT about.html [NC,L]
+RewriteRule ^SERVICES services.html [NC,L]
+RewriteRule ^MEMBERSHIPS memberships.html [NC,L]
+RewriteRule ^CONTACT contact.html [NC,L]
+
