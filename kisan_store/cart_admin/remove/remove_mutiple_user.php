@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
       foreach($id1 as $id){ 
         
 
-        $removeqry = "delete from  store_customer_registration where user_id=".$id;
+        $removeqry = "delete from store_customer_registration where user_id=".$id;
         $sql = mysqli_query($dbc, $removeqry) or die(mysqli_error($dbc));
             
         if ($sql) :
