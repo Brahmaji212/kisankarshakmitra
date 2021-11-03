@@ -7,13 +7,98 @@ if (!isset($_SESSION['login_status'])) {
 }
 
 include 'backend/database.php';
-//$qry = "select * from store_customer_registration";
-//$sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
-//$row = mysqli_fetch_assoc($sql);
-$qry = "select * from products";
+// taking product id 
+$product_id=$_GET['product_id'];
+$username=$_SESSION['loginname'];
+// retrive the product data using id to store the details in cart
+$pqury="select * from products where product_id='$product_id'";
+$psql=mysqli_query($dbc,$pqury) or die(mysqli_error($dbc));
+$prow=mysqli_fetch_assoc($psql);
+
+$product_name=$prow['product_name'];
+$product_des=$prow['product_description'];
+$product_cat=$prow['product_category'];
+$product_exp=$prow['product_exp_date'];
+$product_stock=$prow['product_stock'];
+$product_img=$prow['product_img'];
+$product_price=$prow['product_price'];
+
+$checkqry = "select * from customer_cart where  customer_email='$username'";
+  $checksql = mysqli_query($dbc, $checkqry) or die(mysqli_error($dbc));
+  if (mysqli_num_rows($checksql) > 0) {
+    $checkqry1 = "select * from customer_cart where  customer_email='$username' and product_id='$product_id'";
+    $checksql1 = mysqli_query($dbc, $checkqry1) or die(mysqli_error($dbc));
+      if(mysqli_num_rows($checksql1) > 0){
+    echo '<script>';
+    echo 'alert("This item already in cart");';
+   
+    echo 'window.location.href= "cart.php"; 
+    </script>';
+  } 
+ 
+  
+  else { 
+
+// insert query for insert the product id in store_customer_registration table for retriving cart data from it.
+// $insert="INSERT INTO `store_customer_registration` (`product_id`)values('$product_id')";
+// $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
+
+// select product_id from store_customer_registration where email=".$_SESSION["loginname"]."
+
+$insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price')";
+$sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
+
+  
+$qry = "select * from  customer_cart where  customer_email='$username'";
+
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
+
 $productcount=mysqli_num_rows($sql);
 
+if($productcount == 0){
+    $cart_value=$productcount;
+}else if($productcount >0)
+{
+    $cart_value=$productcount;
+}
+
+// for calculating cart total amount.
+$query = "SELECT * FROM customer_cart where customer_email='$username'";
+$query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
+
+$total= 0;
+while ($num = mysqli_fetch_assoc ($query_run)) {
+    $total += $num['product_price'];
+}
+
+
+// $_SESSION['loginname']
+  }
+}
+else if($product_id == true){ 
+    $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price')";
+$sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
+$qry = "select * from  customer_cart where customer_email='$username'";
+$sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
+$productcount=mysqli_num_rows($sql);
+// adding cart_item value;
+if($productcount == 0){
+    $cart_value=$productcount;
+}else if($productcount >0)
+{
+    $cart_value=$productcount;
+}
+
+// for calculating cart total amount.
+$query = "SELECT * FROM customer_cart where customer_email='$username'";
+$query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
+
+$total= 0;
+while ($num = mysqli_fetch_assoc ($query_run)) {
+    $total += $num['product_price'];
+}
+
+  }
 ?> 
 
 <!DOCTYPE html>
@@ -25,7 +110,7 @@ $productcount=mysqli_num_rows($sql);
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Kisan Store </title>
+    <title> <?php echo "Ksan Shoping-cart"; ?> </title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -39,6 +124,8 @@ $productcount=mysqli_num_rows($sql);
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="cart_admin/font-awesome-animation-1.1.1/package/css/font-awesome-animation.min.css">
+
 </head>
 
 <body>
@@ -55,8 +142,8 @@ $productcount=mysqli_num_rows($sql);
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span></span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span></span></a></li>
+                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                <li><a href="cart.php"><i class="fa fa-shopping-bag"></i><span>3</span></a></li>
             </ul>
             <div class="header__cart__price">item: <span>₹150.00</span></div>
         </div>
@@ -156,10 +243,10 @@ $productcount=mysqli_num_rows($sql);
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <!-- <span></span> --></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <!-- <span></span> --></a></li>
+                            <li><a href="#"><i class="fa fa-heart animated faa-horizontal" ></i> <span></span></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-bag animated faa-horizontal"></i> <span><?php echo $cart_value; ?></span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>₹150.00</span></div>
+                        <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
                     </div>
                 </div>
             </div>
@@ -262,31 +349,33 @@ $productcount=mysqli_num_rows($sql);
                             <tbody>
                                 <tr>
                                     <td class="shoping__cart__item">
-                                    <?php 
-                    echo "<img src='cart_admin/backend/images//".$row['product_img']."'>"; 
-                    ?>
+                                    <?php echo "<img src='cart_admin/backend/images//".$row['product_img']."'>"; ?>
                                         <h5> <?php echo $row['product_name'] ?></h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        ₹55.00
+                                    <?php echo "₹".$row['product_price'] ?>
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
                                             <div class="pro-qty">
-                                                <input type="text" value="1" id="add"> 
+                                                <input type="text" value="1" id="add" > 
                                             </div>
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        ₹110.00
+                                    <?php echo "₹".$row['product_price'] ?>
                                     </td>
-                                    <td class="shoping__cart__item__close">
-                                        <a href=""><span class="icon_close"></span></a>
-                                    </td>
+                                    
+                                    <?php echo '<td class="shoping__cart__item__close"><a href="cart_admin/remove/remove_from_cart.php?id='.$row['id'].'" ><span class="fa icon_close animated faa-bounce" onClick=\'javascript: return confirm("Please confirm deletion");\'></span></a></td>';?>
+                                        
+                                    
                                 </tr>
                                 <?php } ?>
                   <?php } else { ?>
-              <strong class="strong">No Data Available!!!</strong> <br><br>
+                    <p align=center style="color:#4a4a4a;">
+                  <strong  > 
+                    <i class="fa fa-database animated faa-horizontal"></i> <br>
+                    No items added in your cart!!!</strong></p> <br>
             <?php } ?>   
                                 <style>
                                     img {
@@ -299,50 +388,7 @@ $productcount=mysqli_num_rows($sql);
                                             align-content: center;
                                         }
                                 </style>
-                               <!-- <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-2.jpg" alt="">
-                                        <h5>Fresh Garden Vegetable</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        ₹39.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        ₹39.99
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-3.jpg" alt="">
-                                        <h5>Organic Bananas</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        ₹69.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        ₹69.99
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr> -->
+                              
                             </tbody>
                         </table>
                     </div>
@@ -371,8 +417,8 @@ $productcount=mysqli_num_rows($sql);
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>₹454.98</span></li>
-                            <li>Total <span>₹454.98</span></li>
+                            <li>Subtotal <span><?php echo "₹".$total.".00"; ?></span></li>
+                            <li>Total <span><?php echo "₹".$total.".00"; ?></span></li>
                         </ul>
                         <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>

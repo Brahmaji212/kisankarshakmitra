@@ -7,10 +7,29 @@ if (!isset($_SESSION['login_status'])) {
 }
 $qry = "select * from store_customer_registration";
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
-
-
 $row = mysqli_fetch_assoc($sql);
 
+$username=$_SESSION['loginname'];
+
+$prod_qry = "select * from products";
+$prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
+$prod_row = mysqli_fetch_assoc($prod_sql);
+
+// $prod_qry2="select * from products where product_id="$prod_row['product_id']"";
+
+
+$qry1 = "select * from  customer_cart where  customer_email='$username'";
+
+$sql1 = mysqli_query($dbc, $qry1) or die(mysqli_error($dbc));
+
+$productcount=mysqli_num_rows($sql1);
+
+// if($productcount == 0){
+//     $cart_value=$productcount;
+// }else if($productcount >0)
+// {
+//     $cart_value=$productcount;
+// }
 ?>
 
 
@@ -24,7 +43,7 @@ $row = mysqli_fetch_assoc($sql);
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Kisan Karshak Mitra</title>
+    <title> <?php echo "Kisan Karshak Mitra"; ?> </title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -39,7 +58,7 @@ $row = mysqli_fetch_assoc($sql);
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="navstyle.css" type="text/css">
-
+    <link rel="stylesheet" href="cart_admin/font-awesome-animation-1.1.1/package/css/font-awesome-animation.min.css">
 
     
 	<link href="css/global.css" rel="stylesheet">
@@ -145,8 +164,29 @@ $row = mysqli_fetch_assoc($sql);
                                     <li  style="margin-left: 13%;"><a href="#">English</a></li>
                                 </ul>
                             </div>-->
+                            
+                    
+               
+                            
                             <div class="header__top__right__auth">
-                                <a href="backend/logout.php"><i class="fa fa-user"></i> Logout</a>
+                            <div class="header__cart">
+                                <ul>
+                                
+                                    <li><a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i> <!--<span>0</span>--></a></li>
+                                    <li><a href="cart.php"><i class="fa fa-shopping-bag animated faa-horizontal" style="color: green;"></i> 
+                                    <?php if($productcount ==0){?>
+                                    <!-- <span> <?php  //echo $cart_value; ?> </span> -->
+                                    <?php } else if($productcount > 0) { ?>
+                                        <span> <?php $cart_value = $productcount; echo $cart_value; ?> </span>
+                                        <?php } ?>
+                                        
+                                        </a></li>
+                                
+                                    <li><a href="backend/logout.php" ><i class="fa fa-user"></i> Logout</a></li><br>
+                                    <?php echo " <a><i class='fa fa-envelope'></i>&nbsp;".$_SESSION["loginname"]."</a>"; ?>
+                                </ul>
+                        <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
+                            </div>
                             </div>
                         </div>
                     </div> 
@@ -216,17 +256,17 @@ $row = mysqli_fetch_assoc($sql);
                                                 <a href="#"><i class="fa fa-leaf"></i>&nbsp;Seeds</a>
                                                 <p class="menu-label">Subjects</p>
                                                 <ul >
-                                                    <li style="margin-left: 13%;"><a href="seed.html">&nbsp;Vegetable Seeds</a></li>
-                                                    <li style="margin-left: 13%;"><a href="seed.html">&nbsp;Cotton Seeds</a></li>
-                                                    <li style="margin-left: 13%;"><a href="seed.html">&nbsp;Floriculture seeds</a></li>
-                                                    <li style="margin-left: 13%;"><a href="seed.html">&nbsp;Potato Tubers</a></li>
-                                                    <li style="margin-left: 13%;"><a href="seed.html">&nbsp;Grain Seeds</a></li>
-                                                    <li style="margin-left: 13%;"><a href="seed.html">&nbsp;Fodder Seeds</a></li>
-                                                    <li style="margin-left: 13%;"><a href="seed.html">&nbsp;Oil Seeds</a></li>
-                                                    <li style="margin-left: 13%;"><a href="seed.html">&nbsp;Pulse Seeds</a></li>
-                                                    <li style="margin-left: 13%;"><a href="seed.html">&nbsp;Wholesale</a></li>
-                                                    <li style="margin-left: 13%;"><a href="seed.html">&nbsp;Exotic Vegetables</a></li>
-                                                    <li style="margin-left: 13%;"><a href="seed.html">&nbsp;Tree Seeds</a></li>
+                                                    <li style="margin-left: 13%;"><a href="seed.php">&nbsp;Vegetable Seeds</a></li>
+                                                    <li style="margin-left: 13%;"><a href="seed.php">&nbsp;Cotton Seeds</a></li>
+                                                    <li style="margin-left: 13%;"><a href="seed.php">&nbsp;Floriculture seeds</a></li>
+                                                    <li style="margin-left: 13%;"><a href="seed.php">&nbsp;Potato Tubers</a></li>
+                                                    <li style="margin-left: 13%;"><a href="seed.php">&nbsp;Grain Seeds</a></li>
+                                                    <li style="margin-left: 13%;"><a href="seed.php">&nbsp;Fodder Seeds</a></li>
+                                                    <li style="margin-left: 13%;"><a href="seed.php">&nbsp;Oil Seeds</a></li>
+                                                    <li style="margin-left: 13%;"><a href="seed.php">&nbsp;Pulse Seeds</a></li>
+                                                    <li style="margin-left: 13%;"><a href="seed.php">&nbsp;Wholesale</a></li>
+                                                    <li style="margin-left: 13%;"><a href="seed.php">&nbsp;Exotic Vegetables</a></li>
+                                                    <li style="margin-left: 13%;"><a href="seed.php">&nbsp;Tree Seeds</a></li>
                                                 </ul>
                                             </li>
                                             <li>
@@ -816,157 +856,268 @@ $row = mysqli_fetch_assoc($sql);
                 </div>
             </div>
             <div class="row featured__filter">
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges ">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/latest-product/Bio-Fertilizer.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="shoping-cart.php"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Bio Fertilizers</a></h6>
-                            <h5>₹0.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables ">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/spray.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="shoping-cart.php"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Spray Pumps</a></h6>
-                            <h5>₹0.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/sprinkler.png">
-                            <ul class="featured__item__pic__hover">
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="shoping-cart.php"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Sprinkler</a></h6>
-                            <h5>₹0.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables ">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/lawn.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="shoping-cart.php"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Lawn Mover</a></h6>
-                            <h5>₹0.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/hydro1.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="shoping-cart.php"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Hydroponics</a></h6>
-                            <h5>₹0.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood ">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/hydro2.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="shoping-cart.php"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Hydroponics</a></h6>
-                            <h5>₹0.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges ">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/latest-product/Bio-Virucide.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="shoping-cart.php"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Bio Virucide</a></h6>
-                            <h5>₹0.00</h5>
-                        </div>
-                    </div>
-                </div>
+            <?php
+            $prod_qry = "select * from products where product_name='Bio-Fertilizer'";
+            $prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
+            $prod_row = mysqli_fetch_assoc($prod_sql);
                 
+            echo '
+                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges ">
+                    
+                    <div class="featured__item">
+                    
+                        <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                         <ul class="featured__item__pic__hover">
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
+                          <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
+                       </ul>
+                       </div>
+                    
+                      <div class="featured__item__text">
+                            <h6><a href="#">  '.$prod_row["product_name"].' </a></h6>
+                            <h5> ₹'.$prod_row["product_price"].'</h5>
+                        </div>
+                    </div>
+                </div>';
+                
+            
+            ?>
+            <?php
+                $prod_qry = "select * from products where product_name='Spray-Pumps'";
+                $prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
+                $prod_row = mysqli_fetch_assoc($prod_sql);
+                    
+            echo '
                 <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables ">
+                    
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/killer.png">
-                            <ul class="featured__item__pic__hover">
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="shoping-cart.php"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Insecticides Killer</a></h6>
-                            <h5>₹0.00</h5>
+                    
+                        <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                         <ul class="featured__item__pic__hover">
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
+                          <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
+                       </ul>
+                       </div>
+                    
+                      <div class="featured__item__text">
+                            <h6><a href="#">  '.$prod_row["product_name"].' </a></h6>
+                            <h5> ₹'.$prod_row["product_price"].'</h5>
                         </div>
                     </div>
-                </div>
+                </div>';
+            ?>
+                
+            <?php
+                $prod_qry = "select * from products where product_name='Sprinkler'";
+                $prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
+                $prod_row = mysqli_fetch_assoc($prod_sql);
+                    
+            echo '
+                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables ">
+                    
+                    <div class="featured__item">
+                    
+                        <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                         <ul class="featured__item__pic__hover">
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
+                          <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
+                       </ul>
+                       </div>
+                    
+                      <div class="featured__item__text">
+                            <h6><a href="#">  '.$prod_row["product_name"].' </a></h6>
+                            <h5> ₹'.$prod_row["product_price"].'</h5>
+                        </div>
+                    </div>
+                </div>';
+            ?>
+                
+                <?php
+                $prod_qry = "select * from products where product_name='Lawn-Mover'";
+                $prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
+                $prod_row = mysqli_fetch_assoc($prod_sql);
+                    
+            echo '
+                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables ">
+                    
+                    <div class="featured__item">
+                    
+                        <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                         <ul class="featured__item__pic__hover">
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
+                          <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
+                       </ul>
+                       </div>
+                    
+                      <div class="featured__item__text">
+                            <h6><a href="#">  '.$prod_row["product_name"].' </a></h6>
+                            <h5> ₹'.$prod_row["product_price"].'</h5>
+                        </div>
+                    </div>
+                </div>';
+            ?>
+                
+                <?php
+                $prod_qry = "select * from products where product_name='Hydroponics'";
+                $prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
+                $prod_row = mysqli_fetch_assoc($prod_sql);
+                    
+            echo '
+                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood ">
+                    
+                    <div class="featured__item">
+                    
+                        <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                         <ul class="featured__item__pic__hover">
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
+                          <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
+                       </ul>
+                       </div>
+                    
+                      <div class="featured__item__text">
+                            <h6><a href="#">  '.$prod_row["product_name"].' </a></h6>
+                            <h5> ₹'.$prod_row["product_price"].'</h5>
+                        </div>
+                    </div>
+                </div>';
+            ?>    
+              
+                <?php
+                $prod_qry = "select * from products where product_name='Hydroponic'";
+                $prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
+                $prod_row = mysqli_fetch_assoc($prod_sql);
+                    
+            echo '
+                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood ">
+                    
+                    <div class="featured__item">
+                    
+                        <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                         <ul class="featured__item__pic__hover">
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
+                          <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
+                       </ul>
+                       </div>
+                    
+                      <div class="featured__item__text">
+                            <h6><a href="#">  '.$prod_row["product_name"].' </a></h6>
+                            <h5> ₹'.$prod_row["product_price"].'</h5>
+                        </div>
+                    </div>
+                </div>';
+            ?>    
+                
+                <?php
+                $prod_qry = "select * from products where product_name='Bio-Virucide'";
+                $prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
+                $prod_row = mysqli_fetch_assoc($prod_sql);
+                    
+            echo '
+                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood ">
+                    
+                    <div class="featured__item">
+                    
+                        <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                         <ul class="featured__item__pic__hover">
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
+                          <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
+                       </ul>
+                       </div>
+                    
+                      <div class="featured__item__text">
+                            <h6><a href="#">  '.$prod_row["product_name"].' </a></h6>
+                            <h5> ₹'.$prod_row["product_price"].'</h5>
+                        </div>
+                    </div>
+                </div>';
+            ?>    
+               
+                 
+                 <?php
+                $prod_qry = "select * from products where product_name='Insecticides-Killer'";
+                $prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
+                $prod_row = mysqli_fetch_assoc($prod_sql);
+                    
+            echo '
+                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables ">
+                    
+                    <div class="featured__item">
+                    
+                        <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                         <ul class="featured__item__pic__hover">
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
+                          <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
+                       </ul>
+                       </div>
+                    
+                      <div class="featured__item__text">
+                            <h6><a href="#">  '.$prod_row["product_name"].' </a></h6>
+                            <h5> ₹'.$prod_row["product_price"].'</h5>
+                        </div>
+                    </div>
+                </div>';
+            ?>
+                
+                <?php
+                $prod_qry = "select * from products where product_name='Farm-Machinery'";
+                $prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
+                $prod_row = mysqli_fetch_assoc($prod_sql);
+                    
+            echo '
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat ">
+                    
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/farm1.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="shoping-cart.php"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Farm Machinery</a></h6>
-                            <h5>₹0.00</h5>
+                    
+                        <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                         <ul class="featured__item__pic__hover">
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
+                          <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
+                       </ul>
+                       </div>
+                    
+                      <div class="featured__item__text">
+                            <h6><a href="#">  '.$prod_row["product_name"].' </a></h6>
+                            <h5> ₹'.$prod_row["product_price"].'</h5>
                         </div>
                     </div>
-                </div>
+                </div>';
+            ?>
+                
+                <?php
+                $prod_qry = "select * from products where product_name='Farm-Tools'";
+                $prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
+                $prod_row = mysqli_fetch_assoc($prod_sql);
+                    
+            echo '
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat ">
+                    
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/farm2.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li  style="margin-left: 13%;"><a href="shoping-cart.php"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Farm Tools</a></h6>
-                            <h5>₹0.00</h5>
+                    
+                        <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                         <ul class="featured__item__pic__hover">
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
+                          <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
+                       </ul>
+                       </div>
+                    
+                      <div class="featured__item__text">
+                            <h6><a href="#">  '.$prod_row["product_name"].' </a></h6>
+                            <h5> ₹'.$prod_row["product_price"].'</h5>
                         </div>
                     </div>
-                </div>
+                </div>';
+            ?>
+                 
 
             </div>
         </div>

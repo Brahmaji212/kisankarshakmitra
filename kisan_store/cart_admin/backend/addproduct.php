@@ -14,17 +14,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $procatgory = $_POST['category'];
   $proexpdate = $_POST['expire_date'];
   $prounitstock = $_POST['stock'];
+  $price = $_POST['price'];
   //$proimage = $_FILES['fileInput']['name'];
   
 
-  $query = "INSERT INTO `products`( `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`) VALUES ('$proname', '$prodescript', '$procatgory', '$proexpdate', '$prounitstock','$filename')";
-  $sql = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
-
+ 
 
   if (move_uploaded_file($tempname, $folder)) {
-   
-   
-  
+    $query = "INSERT INTO `products`( `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`) VALUES ('$proname', '$prodescript', '$procatgory', '$proexpdate', '$prounitstock','$filename' ,'$price')";
+    $sql = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
+    $_SESSION['category']=$procatgory;
   }else{
     echo '<script>';
     echo 'alert("image not upload");';

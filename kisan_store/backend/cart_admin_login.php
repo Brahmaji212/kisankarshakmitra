@@ -173,7 +173,7 @@ if ($admincount > 0) {
                 $_SESSION['adminname'] = 1;
                 $_SESSION['login_status'] = 1;
                 $_SESSION['loginname'] = $username;
-                header('location: ../../kisan_store/cart_admin/index.html');
+                header('location: ../../kisan_store/cart_admin/index.php');
             } else {
                 echo "
             <script>

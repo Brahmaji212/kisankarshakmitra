@@ -1,14 +1,13 @@
 <?php
 if(isset($_POST['submit'])){
+    $check=isset($_POST['checkbox']);
     session_start();
-   
+   if($check){
     include 'database.php';
     
-        $id1 = $_POST["checkbox"];
-        $extra =implode(',' , $id1);
-        echo $extra;
-    
-      foreach($id1 as $id){ 
+        $arr = $_POST["checkbox"];
+        
+      foreach($arr as $id){ 
         
 
         $removeqry = "delete from store_customer_registration where user_id=".$id;
@@ -18,17 +17,21 @@ if(isset($_POST['submit'])){
 
             
             echo '<script>';
-            // echo 'alert("Removed Successfully");';
-            // echo 'window.location.href= "../Regusers.php"';
+            echo 'alert("Removed Successfully");';
+            echo 'window.location.href= "../Regusers.php"';
             
             echo   '</script>';
         else :
             header('location : ../Regusers.php');
         endif;
 
-
+    }
       
     }
+    else
+    echo '<script>';
+    echo 'window.location.href= "../Regusers.php"';
+    echo '</script>';
 }
     else 
         header('location : ../Regusers.php');

@@ -9,7 +9,12 @@ $qry = "select * from store_customer_registration";
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 $usercount=mysqli_num_rows($sql);
 
+$username=$_SESSION['loginname'];
 
+$qry1 = "select * from cart_super_admin";
+$sql1 = mysqli_query($dbc, $qry1) or die(mysqli_error($dbc));
+$super_admincount=mysqli_num_rows($sql1);
+$row1=mysqli_fetch_assoc($sql1);
 
 ?>
 
@@ -20,7 +25,7 @@ $usercount=mysqli_num_rows($sql);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Product Page - Admin HTML Template</title>
+    <title>USERS</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:400,700"
@@ -34,6 +39,16 @@ $usercount=mysqli_num_rows($sql);
     <!-- for animating  -->
     <link rel="stylesheet" href="font-awesome-animation-1.1.1/package/css/font-awesome-animation.min.css">
     
+
+    <link rel="apple-touch-icon" href="sidenav/images/sreeven.png">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        <link href="sidenav/css/side.css" rel="stylesheet">
+        <link href="sidenav/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="sidenav/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script src="sidenav/js/side.js"></script>
     <!--
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
@@ -41,84 +56,136 @@ $usercount=mysqli_num_rows($sql);
   </head>
 
   <body id="reportsPage">
-    <nav class="navbar navbar-expand-xl">
-      <div class="container h-100">
-        <a class="navbar-brand" href="index.php">
-          <h1 class="tm-site-title mb-0">Product Admin</h1>
-        </a>
-        <button
-          class="navbar-toggler ml-auto mr-0"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <i class="fas fa-bars tm-nav-icon"></i>
-        </button>
+  <div class="page-wrapper chiller-theme toggled">
+            <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+                <i class="fas fa-bars"></i>
+            </a>
+            <nav id="sidebar" class="sidebar-wrapper">
+                <div class="sidebar-content">
+                    <div class="sidebar-brand">
+                        <a href="#"></a>
+                        <div id="close-sidebar">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div>
+                    <div class="sidebar-header">
+                        <div class="user-pic">
+                            <img class="img-responsive img-rounded" src="sidenav/images/kkm-logo.png" alt="User picture">
+                        </div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto h-100">
-            <li class="nav-item">
-              <a class="nav-link" href="index.php">
-                <i class="fas fa-tachometer-alt"></i> Dashboard
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-           
-            <li class="nav-item">
-              <a class="nav-link" href="products.php">
-                <i class="fas fa-shopping-cart"></i> Products
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="Regusers.php">
-                  <i class="fas fa-users"></i>
-                  Registerd Users
-              </a>
-          </li>
+                    </div>
+                    <div class="text-center">
+                        <span class=" text-light"><i class="fas fa-user-circle fa-2x"></i><br>&nbsp;<strong>(<?php echo $_SESSION['loginname']; ?>)</strong></span>
+                    </div><br>
+                    <div class="sidebar-menu">
+                        <ul>
+                            <li class="sidebar-dropdown">
+                                <a href="index.php">
+                                    <!-- <i class="far fa-meter"></i> -->
+                                    <i class="fas fa-chart-line fa-9x"></i>
+                                    <span>Dashboard</span>
 
-            <li class="nav-item">
-              <a class="nav-link" href="accounts.php">
-                <i class="far fa-user"></i> Accounts
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false">
-                <i class="fas fa-cog"></i>
-                <span> Settings <i class="fas fa-angle-down"></i> </span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Profile</a>
-                <a class="dropdown-item" href="#">Billing</a>
-                <a class="dropdown-item" href="#">Customize</a>
-              </div>
-            </li>
-          </ul>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link d-block" href="../backend/logout.php">
-                Admin &nbsp;&nbsp; <b>Logout</b>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="container mt-5">
+                                </a>
+
+                            </li>
+
+                            <li class="sidebar-dropdown">
+                                <a href="products.php">
+                                <i class="fab fa-product-hunt"></i>
+                                    <span>Products</span>
+
+                                </a>
+
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a href="Regusers.php">
+                                <i class="fas fa-users"></i>
+                                    <span>Registered Users</span>
+
+                                </a>
+
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a href="accounts.php">
+                                <i class="fas fa-user-circle"></i>
+                                    <span>Accounts</span>
+                                </a>
+
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a href="../SuperAdmin/SuperAdmin_Associate.php">
+                                    <i class="far fa-user"></i>
+                                    <span>Associates</span>
+                                </a>
+                            </li>
+                            <?php if($row1['email']== $username){ ?>
+                            <li class="sidebar-dropdown">
+                                <a href="#">
+                                <i class="fas fa-user-shield"></i>
+                                    <span>Super Admin</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                <ul>
+                                  <li>
+                                      <a href="super_admin.php">Super Admin
+                                        </a>
+                                  </li>
+                                  <li>
+                                      <a href="Regadmins.php">Admin</a>
+                                  </li>
+                                </ul>
+                                </div>
+                            </li>
+                         <?php } else { ?>
+                            <li class="sidebar-dropdown">
+                                <a href="Regadmins.php">
+                                    <i class="far fa-user"></i>
+                                    <span>Admin</span>
+                                </a>
+                                
+                            </li>
+                          <?php } ?>
+                            <!-- <li class="sidebar-dropdown">
+                                <a href="../dashboard/approvalpending.php">
+                                    <i class="far fa-user"></i>
+                                    <span>Approval</span>
+                                </a>
+                            </li> -->
+                            <li class="sidebar-dropdown">
+                                <a href="#"><i class="far fa-user"></i><span>Customers</span></a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="SuperAdmin_customerreg.php">Customer Registration</a>
+                                        </li>
+                                        <li>
+                                            <a href="SuperAdmin_customerlist.php">Customer List</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="sidebar-dropdown">
+                            <a href="../backend/logout.php">
+                            <i class="fas fa-sign-out-alt"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+
+            </nav>
+
+            <main class="page-content">
+                <div class="container text-dark text-center" style="background: burlywood;">
+                    <h1><strong>Welcome</strong></h1>
+                </div>
+
+    <div class=" mt-5">
       <div class="row tm-content-row">
-        <div class="col-sm-15 col-md-12 col-lg-8 col-xl-8 tm-block-col">
+        <div class="col-sm-15 col-md-12 col-lg-12 col-xl-12 tm-block-col">
           <div class="tm-bg-primary-dark tm-block tm-block-products">
+          <form action="remove/remove_mutiple_user.php" method="POST" >
             <div class="tm-product-table-container">
-              <form action="remove/remove_mutiple_user.php" method="POST" >
+              
               <table class="table table-hover tm-table-small tm-product-table">
               <?php if ($usercount > 0) { ?>
                 
@@ -133,11 +200,13 @@ $usercount=mysqli_num_rows($sql);
                   </tr>
                 </thead>
                 
-                <?php while ($row = mysqli_fetch_assoc($sql)) { ?>
+                <?php while ($row = mysqli_fetch_assoc($sql)) { 
+                  // $_SESSION['user_id']=$row['user_id'];
+                  ?>
                 <tbody>
                 
                   <tr align="center">
-                    <th scope="row"><input type="checkbox" name='checkbox[]' value='<?php $row['user_id'];  ?>' id="checkbox"/></th>
+                    <th scope="row"><input type="checkbox" name='checkbox[]' value='<?php echo $row["user_id"]; ?>' id="checkbox"/></th>
                     <td class="tm-product-name"><?php echo $row['name'] ?> </td>
                     <td><?php echo $row['email']  ?></td>
                     <td><?php  echo $row['phone'] ?></td>
@@ -163,157 +232,28 @@ $usercount=mysqli_num_rows($sql);
                                         
                                        
                                 </style>
-                               
-
-
-
-           <!--  echo "<div id='img_div'class=''>";
-                    echo "<img src='backend/images/".$row['product_img']."'>"; 
-                    echo "</div>"; -->
- 
-
-
-
-
-
-
-                 <!-- <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 2</td>
-                    <td>1,250</td>
-                    <td>750</td>
-                    <td>21 March 2019</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 3</td>
-                    <td>1,100</td>
-                    <td>900</td>
-                    <td>18 Feb 2019</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 4</td>
-                    <td>1,400</td>
-                    <td>600</td>
-                    <td>24 Feb 2019</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 5</td>
-                    <td>1,800</td>
-                    <td>200</td>
-                    <td>22 Feb 2019</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 6</td>
-                    <td>1,000</td>
-                    <td>1,000</td>
-                    <td>20 Feb 2019</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 7</td>
-                    <td>500</td>
-                    <td>100</td>
-                    <td>10 Feb 2019</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 8</td>
-                    <td>1,000</td>
-                    <td>600</td>
-                    <td>08 Feb 2019</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 9</td>
-                    <td>1,200</td>
-                    <td>800</td>
-                    <td>24 Jan 2019</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 10</td>
-                    <td>1,600</td>
-                    <td>400</td>
-                    <td>22 Jan 2019</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 11</td>
-                    <td>2,000</td>
-                    <td>400</td>
-                    <td>21 Jan 2019</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr> -->
                 </tbody>
                 
               </table>
              
-            <input type="submit" name="submit" id="submit" value="Delete selected Users" class="btn btn-primary btn-block text-uppercase" onClick="javascript: return confirm('Please confirm deletion');">
             
-              </form>
             </div>
             <!-- table container -->
+            <input type="submit" name="submit" id="submit" value="Delete selected Users" class="btn btn-primary btn-block text-uppercase" onClick="javascript: return confirm('Please confirm deletion');">
             
+            </form> 
+          
             
      
           </div>
+        </div>
+      </div>
+    </div>
+                                          </main>
 
           <footer class="tm-footer row tm-mt-small">
       <div class="col-12 font-weight-light">
-        <p class="text-center text-white mb-0 px-4 small">
+        <p class="text-center text-white mb-0 px-4 large">
           Copyright &copy; <b><?php echo date("Y") ?></b> All rights reserved. 
           
           Design: <a rel="nofollow noopener" href="#" class="tm-footer-link">Aarush Group</a>
@@ -335,7 +275,7 @@ $usercount=mysqli_num_rows($sql);
     <script>
       $(function() {
         $(".tm-product-name").on("click", function() {
-          window.location.href = "edit-product.html";
+          window.location.href = "";
         });
       });
     </script>

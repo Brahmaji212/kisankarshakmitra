@@ -1,3 +1,20 @@
+<?php
+error_reporting(0);
+session_start();
+include '../../backend/database.php';
+if (!isset($_SESSION['login_status'])) {
+    header('location: ../../backend/cart_admin_login.html');
+}
+$username=$_SESSION['loginname'];
+
+$qry = "select * from cart_admin where email='$username'";
+$sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
+
+
+$row = mysqli_fetch_assoc($sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,85 +38,153 @@
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
 	-->
+
+
+<!-- #for catogary menu styling -->
+<!-- Google Font -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet"> -->
+
+<!-- Css Styles -->
+<!-- <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="navstyle.css" type="text/css"> -->
+
+
+
+ <link rel="shortcut icon" href="sidenav/images/sreeven.png" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="images/sreeven.png">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        <link href="sidenav/css/side.css" rel="stylesheet">
+        <link href="sidenav/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="sidenav/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script src="sidenav/js/side.js"></script> 
+
+<style> 
+
+
+
+</style>
+
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-xl">
-      <div class="container h-100">
-        <a class="navbar-brand" href="index.php">
-          <h1 class="tm-site-title mb-0">Product Admin</h1>
-        </a>
-        <button
-          class="navbar-toggler ml-auto mr-0"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <i class="fas fa-bars tm-nav-icon"></i>
-        </button>
+    
+    <div class="page-wrapper chiller-theme toggled">
+      <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+          <i class="fas fa-bars"></i>
+      </a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto h-100">
-            <li class="nav-item">
-              <a class="nav-link" href="index.php">
-                <i class="fas fa-tachometer-alt"></i> Dashboard
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link active" href="products.php">
-                <i class="fas fa-shopping-cart"></i> Products
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Regusers.php">
-                  <i class="fas fa-users"></i>
-                  Registerd Users
-              </a>
-          </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="accounts.php">
-                <i class="far fa-user"></i> Accounts
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <i class="fas fa-cog"></i>
-                <span> Settings <i class="fas fa-angle-down"></i> </span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Profile</a>
-                <a class="dropdown-item" href="#">Billing</a>
-                <a class="dropdown-item" href="#">Customize</a>
+      <nav id="sidebar" class="sidebar-wrapper">
+          <div class="sidebar-content">
+              <div class="sidebar-brand">
+                  <a href="#"></a>
+                  <div id="close-sidebar">
+                      <i class="fas fa-times"></i>
+                  </div>
               </div>
-            </li>
-          </ul>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link d-block" href="../backend/logout.php">
-                Admin &nbsp;&nbsp; <b>Logout</b>
-              </a>
-            </li>
-          </ul>
+              <div class="sidebar-header">
+                  <div class="user-pic">
+                      <img class="img-responsive img-rounded" src="sidenav/images/kkm-logo.png" alt="User picture">
+                  </div>
+
+              </div>
+              <div class="text-center">
+                  <span class=" text-light"><i class="fas fa-user-circle fa-2x"></i><br>&nbsp;<strong>(<?php echo $username; ?>)</strong></span>
+              </div><br>
+              <div class="sidebar-menu">
+                  <ul>
+                      <li class="sidebar-dropdown">
+                          <a href="index.php">
+                              <!-- <i class="far fa-meter"></i> -->
+                              <i class="fas fa-chart-line fa-9x"></i>
+                              <span>Dashboard</span>
+
+                          </a>
+
+                      </li>
+
+                      <li class="sidebar-dropdown">
+                          <a href="products.php">
+                          <i class="fab fa-product-hunt"></i>
+                              <span>Products</span>
+
+                          </a>
+
+                      </li>
+                      <li class="sidebar-dropdown">
+                          <a href="Regusers.php">
+                          <i class="fas fa-users"></i>
+                              <span>Registered Users</span>
+
+                          </a>
+
+                      </li>
+                      <li class="sidebar-dropdown">
+                          <a href="accounts.php">
+                          <i class="fas fa-user-circle"></i>
+                              <span>Accounts</span>
+                          </a>
+
+                      </li>
+                      <li class="sidebar-dropdown">
+                          <a href="../SuperAdmin/SuperAdmin_Associate.php">
+                              <i class="far fa-user"></i>
+                              <span>Associates</span>
+                          </a>
+                      </li>
+                      <li class="sidebar-dropdown">
+                          <a href="../SuperAdmin/Admindashboard.php">
+                          <i class="fas fa-user-shield"></i>
+                              <span>Admins</span>
+                          </a>
+                      </li>
+                      <!-- <li class="sidebar-dropdown">
+                          <a href="../dashboard/approvalpending.php">
+                              <i class="far fa-user"></i>
+                              <span>Approval</span>
+                          </a>
+                      </li> -->
+                      <li class="sidebar-dropdown">
+                          <a href="#"><i class="far fa-user"></i><span>Customers</span></a>
+                          <div class="sidebar-submenu">
+                              <ul>
+                                  <li>
+                                      <a href="SuperAdmin_customerreg.php">Customer Registration</a>
+                                  </li>
+                                  <li>
+                                      <a href="SuperAdmin_customerlist.php">Customer List</a>
+                                  </li>
+                              </ul>
+                          </div>
+                      </li>
+                      <li class="sidebar-dropdown">
+                      <a href="../backend/logout.php">
+                      <i class="fas fa-sign-out-alt"></i>
+                              <span>Logout</span>
+                          </a>
+                      </li>
+                  </ul>
+
+      </nav><!-- side nav ends here -->
+
+
+      <main class="page-content">
+        <div class="container text-dark text-center" style="background: burlywood;">
+            <h1><strong>Welcome</strong></h1>
         </div>
-      </div>
-    </nav>
-    <div class="container tm-mt-big tm-mb-big">
+
+    <div class=" tm-mt-big tm-mb-big">
       <div class="row">
-        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mx-auto">
           <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
             <div class="row">
               <div class="col-12">
@@ -142,10 +227,75 @@
                       class="custom-select tm-select-accounts"
                       id="category" name="category"
                     >
+                      
                       <option selected>Select category</option>
-                      <option value="New Arrival" name="category">New Arrival</option>
-                      <option value="Most Popular" name="category">Most Popular</option>
-                      <option value="Trending" name="category">Trending</option>
+                      <!-- Seeds -->
+                      <option value="veg" name="category">Vegetable seeds</option>
+                      <option value="cotton" name="category">Cotton Seeds</option>
+                      <option value="flor" name="category">Floriculture Seeds</option>
+                      <option value="potato" name="category">Potato Tubers</option>
+                      <option value="grain" name="category">Grain Seeds</option>
+                      <option value="fodder" name="category">Fodder Seeds</option>
+                      <option value="oil" name="category">Oil Seeds</option>
+                      <option value="pulse" name="category">Pulse Seeds</option>
+                      <option value="wholesale" name="category">Wholesale</option>
+                      <option value="exo" name="category">Exotic Vegetables</option>
+                      <option value="spices" name="category">Tree Seeds</option>
+                      
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
+                      <option value="" name="category"></option>
                     </select>
                   </div>
                   <div class="row">
@@ -175,6 +325,7 @@
                             required
                           />
                         </div>
+                        
                   </div>
                   
               </div>
@@ -194,7 +345,21 @@
                     onclick="document.getElementById('fileInput').click();"
                   />
                 </div>
+                
+                <div class="col-xl-13 col-lg-13 col-md-12">
+                <div class="form-group mt-3 mb-3">
+                  <label for="price" > Price </label>
+                  <input type="text" name="price" id="price" class="form-control validate" autocomplete="off">
+                
+                  
+                
+                </div>
+                </div>
               </div>
+
+              
+              
+
               <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
               </div>
@@ -204,12 +369,13 @@
         </div>
       </div>
     </div>
+    </main>
     <footer class="tm-footer row tm-mt-small">
         <div class="col-12 font-weight-light">
-          <p class="text-center text-white mb-0 px-4 small">
-            Copyright &copy; <b>2021</b> All rights reserved. 
+          <p class="text-center text-white mb-0 px-4 large">
+            Copyright &copy; <b><script>document.write( new Date().getUTCFullYear() );</script></b> All rights reserved. 
             
-            Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
+            Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Aarush Group</a>
         </p>
         </div>
     </footer> 

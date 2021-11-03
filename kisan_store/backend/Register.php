@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     if ($regpass == $regcnfpass) {
       
-      $query = "INSERT INTO `from store_customer_registration`(`name`, `email`, `password`, `conf_password`) VALUES ('$regname','$regemail', '$regpass', '$regcnfpass')";
+      $query = "INSERT INTO  `store_customer_registration`(`name`, `email`, `password`, `conf_password`) VALUES ('$regname','$regemail', '$regpass', '$regcnfpass')";
       $sql = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
       if ($sql) {
         session_start();
