@@ -115,7 +115,7 @@ $row1=mysqli_fetch_assoc($sql1);
 
                             </li>
                             <li class="sidebar-dropdown">
-                                <a href="../SuperAdmin/SuperAdmin_Associate.php">
+                                <a href="#">
                                     <i class="far fa-user"></i>
                                     <span>Associates</span>
                                 </a>
@@ -152,10 +152,10 @@ $row1=mysqli_fetch_assoc($sql1);
                                 <div class="sidebar-submenu">
                                     <ul>
                                         <li>
-                                            <a href="SuperAdmin_customerreg.php">Customer Registration</a>
+                                            <a href="#">Customer Registration</a>
                                         </li>
                                         <li>
-                                            <a href="SuperAdmin_customerlist.php">Customer List</a>
+                                            <a href="#">Customer List</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -172,7 +172,7 @@ $row1=mysqli_fetch_assoc($sql1);
 
             <main class="page-content">
                 <div class="container text-dark text-center" style="background: burlywood;">
-                    <h1><strong>Welcome</strong></h1>
+                    <h1><strong >Welcome</strong></h1>
                 </div>
 
     <div class=" mt-5">

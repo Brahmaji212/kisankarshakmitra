@@ -1,3 +1,64 @@
+<?php
+error_reporting(0);
+session_start();
+
+if (!isset($_SESSION['login_status'])) {
+    header('location: backend/login.php');
+}
+$id=$_GET['id'];
+$qua = 1;
+    if(isset($_POST['plus']))
+    {   
+        $qua=$_POST['input'];
+        $qua=$qua+1;
+        
+    }
+    if(isset($_POST['minus']))
+    {   
+        $qua=$_POST['input'];
+        $qua=$qua-1;
+        if($qua==0)
+        {
+            $qua=1;
+        }
+    }
+
+
+
+	
+    
+
+include 'backend/database.php'; 
+$username=$_SESSION['loginname'];
+  
+$qry = "select * from  customer_cart where customer_email='$username'";
+
+$sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
+
+$productcount=mysqli_num_rows($sql);
+// for calculating cart total items count.
+if($productcount == 0){
+    $cart_value=$productcount;
+}else if($productcount >0)
+{
+    $cart_value=$productcount;
+}
+
+// for calculating cart total amount.
+$query = "SELECT * FROM customer_cart where customer_email='$username'";
+$query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
+
+$total= 0;
+while ($num = mysqli_fetch_assoc ($query_run)) {
+    $total += $num['product_price'];
+}
+
+    
+
+
+?> 
+
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -119,7 +180,7 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                                <a href="#"><i class="fa fa-user"></i> Logout</a>
                             </div>
                         </div>
                     </div>
@@ -154,10 +215,10 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i> <!--<span><?php //echo ₹cart_value; ?></span>--></a></li>
+                            <li><a href="cart.php"><i class="fa fa-shopping-bag"></i> <span><?php echo $cart_value; ?></span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
                     </div>
                 </div>
             </div>
@@ -244,7 +305,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h6><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click here</a> to enter your code
+                    <!-- <h6><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click here</a> to enter your code -->
                     </h6>
                 </div>
             </div>
@@ -333,12 +394,13 @@
                                 <h4>Your Order</h4>
                                 <div class="checkout__order__products">Products <span>Total</span></div>
                                 <ul>
-                                    <li>Vegetable’s Package <span>$75.99</span></li>
-                                    <li>Fresh Vegetable <span>$151.99</span></li>
-                                    <li>Organic Bananas <span>$53.99</span></li>
+                                    <li>Vegetable’s Package <span>₹75.99</span></li>
+                                    <li>Fresh Vegetable <span>₹151.99</span></li>
+                                    <li>Organic Bananas <span>₹53.99</span></li>
                                 </ul>
-                                <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
-                                <div class="checkout__order__total">Total <span>$750.99</span></div>
+                                <?php
+                                echo "<div class='checkout__order__subtotal'>Subtotal <span>₹".$total."</span></div>
+                                <div class='checkout__order__total'>Total <span>₹".$total."</span></div>"; ?>
                                 <div class="checkout__input__checkbox">
                                     <label for="acc-or">
                                         Create an account?

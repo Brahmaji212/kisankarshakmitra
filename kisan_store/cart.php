@@ -5,19 +5,18 @@ session_start();
 if (!isset($_SESSION['login_status'])) {
     header('location: backend/login.php');
 }
-
+$id=$_GET['id'];
 $qua = 1;
-    if(isset($_GET['plus']))
+
+    if(isset($_GET['id']))
     {   
-        
         $qua=$_GET['input'];
-        // $qua=$_GET['id'];
         $qua=$qua+1;
         
     }
-    if(isset($_GET['minus']))
+    if(isset($_POST['minus']))
     {   
-        $qua=$_GET['input'];
+        $qua=$_POST['input'];
         $qua=$qua-1;
         if($qua==0)
         {
@@ -317,12 +316,12 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
-                                        <form action="cart.php" method="get">
-						                    <input type="submit" class="minus" name="minus" id="minus" value="-">				
-						                    <input type="text" size="4" title="Qty" class="input" value="<?php echo $qua; ?>" name="input" id="input" max="29" min="0" step="1" style="text-align: center;">
-                                            <input type='submit' class='plus' name='plus' id='plus' value='+'   > 
-                                           <?php //echo "<a href='cart.php?id=".$row["id"]."'>    <input type='submit' class='plus' name='plus' id='plus' value='+' id=''  > </a>"; ?>
-					                        </form>
+                                        
+						                    <input type="submit" class="minus" name="minus" id="minus" value="<?php echo '-'; ?>">				
+						                    <input type="text" size="4" title="Qty" class="input" value="<?php  $id=$row['id']; echo $qua; ?>" name="input" id="input" max="29" min="0" step="1" style="text-align: center;">
+                                            <!-- <input type='submit' class='plus' name='plus' id='plus' value='+'   >  -->
+                                           <?php echo "<a href='cart.php?id=".$row["id"]."'>    <input type='submit' class='plus' name='plus' id='plus' value='+'  > </a>"; ?>
+					                      
                                             	
                                         </div>
                                     </td>
@@ -358,8 +357,15 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                             border: 0%;
                                             
                                         }
+                                        .plus:hover{
+                                            background-color: transparent;
+                                        }
+
                                         .minus{
                                             border:transparent;
+                                        }
+                                        .minus:hover{
+                                            background:transparent;
                                         }
                                         .input{
                                             border: transparent;
@@ -394,10 +400,10 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span><?php echo "₹".$total; ?></span></li>
-                            <li>Total <span><?php echo "₹".$total; ?></span></li>
+                            <li>Subtotal <span><?php echo "₹".$total*$qua; ?></span></li>
+                            <li>Total <span><?php echo "₹".$total*$qua; ?></span></li>
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="checkout.php" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>
