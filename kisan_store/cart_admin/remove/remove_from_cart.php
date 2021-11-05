@@ -7,7 +7,6 @@ $removeqry = "delete from customer_cart where customer_email='$username' and id=
 $sql = mysqli_query($dbc, $removeqry) or die(mysqli_error($dbc));
 if ($sql) :
     echo '<script>';
-    echo 'alert("Your Item Removed Successfully");';
     echo 'window.location.href= "../../cart.php"; 
           </script>';
 else :

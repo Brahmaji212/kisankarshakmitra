@@ -7,6 +7,7 @@ if (!isset($_SESSION['login_status'])) {
 }
 
 include 'backend/database.php';
+
 // taking product id 
 $product_id=$_GET['product_id'];
 $username=$_SESSION['loginname'];
@@ -22,6 +23,8 @@ $product_exp=$prow['product_exp_date'];
 $product_stock=$prow['product_stock'];
 $product_img=$prow['product_img'];
 $product_price=$prow['product_price'];
+$total_price=$prow['product_price']*1;
+$quantity=1;
 
 $checkqry = "select * from customer_cart where  customer_email='$username'";
   $checksql = mysqli_query($dbc, $checkqry) or die(mysqli_error($dbc));
@@ -39,13 +42,9 @@ $checkqry = "select * from customer_cart where  customer_email='$username'";
   
   else { 
 
-// insert query for insert the product id in store_customer_registration table for retriving cart data from it.
-// $insert="INSERT INTO `store_customer_registration` (`product_id`)values('$product_id')";
-// $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
 
-// select product_id from store_customer_registration where email=".$_SESSION["loginname"]."
 
-$insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price')";
+$insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price')";
 $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
 
   
@@ -64,19 +63,19 @@ if($productcount == 0){
 
 // for calculating cart total amount.
 $query = "SELECT * FROM customer_cart where customer_email='$username'";
-$query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
+        $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
+        
+        while($num=mysqli_fetch_assoc($query_run))
+        {
+            $cart_total +=$num['total_price'];
+        }
 
-$total= 0;
-while ($num = mysqli_fetch_assoc ($query_run)) {
-    $total += $num['product_price'];
-}
-
-
-// $_SESSION['loginname']
   }
+
+  
 }
 else if($product_id == true){ 
-    $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price')";
+    $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price')";
 $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
 $qry = "select * from  customer_cart where customer_email='$username'";
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
@@ -91,14 +90,17 @@ if($productcount == 0){
 
 // for calculating cart total amount.
 $query = "SELECT * FROM customer_cart where customer_email='$username'";
-$query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
-
-$total= 0;
-while ($num = mysqli_fetch_assoc ($query_run)) {
-    $total += $num['product_price'];
-}
+        $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
+        
+        while($num=mysqli_fetch_assoc($query_run))
+        {
+            $cart_total +=$num['total_price'];
+        }
 
   }
+
+
+
 ?> 
 
 <!DOCTYPE html>
@@ -357,13 +359,16 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1" id="add" > 
-                                            </div>
+                                        <form method=" GET" action="cart.php">
+						                    <input type="submit" class="minus" name="minus" id="minus" value="<?php echo '-'; ?>">				
+						                    <input type="text" size="4" title="Qty" class="input" value="<?php   echo $row['quantity'];  ?>" name="input" id="input" max="29" min="0" step="1" style="text-align: center;">
+                                            <input type='hidden' class='idno' name='idno' id='idno' value='<?php echo $row['id']; ?>'   > 
+                                             <input type='submit' class='plus' name='plus' id='plus' value='+'  > 
+                                        </form>
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                    <?php echo "₹".$row['product_price'] ?>
+                                    <?php echo "₹".$row['total_price'] ?>
                                     </td>
                                     
                                     <?php echo '<td class="shoping__cart__item__close"><a href="cart_admin/remove/remove_from_cart.php?id='.$row['id'].'" ><span class="fa icon_close animated faa-bounce" onClick=\'javascript: return confirm("Please confirm deletion");\'></span></a></td>';?>
@@ -386,6 +391,24 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                             }
                                         strong{
                                             align-content: center;
+                                        }
+                                        .plus{
+                                            border: transparent;
+                                            border: 0%;
+                                            
+                                        }
+                                        .plus:hover{
+                                            background-color: transparent;
+                                        }
+
+                                        .minus{
+                                            border:transparent;
+                                        }
+                                        .minus:hover{
+                                            background:transparent;
+                                        }
+                                        .input{
+                                            border: transparent;
                                         }
                                 </style>
                               
@@ -417,8 +440,8 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span><?php echo "₹".$total.".00"; ?></span></li>
-                            <li>Total <span><?php echo "₹".$total.".00"; ?></span></li>
+                            <li>Subtotal <span><?php echo "₹".$cart_total.".00"; ?></span></li>
+                            <li>Total <span><?php echo "₹".$cart_total.".00"; ?></span></li>
                         </ul>
                         <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>

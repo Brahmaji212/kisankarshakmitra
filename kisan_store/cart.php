@@ -23,23 +23,28 @@ if($productcount == 0){
 
 
 // for calculating cart total amount.
-
+$query = "SELECT * FROM customer_cart where customer_email='$username'";
+        $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
+        
+        while($num=mysqli_fetch_assoc($query_run))
+        {
+            $cart_total +=$num['total_price'];
+        }
 
 // increasing product price quantity.  
 
-// $qua =$num['quantity'];
-
     if(isset($_GET['plus']))
     {   
-        $query = "SELECT * FROM customer_cart where customer_email='$username'";
+        $ID=$_GET['idno'];
+        $query = "SELECT * FROM customer_cart where id='$ID'";
         $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
         $num=mysqli_fetch_assoc($query_run);
-        $ID=$_GET['idno'];
+       
         $qua=$_GET['input'];
         
         $qua=$qua+1;
-        // $total= $num['product_price']*$qua;
-        $qr="update `customer_cart` set `quantity`='$qua'  where `customer_cart`.`id`='$ID'";
+        $total= $num['product_price']*$qua;
+        $qr="update `customer_cart` set `quantity`='$qua' , `total_price`='$total' where `customer_cart`.`id`='$ID'";
         $qr_run=mysqli_query($dbc,$qr);
         $page = $_SERVER['PHP_SELF'];
         $sec = "0";
@@ -49,9 +54,14 @@ if($productcount == 0){
     if(isset($_GET['minus']))
     {   
         $ID=$_GET['idno'];
+        $query = "SELECT * FROM customer_cart where id='$ID'";
+        $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
+        $num=mysqli_fetch_assoc($query_run);
+
         $qua=$_GET['input'];
         $qua=$qua-1;
-        $qr="update `customer_cart` set `quantity`='$qua' where `customer_cart`.`id`='$ID'";
+        $total= $num['product_price']*$qua;
+        $qr="update `customer_cart` set `quantity`='$qua', `total_price`='$total' where `customer_cart`.`id`='$ID'";
         $qr_run=mysqli_query($dbc,$qr);
         $page = $_SERVER['PHP_SELF'];
         $sec = "0";
@@ -59,7 +69,8 @@ if($productcount == 0){
         if($qua==0)
         {
             $qua=1;
-            $qr="update `customer_cart` set `quantity`='$qua' where `customer_cart`.`id`='$ID'";
+            $total= $num['product_price']*$qua;
+            $qr="update `customer_cart` set `quantity`='$qua', `total_price`='$total' where `customer_cart`.`id`='$ID'";
             $qr_run=mysqli_query($dbc,$qr);
             $page = $_SERVER['PHP_SELF'];
             $sec = "0";
@@ -331,13 +342,13 @@ if($productcount == 0){
 						                    <input type="submit" class="minus" name="minus" id="minus" value="<?php echo '-'; ?>">				
 						                    <input type="text" size="4" title="Qty" class="input" value="<?php   echo $row['quantity']; //if($id==$ID){ $qua=$qua+1; echo $qua;}else{echo $qua;} ?>" name="input" id="input" max="29" min="0" step="1" style="text-align: center;">
                                             <input type='hidden' class='idno' name='idno' id='idno' value='<?php echo $row['id']; ?>'   > 
-                                           <?php echo "<a href='cart.php?id=".$row["id"]."'>    <input type='submit' class='plus' name='plus' id='plus' value='+'  > </a>"; ?>
+                                             <input type='submit' class='plus' name='plus' id='plus' value='+'  > 
                                         </form> 
                                             	
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                    <?php echo "₹".$row['product_price']*$row['quantity'].".00";
+                                    <?php echo "₹".$row['total_price'];
                                         // $total=$row['product_price']+$row['product_price']; ?>
                                     </td>
                                     <?php echo '<td class="shoping__cart__item__close"><a href="cart_admin/remove/remove_from_cart.php?id='.$row['id'].'"  onClick=\'javascript: return confirm("Please confirm deletion");\'><span class="fa icon_close animated faa-bounce"></span></a></td>';?>
@@ -411,8 +422,8 @@ if($productcount == 0){
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span><?php echo "₹".$row['total_price']; ?></span></li>
-                            <li>Total <span><?php echo "₹".$total; ?></span></li>
+                            <li>Subtotal <span><?php echo "₹".$cart_total.".00"; ?></span></li>
+                            <li>Total <span><?php echo "₹".$cart_total.".00"; ?></span></li>
                         </ul>
                         <a href="checkout.php" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
