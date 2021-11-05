@@ -197,8 +197,8 @@ $prod_row = mysqli_fetch_assoc($prod_sql);
 
                                     <div class="dropdown">
                                         <button class="button hvr-shutter-out-horizontal">Login</button>
-                                        <div class="dropdown-content" style="text-align: center;">
-                                            <a href="backend/cart_super_admin_login.html">Super Admin Login</a>
+                                        <div class="dropdown-content" style="text-align: left; border-radius:20px;">
+                                            <a href="backend/cart_super_admin_login.html">SuperAdmin Login</a>
                                             <a href="backend/cart_admin_login.html">Admin Login</a> 
                                             <a href="backend/login.html" >User Login</a>
                                         </div>
