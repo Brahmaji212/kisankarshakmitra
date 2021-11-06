@@ -684,15 +684,15 @@
             <div class="col-lg-9">
                         <div class="main_nav_menu ml-auto" style="padding: 0 0 0 337px;">
                             <ul class="standard_dropdown main_nav_dropdown">
-                                <li  ><a href="../index.html">Home<i class="fa fa-chevron-down"></i></a></li>
-                                <li  ><a href="../about.html">About<i class="fa fa-chevron-down"></i></a></li>
-                                <li  ><a href="../services.html">Services<i class="fa fa-chevron-down"></i></a></li>
-                                <li "><a href="../memberships.html">Memberships<i class="fa fa-chevron-down"></i></a></li>
+                                <li  ><a href="../kisan_store/index.php">Home<i class="fa fa-chevron-down"></i></a></li>
+                                <li  ><a href="../k_about.html">About<i class="fa fa-chevron-down"></i></a></li>
+                                <li  ><a href="../k_services.html">Services<i class="fa fa-chevron-down"></i></a></li>
+                                <li "><a href="../k_memberships.html">Memberships<i class="fa fa-chevron-down"></i></a></li>
                                 
                                             
                               
 
-                                <li ><a href="../contact.html">Contact<i class="fa fa-chevron-down"></i></a></li>
+                                <li ><a href="../k_contact.html">Contact<i class="fa fa-chevron-down"></i></a></li>
                             </ul>
                         </div>
 

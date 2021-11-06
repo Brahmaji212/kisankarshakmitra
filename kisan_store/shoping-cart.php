@@ -25,7 +25,7 @@ $product_img=$prow['product_img'];
 $product_price=$prow['product_price'];
 $total_price=$prow['product_price']*1;
 $quantity=1;
-
+if($_GET['product_id']==true){
 $checkqry = "select * from customer_cart where  customer_email='$username'";
   $checksql = mysqli_query($dbc, $checkqry) or die(mysqli_error($dbc));
   if (mysqli_num_rows($checksql) > 0) {
@@ -35,19 +35,26 @@ $checkqry = "select * from customer_cart where  customer_email='$username'";
     echo '<script>';
     echo 'alert("This item already in cart");';
    
-    echo 'window.location.href= "cart.php"; 
+    echo 'window.location.href= "shoping-cart.php"; 
     </script>';
   } 
  
   
   else { 
 
-
-
 $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price')";
 $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
 
-  
+  }
+}
+else if($product_id == true){ 
+    $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price')";
+$sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
+$qry = "select * from  customer_cart where customer_email='$username'";
+$sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
+$productcount=mysqli_num_rows($sql);
+                            }
+}
 $qry = "select * from  customer_cart where  customer_email='$username'";
 
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
@@ -70,35 +77,53 @@ $query = "SELECT * FROM customer_cart where customer_email='$username'";
             $cart_total +=$num['total_price'];
         }
 
-  }
 
-  
+// increasing product price quantity.  
+
+if(isset($_GET['plus']))
+{   
+    $ID=$_GET['idno'];
+    $query = "SELECT * FROM customer_cart where id='$ID'";
+    $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
+    $num=mysqli_fetch_assoc($query_run);
+   
+    $qua=$_GET['input'];
+    
+    $qua=$qua+1;
+    $total= $num['product_price']*$qua;
+    $qr="update `customer_cart` set `quantity`='$qua' , `total_price`='$total' where `customer_cart`.`id`='$ID'";
+    $qr_run=mysqli_query($dbc,$qr);
+    $page = $_SERVER['PHP_SELF'];
+    $sec = "0";
+    header("Refresh: $sec; url=$page");
+    
 }
-else if($product_id == true){ 
-    $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price')";
-$sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
-$qry = "select * from  customer_cart where customer_email='$username'";
-$sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
-$productcount=mysqli_num_rows($sql);
-// adding cart_item value;
-if($productcount == 0){
-    $cart_value=$productcount;
-}else if($productcount >0)
-{
-    $cart_value=$productcount;
+if(isset($_GET['minus']))
+{   
+    $ID=$_GET['idno'];
+    $query = "SELECT * FROM customer_cart where id='$ID'";
+    $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
+    $num=mysqli_fetch_assoc($query_run);
+
+    $qua=$_GET['input'];
+    $qua=$qua-1;
+    $total= $num['product_price']*$qua;
+    $qr="update `customer_cart` set `quantity`='$qua', `total_price`='$total' where `customer_cart`.`id`='$ID'";
+    $qr_run=mysqli_query($dbc,$qr);
+    $page = $_SERVER['PHP_SELF'];
+    $sec = "0";
+    header("Refresh: $sec; url=$page");
+    if($qua==0)
+    {
+        $qua=1;
+        $total= $num['product_price']*$qua;
+        $qr="update `customer_cart` set `quantity`='$qua', `total_price`='$total' where `customer_cart`.`id`='$ID'";
+        $qr_run=mysqli_query($dbc,$qr);
+        $page = $_SERVER['PHP_SELF'];
+        $sec = "0";
+        header("Refresh: $sec; url=$page");
+    }
 }
-
-// for calculating cart total amount.
-$query = "SELECT * FROM customer_cart where customer_email='$username'";
-        $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
-        
-        while($num=mysqli_fetch_assoc($query_run))
-        {
-            $cart_total +=$num['total_price'];
-        }
-
-  }
-
 
 
 ?> 
@@ -337,9 +362,9 @@ $query = "SELECT * FROM customer_cart where customer_email='$username'";
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
                         <table>
-                            <thead>
+                            <thead >
                                 <tr>
-                                    <th class="shoping__product">Products</th>
+                                    <th class="">Products</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
@@ -359,7 +384,7 @@ $query = "SELECT * FROM customer_cart where customer_email='$username'";
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
-                                        <form method=" GET" action="cart.php">
+                                        <form method=" GET" action="">
 						                    <input type="submit" class="minus" name="minus" id="minus" value="<?php echo '-'; ?>">				
 						                    <input type="text" size="4" title="Qty" class="input" value="<?php   echo $row['quantity'];  ?>" name="input" id="input" max="29" min="0" step="1" style="text-align: center;">
                                             <input type='hidden' class='idno' name='idno' id='idno' value='<?php echo $row['id']; ?>'   > 
@@ -380,7 +405,7 @@ $query = "SELECT * FROM customer_cart where customer_email='$username'";
                     <p align=center style="color:#4a4a4a;">
                   <strong  > 
                     <i class="fa fa-database animated faa-horizontal"></i> <br>
-                    No items added in your cart!!!</strong></p> <br>
+                    Your cart is empty continue shopping to add items!!!</strong></p> <br>
             <?php } ?>   
                                 <style>
                                     img {
@@ -443,7 +468,7 @@ $query = "SELECT * FROM customer_cart where customer_email='$username'";
                             <li>Subtotal <span><?php echo "₹".$cart_total.".00"; ?></span></li>
                             <li>Total <span><?php echo "₹".$cart_total.".00"; ?></span></li>
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="checkout.php" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>

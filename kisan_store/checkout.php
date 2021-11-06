@@ -50,7 +50,7 @@ $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
 
 $total= 0;
 while ($num = mysqli_fetch_assoc ($query_run)) {
-    $total += $num['product_price'];
+    $total += $num['total_price'];
 }
 
     
@@ -119,13 +119,13 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
+                <li class="active"><a href="./index.php">Home</a></li>
                 <li><a href="./shop-grid.html">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="./shop-details.html">Shop Details</a></li>
                         <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
+                        <li><a href="./checkout.php">Check Out</a></li>
                         <li><a href="./blog-details.html">Blog Details</a></li>
                     </ul>
                 </li>
@@ -191,19 +191,19 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.php"><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./index.html">Home</a></li>
+                            <li><a href="./index.php">Home</a></li>
                             <li class="active"><a href="./shop-grid.html">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./shoping-cart.php">Shoping Cart</a></li>
+                                    <li><a href="./checkout.php">Check Out</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
@@ -216,7 +216,7 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <!--<span><?php //echo ₹cart_value; ?></span>--></a></li>
-                            <li><a href="cart.php"><i class="fa fa-shopping-bag"></i> <span><?php echo $cart_value; ?></span></a></li>
+                            <li><a href="shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span><?php echo $cart_value; ?></span></a></li>
                         </ul>
                         <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
                     </div>
@@ -290,7 +290,7 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                     <div class="breadcrumb__text">
                         <h2>Checkout</h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
+                            <a href="./index.php">Home</a>
                             <span>Checkout</span>
                         </div>
                     </div>
@@ -392,12 +392,24 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4>Your Order</h4>
-                                <div class="checkout__order__products">Products <span>Total</span></div>
-                                <ul>
-                                    <li>Vegetable’s Package <span>₹75.99</span></li>
-                                    <li>Fresh Vegetable <span>₹151.99</span></li>
-                                    <li>Organic Bananas <span>₹53.99</span></li>
-                                </ul>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Products &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+                                            <th>Total  </th>
+                                        </tr>
+                                    </thead>
+                                    <?php if($productcount > 0){ ?>
+                                        <?php while ($row=mysqli_fetch_assoc($sql)){ ?>
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $row['product_name'] ?></td>
+                                            <td><?php echo $row['total_price']  ?></td>
+                                        </tr>
+                                    </tbody>
+                                    <?php } } ?>
+                                </table>
+                                
                                 <?php
                                 echo "<div class='checkout__order__subtotal'>Subtotal <span>₹".$total."</span></div>
                                 <div class='checkout__order__total'>Total <span>₹".$total."</span></div>"; ?>
@@ -408,8 +420,8 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</p>
+                                <!-- <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt -->
+                                    <!-- ut labore et dolore magna aliqua.</p> -->
                                 <div class="checkout__input__checkbox">
                                     <label for="payment">
                                         Check Payment
