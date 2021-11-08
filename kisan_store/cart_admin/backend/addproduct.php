@@ -16,13 +16,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $proexpdate = $_POST['expire_date'];
   $prounitstock = $_POST['stock'];
   $price = $_POST['price'];
+  $product_id= rand(1111,9999);
   //$proimage = $_FILES['fileInput']['name'];
   
 
  
 
   if (move_uploaded_file($tempname, $folder)) {
-    $query = "INSERT INTO `products`( `product_name`, `product_description`, `product_category`, `product_subcategory`, `product_exp_date`, `product_stock`, `product_img`, `product_price`) VALUES ('$proname', '$prodescript', '$procategory','$prosubcategory', '$proexpdate', '$prounitstock','$filename' ,'$price')";
+    $query = "INSERT INTO `products`( `product_id`,`product_name`, `product_description`, `product_category`, `product_subcategory`, `product_exp_date`, `product_stock`, `product_img`, `product_price`) VALUES ('$product_id','$proname', '$prodescript', '$procategory','$prosubcategory', '$proexpdate', '$prounitstock','$filename' ,'$price')";
     $sql = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
     $_SESSION['category']=$procategory;
   }else{

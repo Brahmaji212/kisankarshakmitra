@@ -26,3 +26,5 @@ $state=$_POST['state'];
 $pin=$_POST['pin'];
 $phone=$_POST['phone'];
 $email=$_POST['email'];
+$note=$_POST['note'];
+
