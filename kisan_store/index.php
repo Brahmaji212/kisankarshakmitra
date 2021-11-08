@@ -62,6 +62,54 @@ $productcount=mysqli_num_rows($sql1);
 	<link href="css/ken-burns.css" rel="stylesheet" type="text/css" media="all" />
 
 
+
+
+                                            <style>
+												.dropbtn {
+													background-color: #77b81e;
+													color: white;
+													padding: 16px;
+													font-size: 16px;
+													border: none;
+													cursor: pointer;
+												}
+
+												.dropdown {
+													position: relative;
+													display: inline-block;
+												}
+
+												.dropdown-content {
+													display: none;
+													position: absolute;
+													background-color: #f9f9f9;
+													min-width: 160px;
+													box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+													z-index: 1;
+												}
+
+												.dropdown-content a {
+													color: black;
+													padding: 12px 16px;
+													text-decoration: none;
+													display: block;
+                                                    text-align: left;
+												}
+
+												.dropdown-content a:hover {
+													background-color: #f1f1f1
+												}
+
+												.dropdown:hover .dropdown-content {
+													display: block;
+												}
+
+												.dropdown:hover .dropbtn {
+													background-color: #77b81e;
+												}
+											</style>
+
+
 </head>
 
 <body>
@@ -167,23 +215,35 @@ $productcount=mysqli_num_rows($sql1);
                             <div class="header__cart">
                                 <ul>
                                 
-                                    <li><a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i> <!--<span>0</span>--></a></li>
-                                    <li><a href="shoping-cart.php"><i class="fa fa-shopping-bag animated faa-horizontal" style="color: green;"></i> 
-                                    <?php if($productcount ==0){?>
-                                    <!-- <span> <?php  //echo $cart_value; ?> </span> -->
-                                    <?php } else if($productcount > 0) { ?>
-                                        <span> <?php $cart_value = $productcount; echo $cart_value; ?> </span>
-                                        <?php } ?>
-                                        
-                                        </a></li>
+                                    <li><a href="#"> <?php echo " <a><i class='fa fa-envelope'></i>&nbsp;".$_SESSION["loginname"]."</a>"; ?></a></li>
+                                   
                                 
-                                    <li><a href="backend/logout.php" ><i class="fa fa-user"></i> Logout</a></li>
+                                    
                                     <li class="sidebar-dropdown">
-                                        <a href="#"><i class="fa fa-bars"></i></a> 
+                                        
+                                        <div class="dropdown">
+												<a class=""><i class="fa fa-bars"></i></a>  
+												<div class="dropdown-content">
+													<a href="index.php"><i class="fa fa-shopping-cart animated faa-horizontal" style="color: green;"> </i> &nbsp; Store</a>
+													<a href="shoping-cart.php">
+                                                        <i class="fa fa-shopping-bag animated faa-horizontal" style="color: green;">
+                                                        <?php if($productcount ==0){?>
+                                    <!-- <span> <?php  //echo $cart_value; ?> </span> -->
+                                                            <?php } else if($productcount > 0) { ?>
+                                                             <span> <?php $cart_value = $productcount; echo $cart_value; ?> </span>
+                                                             <?php } ?>
+                                                             </i> &nbsp; Shoping-cart 
+                                                     </a>
+                                                    </a> 
+                                                    <a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
+													<a href="#"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
+													<a href="backend/logout.php"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>
+												</div>
+											</div>
                                        
                                         
-                                    </li><br>
-                                    <?php echo " <a><i class='fa fa-envelope'></i>&nbsp;".$_SESSION["loginname"]."</a>"; ?>
+                                    </li>
+                                   
                                 </ul>
                         <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
                             </div>

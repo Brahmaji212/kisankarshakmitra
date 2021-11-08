@@ -153,6 +153,52 @@ if(isset($_GET['minus']))
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="cart_admin/font-awesome-animation-1.1.1/package/css/font-awesome-animation.min.css">
 
+
+    <style>
+												.dropbtn {
+													background-color: #77b81e;
+													color: white;
+													padding: 16px;
+													font-size: 16px;
+													border: none;
+													cursor: pointer;
+												}
+
+												.dropdown {
+													position: relative;
+													display: inline-block;
+												}
+
+												.dropdown-content {
+													display: none;
+													position: absolute;
+													background-color: #f9f9f9;
+													min-width: 160px;
+													box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+													z-index: 1;
+												}
+
+												.dropdown-content a {
+													color: black;
+													padding: 12px 16px;
+													text-decoration: none;
+													display: block;
+                                                    text-align: left;
+												}
+
+												.dropdown-content a:hover {
+													background-color: #f1f1f1
+												}
+
+												.dropdown:hover .dropdown-content {
+													display: block;
+												}
+
+												.dropdown:hover .dropbtn {
+													background-color: #77b81e;
+												}
+											</style>   
+
 </head>
 
 <body>
@@ -234,9 +280,7 @@ if(isset($_GET['minus']))
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                            
-                            <div class="header__top__right__auth">
-                                <a href="backend/logout.php"><i class="fa fa-user"></i> Logout</a>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -270,8 +314,30 @@ if(isset($_GET['minus']))
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart animated faa-horizontal" ></i> <span></span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag animated faa-horizontal"></i> <span><?php echo $cart_value; ?></span></a></li>
+                        <li class="sidebar-dropdown">
+                                        
+                                        <div class="dropdown">
+												<a class=""><i class="fa fa-bars"></i></a>  
+												<div class="dropdown-content">
+													<a href="index.php"><i class="fa fa-shopping-cart animated faa-horizontal" style="color: green;"> </i> &nbsp; Store</a>
+													<a href="shoping-cart.php">
+                                                        <i class="fa fa-shopping-bag animated faa-horizontal" style="color: green;">
+                                                        <?php if($productcount ==0){?>
+                                    <!-- <span> <?php  //echo $cart_value; ?> </span> -->
+                                                            <?php } else if($productcount > 0) { ?>
+                                                             <span> <?php $cart_value = $productcount; echo $cart_value; ?> </span>
+                                                             <?php } ?>
+                                                             </i> &nbsp; Shoping-cart 
+                                                     </a>
+                                                    </a> 
+                                                    <a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
+													<a href="#"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
+													<a href="backend/logout.php"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>
+												</div>
+											</div>
+                                       
+                                        
+                                    </li>
                         </ul>
                         <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
                     </div>
