@@ -362,9 +362,9 @@ if(isset($_GET['minus']))
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
                         <table>
-                            <thead>
+                            <thead >
                                 <tr>
-                                    <th class="shoping__product">Products</th>
+                                    <th class="">Products</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>

@@ -242,7 +242,8 @@ $row1=mysqli_fetch_assoc($sql1);
                       required
                     ></textarea>
                   </div>
-                  <div class="form-group mb-3">
+                  <div class="row">
+                  <div class="form-group mb-3 col-xs-12 col-sm-6">
                     <label
                       for="category"
                       >Category</label
@@ -253,75 +254,121 @@ $row1=mysqli_fetch_assoc($sql1);
                     >
                       
                       <option selected>Select category</option>
-                      <!-- Seeds -->
-                      <option value="veg" name="category">Vegetable seeds</option>
-                      <option value="cotton" name="category">Cotton Seeds</option>
-                      <option value="flor" name="category">Floriculture Seeds</option>
-                      <option value="potato" name="category">Potato Tubers</option>
-                      <option value="grain" name="category">Grain Seeds</option>
-                      <option value="fodder" name="category">Fodder Seeds</option>
-                      <option value="oil" name="category">Oil Seeds</option>
-                      <option value="pulse" name="category">Pulse Seeds</option>
-                      <option value="wholesale" name="category">Wholesale</option>
-                      <option value="exo" name="category">Exotic Vegetables</option>
-                      <option value="spices" name="category">Tree Seeds</option>
+                     
+                      <option value="seeds" name="category">Seeds</option>
+                      <option value="mushroom" name="category">Mushroom</option>
+                      <option value="fertilizers" name="category">Fertilizers</option>
+                      <option value="certfied" name="category">Certified Organic Products</option>
+                      <option value="bio_product" name="category">Bio Products</option>
+                      <option value="pesticides" name="category">Insecticides/Pesticieds</option>
+                      <option value="insect_traps" name="category">Insects traps</option>
+                      <option value="spary_pumps" name="category">Spray pumps</option>
+                      <option value="soil_testing" name="category">Soil Testing</option>
+                      <option value="water_testing" name="category">Water Testing</option>
+                      <option value="hydro" name="category">Hydroponics</option>
+                      <option value="farm_machines" name="category">Farm machinery</option>
+                      <option value="farm_tools" name="category">Farm tools</option>
+                      <option value="Diesel_aircool" name="category">Diesel Air Cooled</option>
+                      <option value="Diesel_watercool" name="category">Diesel Water Cooled</option>
+                      <option value="generators" name="category">Generators</option>
+                      <option value="sphase_waterpumps" name="category">Single Phase Water Pumpms</option>
+                      <option value="3phase_wpumps" name="category">3 Phase Water Pumpms</option>
+                      <option value="gsm" name="category">GSM Mobile Starter</option>
+                      <option value="electricals" name="category">Electricals</option>
+                      <option value="sol_products" name="category">Solar Products</option>
+                      <option value="led" name="category">LED Rechargeble Torches&Lights</option>
+                      <option value="cattle" name="category">Cattle Care</option>
+                      <option value="fishrey" name="category">Fishery Products</option>
+                      <option value="plastic" name="category">Plastic Products</option>
+                      <option value="agri" name="category">Agri Magazines and CDs</option>
+                      <option value="pipes" name="category">Pipes</option>
+                      <option value="foam_nets" name="category">EPE Fruit Foam Nets</option>
+                      <option value="irrigtation" name="category">Irrigation System</option>
+                      <option value="greenhouse" name="category">Green House</option>
+                      <option value="tissure" name="category">Tissure Culture</option>
+                      <option value="tractors" name="category">Tractors Impliment's </option>
                       
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                      <option value="" name="category"></option>
-                    </select>
+                      
+                      </select>
                   </div>
+                  <div class="form-group mb-3 col-xs-12 col-sm-6">
+                    <label
+                      for="category"
+                      >Category</label
+                    >
+                    <select
+                      class="custom-select tm-select-accounts"
+                      id="sub_category" name="sub_category"
+                    >
+                      
+                      <option selected>Select Sub-category</option>
+                      <!-- Seeds -->
+                      <option value="veg" name="sub_category">Vegetable seeds</option>
+                      <option value="cotton" name="sub_category">Cotton Seeds</option>
+                      <option value="flor" name="sub_category">Floriculture Seeds</option>
+                      <option value="potato" name="sub_category">Potato Tubers</option>
+                      <option value="grain" name="sub_category">Grain Seeds</option>
+                      <option value="fodder" name="sub_category">Fodder Seeds</option>
+                      <option value="oil" name="sub_category">Oil Seeds</option>
+                      <option value="pulse" name="sub_category">Pulse Seeds</option>
+                      <option value="wholesale" name="sub_category">Wholesale</option>
+                      <option value="exo" name="sub_category">Exotic Vegetables</option>
+                      <option value="spices" name="sub_category">Tree Seeds</option>
+                      <!-- mushrooms -->
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      <option value="" name="sub_category"></option>
+                      </select>
+                  </div>
+                  </div>
+                  
                   <div class="row">
                       <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label

@@ -24,12 +24,7 @@ $sql1 = mysqli_query($dbc, $qry1) or die(mysqli_error($dbc));
 
 $productcount=mysqli_num_rows($sql1);
 
-// if($productcount == 0){
-//     $cart_value=$productcount;
-// }else if($productcount >0)
-// {
-//     $cart_value=$productcount;
-// }
+
 ?>
 
 
@@ -182,7 +177,12 @@ $productcount=mysqli_num_rows($sql1);
                                         
                                         </a></li>
                                 
-                                    <li><a href="backend/logout.php" ><i class="fa fa-user"></i> Logout</a></li><br>
+                                    <li><a href="backend/logout.php" ><i class="fa fa-user"></i> Logout</a></li>
+                                    <li class="sidebar-dropdown">
+                                        <a href="#"><i class="fa fa-bars"></i></a> 
+                                       
+                                        
+                                    </li><br>
                                     <?php echo " <a><i class='fa fa-envelope'></i>&nbsp;".$_SESSION["loginname"]."</a>"; ?>
                                 </ul>
                         <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
