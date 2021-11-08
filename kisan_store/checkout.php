@@ -5,62 +5,38 @@ session_start();
 if (!isset($_SESSION['login_status'])) {
     header('location: backend/login.php');
 }
+$id=$_GET['id'];
+$qua = 1;
+    if(isset($_POST['plus']))
+    {   
+        $qua=$_POST['input'];
+        $qua=$qua+1;
+        
+    }
+    if(isset($_POST['minus']))
+    {   
+        $qua=$_POST['input'];
+        $qua=$qua-1;
+        if($qua==0)
+        {
+            $qua=1;
+        }
+    }
 
-include 'backend/database.php';
 
-// taking product id 
-$product_id=$_GET['product_id'];
+
+	
+    
+
+include 'backend/database.php'; 
 $username=$_SESSION['loginname'];
-// retrive the product data using id to store the details in cart
-$pqury="select * from products where product_id='$product_id'";
-$psql=mysqli_query($dbc,$pqury) or die(mysqli_error($dbc));
-$prow=mysqli_fetch_assoc($psql);
-
-$product_name=$prow['product_name'];
-$product_des=$prow['product_description'];
-$product_cat=$prow['product_category'];
-$product_exp=$prow['product_exp_date'];
-$product_stock=$prow['product_stock'];
-$product_img=$prow['product_img'];
-$product_price=$prow['product_price'];
-$total_price=$prow['product_price']*1;
-$quantity=1;
-if($_GET['product_id']==true){
-$checkqry = "select * from customer_cart where  customer_email='$username'";
-  $checksql = mysqli_query($dbc, $checkqry) or die(mysqli_error($dbc));
-  if (mysqli_num_rows($checksql) > 0) {
-    $checkqry1 = "select * from customer_cart where  customer_email='$username' and product_id='$product_id'";
-    $checksql1 = mysqli_query($dbc, $checkqry1) or die(mysqli_error($dbc));
-      if(mysqli_num_rows($checksql1) > 0){
-    echo '<script>';
-    echo 'alert("This item already in cart");';
-   
-    echo 'window.location.href= "shoping-cart.php"; 
-    </script>';
-  } 
- 
   
-  else { 
-
-$insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price')";
-$sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
-
-  }
-}
-else if($product_id == true){ 
-    $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price')";
-$sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
 $qry = "select * from  customer_cart where customer_email='$username'";
-$sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
-$productcount=mysqli_num_rows($sql);
-                            }
-}
-$qry = "select * from  customer_cart where  customer_email='$username'";
 
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 
 $productcount=mysqli_num_rows($sql);
-
+// for calculating cart total items count.
 if($productcount == 0){
     $cart_value=$productcount;
 }else if($productcount >0)
@@ -70,63 +46,18 @@ if($productcount == 0){
 
 // for calculating cart total amount.
 $query = "SELECT * FROM customer_cart where customer_email='$username'";
-        $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
-        
-        while($num=mysqli_fetch_assoc($query_run))
-        {
-            $cart_total +=$num['total_price'];
-        }
+$query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
 
-
-// increasing product price quantity.  
-
-if(isset($_GET['plus']))
-{   
-    $ID=$_GET['idno'];
-    $query = "SELECT * FROM customer_cart where id='$ID'";
-    $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
-    $num=mysqli_fetch_assoc($query_run);
-   
-    $qua=$_GET['input'];
-    
-    $qua=$qua+1;
-    $total= $num['product_price']*$qua;
-    $qr="update `customer_cart` set `quantity`='$qua' , `total_price`='$total' where `customer_cart`.`id`='$ID'";
-    $qr_run=mysqli_query($dbc,$qr);
-    $page = $_SERVER['PHP_SELF'];
-    $sec = "0";
-    header("Refresh: $sec; url=$page");
-    
+$total= 0;
+while ($num = mysqli_fetch_assoc ($query_run)) {
+    $total += $num['total_price'];
 }
-if(isset($_GET['minus']))
-{   
-    $ID=$_GET['idno'];
-    $query = "SELECT * FROM customer_cart where id='$ID'";
-    $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
-    $num=mysqli_fetch_assoc($query_run);
 
-    $qua=$_GET['input'];
-    $qua=$qua-1;
-    $total= $num['product_price']*$qua;
-    $qr="update `customer_cart` set `quantity`='$qua', `total_price`='$total' where `customer_cart`.`id`='$ID'";
-    $qr_run=mysqli_query($dbc,$qr);
-    $page = $_SERVER['PHP_SELF'];
-    $sec = "0";
-    header("Refresh: $sec; url=$page");
-    if($qua==0)
-    {
-        $qua=1;
-        $total= $num['product_price']*$qua;
-        $qr="update `customer_cart` set `quantity`='$qua', `total_price`='$total' where `customer_cart`.`id`='$ID'";
-        $qr_run=mysqli_query($dbc,$qr);
-        $page = $_SERVER['PHP_SELF'];
-        $sec = "0";
-        header("Refresh: $sec; url=$page");
-    }
-}
+    
 
 
 ?> 
+
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -137,7 +68,7 @@ if(isset($_GET['minus']))
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> <?php echo "Ksan Shoping-cart"; ?> </title>
+    <title>Kisan Karshak Mitra</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -151,8 +82,6 @@ if(isset($_GET['minus']))
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="cart_admin/font-awesome-animation-1.1.1/package/css/font-awesome-animation.min.css">
-
 </head>
 
 <body>
@@ -169,31 +98,39 @@ if(isset($_GET['minus']))
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                <li><a href="cart.php"><i class="fa fa-shopping-bag"></i><span>3</span></a></li>
+                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
-            <div class="header__cart__price">item: <span>₹150.00</span></div>
+            <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
         <div class="humberger__menu__widget">
-            
+            <div class="header__top__right__language">
+                <img src="img/language.png" alt="">
+                <div>English</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="#">Spanis</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
             <div class="header__top__right__auth">
-                <a href="backend/logout.php"><i class="fa fa-user"></i> Logout</a>
+                <a href="#"><i class="fa fa-user"></i> Login</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active"><a href="./index.php">Home</a></li>
                 <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a class="">Pages</a>
+                <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.php">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
+                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                        <li><a href="./checkout.php">Check Out</a></li>
                         <li><a href="./blog-details.html">Blog Details</a></li>
                     </ul>
                 </li>
                 <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./k_contact.html">Contact</a></li>
+                <li><a href="./contact.html">Contact</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -233,9 +170,17 @@ if(isset($_GET['minus']))
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
-                           
+                            <div class="header__top__right__language">
+                                <img src="img/language.png" alt="">
+                                <div>English</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="#">Spanis</a></li>
+                                    <li><a href="#">English</a></li>
+                                </ul>
+                            </div>
                             <div class="header__top__right__auth">
-                                <a href="backend/logout.php"><i class="fa fa-user"></i> Logout</a>
+                                <a href="#"><i class="fa fa-user"></i> Logout</a>
                             </div>
                         </div>
                     </div>
@@ -258,20 +203,20 @@ if(isset($_GET['minus']))
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
                                     <li><a href="./shoping-cart.php">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./checkout.php">Check Out</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
                             <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="../k_contact.html">Contact</a></li>
+                            <li><a href="./contact.html">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart animated faa-horizontal" ></i> <span></span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag animated faa-horizontal"></i> <span><?php echo $cart_value; ?></span></a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i> <!--<span><?php //echo ₹cart_value; ?></span>--></a></li>
+                            <li><a href="shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span><?php echo $cart_value; ?></span></a></li>
                         </ul>
                         <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
                     </div>
@@ -343,10 +288,10 @@ if(isset($_GET['minus']))
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Shopping Cart</h2>
+                        <h2>Checkout</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.php">Home</a>
-                            <span>Shopping Cart</span>
+                            <span>Checkout</span>
                         </div>
                     </div>
                 </div>
@@ -355,126 +300,151 @@ if(isset($_GET['minus']))
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- Shoping Cart Section Begin -->
-    <section class="shoping-cart spad">
+    <!-- Checkout Section Begin -->
+    <section class="checkout spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="shoping__cart__table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="shoping__product">Products</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th> Remove</th>
-                                </tr>
-                            </thead>
-                            <?php if ($productcount > 0) { ?>
-                            <?php while ($row = mysqli_fetch_assoc($sql)) { ?>
-                            <tbody>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                    <?php echo "<img src='cart_admin/backend/images//".$row['product_img']."'>"; ?>
-                                        <h5> <?php echo $row['product_name'] ?></h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                    <?php echo "₹".$row['product_price'] ?>
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                        <form method=" GET" action="">
-						                    <input type="submit" class="minus" name="minus" id="minus" value="<?php echo '-'; ?>">				
-						                    <input type="text" size="4" title="Qty" class="input" value="<?php   echo $row['quantity'];  ?>" name="input" id="input" max="29" min="0" step="1" style="text-align: center;">
-                                            <input type='hidden' class='idno' name='idno' id='idno' value='<?php echo $row['id']; ?>'   > 
-                                             <input type='submit' class='plus' name='plus' id='plus' value='+'  > 
-                                        </form>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                    <?php echo "₹".$row['total_price'] ?>
-                                    </td>
-                                    
-                                    <?php echo '<td class="shoping__cart__item__close"><a href="cart_admin/remove/remove_from_cart.php?id='.$row['id'].'" ><span class="fa icon_close animated faa-bounce" onClick=\'javascript: return confirm("Please confirm deletion");\'></span></a></td>';?>
-                                        
-                                    
-                                </tr>
-                                <?php } ?>
-                  <?php } else { ?>
-                    <p align=center style="color:#4a4a4a;">
-                  <strong  > 
-                    <i class="fa fa-database animated faa-horizontal"></i> <br>
-                    Your cart is empty continue shopping to add items!!!</strong></p> <br>
-            <?php } ?>   
-                                <style>
-                                    img {
-                                             border: 1px solid #ddd;
-                                             border-radius: 4px;
-                                             padding: 5px;
-                                             width: 150px;
-                                            }
-                                        strong{
-                                            align-content: center;
-                                        }
-                                        .plus{
-                                            border: transparent;
-                                            border: 0%;
-                                            
-                                        }
-                                        .plus:hover{
-                                            background-color: transparent;
-                                        }
-
-                                        .minus{
-                                            border:transparent;
-                                        }
-                                        .minus:hover{
-                                            background:transparent;
-                                        }
-                                        .input{
-                                            border: transparent;
-                                        }
-                                </style>
-                              
-                            </tbody>
-                        </table>
-                    </div>
+                    <!-- <h6><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click here</a> to enter your code -->
+                    </h6>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="shoping__cart__btns">
-                        <a href="index.php" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                            Upadate Cart</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="shoping__continue">
-                        <div class="shoping__discount">
-                            <h5>Discount Codes</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Enter your coupon code">
-                                <button type="submit" class="site-btn">APPLY COUPON</button>
-                            </form>
+            <div class="checkout__form">
+                <h4>Billing Details</h4>
+                <form action="#">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Fist Name<span>*</span></p>
+                                        <input type="text">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Last Name<span>*</span></p>
+                                        <input type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Country<span>*</span></p>
+                                <input type="text">
+                            </div>
+                            <div class="checkout__input">
+                                <p>Address<span>*</span></p>
+                                <input type="text" placeholder="Street Address" class="checkout__input__add">
+                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
+                            </div>
+                            <div class="checkout__input">
+                                <p>Town/City<span>*</span></p>
+                                <input type="text">
+                            </div>
+                            <div class="checkout__input">
+                                <p>Country/State<span>*</span></p>
+                                <input type="text">
+                            </div>
+                            <div class="checkout__input">
+                                <p>Postcode / ZIP<span>*</span></p>
+                                <input type="text">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Phone<span>*</span></p>
+                                        <input type="text">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Email<span>*</span></p>
+                                        <input type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout__input__checkbox">
+                                <label for="acc">
+                                    Create an account?
+                                    <input type="checkbox" id="acc">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <p>Create an account by entering the information below. If you are a returning customer
+                                please login at the top of the page</p>
+                            <div class="checkout__input">
+                                <p>Account Password<span>*</span></p>
+                                <input type="text">
+                            </div>
+                            <div class="checkout__input__checkbox">
+                                <label for="diff-acc">
+                                    Ship to a different address?
+                                    <input type="checkbox" id="diff-acc">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Order notes<span>*</span></p>
+                                <input type="text"
+                                    placeholder="Notes about your order, e.g. special notes for delivery.">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="checkout__order">
+                                <h4>Your Order</h4>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Products &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+                                            <th>Total  </th>
+                                        </tr>
+                                    </thead>
+                                    <?php if($productcount > 0){ ?>
+                                        <?php while ($row=mysqli_fetch_assoc($sql)){ ?>
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $row['product_name'] ?></td>
+                                            <td><?php echo $row['total_price']  ?></td>
+                                        </tr>
+                                    </tbody>
+                                    <?php } } ?>
+                                </table>
+                                
+                                <?php
+                                echo "<div class='checkout__order__subtotal'>Subtotal <span>₹".$total."</span></div>
+                                <div class='checkout__order__total'>Total <span>₹".$total."</span></div>"; ?>
+                                <div class="checkout__input__checkbox">
+                                    <label for="acc-or">
+                                        Create an account?
+                                        <input type="checkbox" id="acc-or">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <!-- <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt -->
+                                    <!-- ut labore et dolore magna aliqua.</p> -->
+                                <div class="checkout__input__checkbox">
+                                    <label for="payment">
+                                        Check Payment
+                                        <input type="checkbox" id="payment">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="paypal">
+                                        Paypal
+                                        <input type="checkbox" id="paypal">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="shoping__checkout">
-                        <h5>Cart Total</h5>
-                        <ul>
-                            <li>Subtotal <span><?php echo "₹".$cart_total.".00"; ?></span></li>
-                            <li>Total <span><?php echo "₹".$cart_total.".00"; ?></span></li>
-                        </ul>
-                        <a href="checkout.php" class="primary-btn">PROCEED TO CHECKOUT</a>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>
-    <!-- Shoping Cart Section End -->
+    <!-- Checkout Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
@@ -483,7 +453,7 @@ if(isset($_GET['minus']))
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.php"><img src="img/logo.png" alt=""></a>
+                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -547,6 +517,7 @@ if(isset($_GET['minus']))
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 
+ 
 
 </body>
 

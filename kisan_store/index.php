@@ -173,7 +173,7 @@ $productcount=mysqli_num_rows($sql1);
                                 <ul>
                                 
                                     <li><a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i> <!--<span>0</span>--></a></li>
-                                    <li><a href="cart.php"><i class="fa fa-shopping-bag animated faa-horizontal" style="color: green;"></i> 
+                                    <li><a href="shoping-cart.php"><i class="fa fa-shopping-bag animated faa-horizontal" style="color: green;"></i> 
                                     <?php if($productcount ==0){?>
                                     <!-- <span> <?php  //echo $cart_value; ?> </span> -->
                                     <?php } else if($productcount > 0) { ?>
