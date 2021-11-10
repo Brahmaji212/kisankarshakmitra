@@ -19,7 +19,14 @@ if (isset($_POST['minus'])) {
     }
 }
 
+$startdate=strtotime("10-11-2021");
+$enddate=strtotime("+6 days", $startdate);
 
+while ($startdate < $enddate) {
+  
+  $startdate = strtotime("+1 day", $startdate);
+}
+// echo date("d-m-Y", $startdate) . "<br>";
 
 
 
@@ -77,6 +84,64 @@ while ($num = mysqli_fetch_assoc($query_run)) {
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+<style>
+    .checkout__order{
+        padding-bottom: 50px;
+        align-items: center;
+    }
+    .booking
+    {
+        color: black;
+        font-family: 'Times New Roman', Times, serif;
+        font: bold;
+        font-size: 20px;
+        text-shadow: black;
+        
+    }
+    .book_date
+    {
+        color:black;
+        text-align: right;
+        background: transparent;
+        border:transparent;
+        padding-left: 0px;
+        font: bold;
+        font-variant: header;
+    }
+    .delivery
+    {
+        color: black;
+        font-family: 'Times New Roman', Times, serif;
+        font: bold;
+        font-size: 20px;
+    }
+    .del_date
+    { 
+        color:black;
+        text-align: right;
+        background: transparent;
+        border:transparent;
+        padding-left: 0px;
+        font: bold;
+        font-variant: header;
+
+    }
+    .payment {
+        padding-left: 120px;
+    }
+    .pay{
+        align-content: center;
+        color: darkgoldenrod;
+        font:bold;
+        background: whitesmoke;
+        
+    }
+</style>
+
+
+
+
 </head>
 
 <body>
@@ -412,7 +477,8 @@ while ($num = mysqli_fetch_assoc($query_run)) {
                                 </table>
 
                                 <?php
-                                echo "<div class='checkout__order__subtotal'>Subtotal <span>₹" . $total . "</span></div>
+                                echo "<div class='checkout__order__subtotal'>Booking date <span>" . date("d-m-Y") . "</span></div>
+                                <div class='checkout__order__total'>Subtotal <span>₹" . $total . "</span></div>
                                 <div class='checkout__order__total'>Total <span>₹" . $total . "</span></div>"; ?>
                                 <!-- <div class="checkout__input__checkbox">
                                     <label for="acc-or">
@@ -430,14 +496,28 @@ while ($num = mysqli_fetch_assoc($query_run)) {
                                         <span class="checkmark"></span>
                                     </label>
                                 </div> -->
-                                <div class="">
+                                <div class="row-cols-1 row-cols-lg-1" >
+                                    <?php
+                                        // $startdate=strtotime("10-11-2021");
+                                        // $enddate=strtotime("+6 days", $startdate);
+                                        // while ($startdate < $enddate) {
+                                        // $startdate = strtotime("+1 day", $startdate);
+                                        // } 
+                                    ?>
+                                    <label class="booking">Booking date</label><input type="text" name="booking_date" class="book_date" value="<?php echo date("d-m-Y"); ?>">
+                                    <label class="delivery">Delivery-date</label><input type="text" name="delivery_date" class="del_date" value="<?php echo date("d-m-Y", $startdate); ?> ">
+                                   
 
-                                    <select for="" ">
+                                </div>
+                                <div class="payment">
+
+                                    <select class="pay" name="payment">
                                         
-                                        <option selected>Cash on Delivery only</option>
-                                        <option >Debit card</option>
+                                        <option value="COD"  >Cash on Delivery</option>
+                                        <option selected>Payment Method</option>
                                     </select>
                                 </div>
+                                
                                 <!-- <div class=" checkout__input__checkbox">
                                         <label for="paypal">
                                             Paypal
