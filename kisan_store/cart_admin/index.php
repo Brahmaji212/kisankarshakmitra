@@ -335,7 +335,12 @@ $count=mysqli_num_rows($sql2);
                                 <?php } ?>
                             </tbody>
                         </table>
-                        <?php } ?>
+                        <?php } else{ ?>
+                            <p align=center style="color:rgb(188 189 155);">
+                  <strong  > 
+                    <i class="fas fa-database faa-horizontal animated " ></i> <br>
+                    Orders Not Yet Booked!</strong></p> <br>
+            <?php } ?>
                     </div>
                 </div>
             </div>
