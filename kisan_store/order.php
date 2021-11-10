@@ -8,9 +8,9 @@ if (!isset($_SESSION['login_status'])) {
 
 if($_GET['id'])
 {
-    echo  '<p style="text-align:center; padding-top:100px; background-color:biscuit; color:green;" >
+    echo  '<p style="text-align:center; padding-top:100px; background-color:biscuit; color:slategrey;" >
              
-            <h5 style="text-align:center; color:green;"> Your Order Is Confirmed. <a href="index.php" style="color:blue;">click here</a> to Continue Shopping </h5>
+            <h5 style="text-align:center; color:biscuit;"> Your Order Is Confirmed. <a href="index.php"  class="click">click here</a> to Continue Shopping </h5>
             </p>';
 }
 
@@ -109,6 +109,14 @@ while($row=mysqli_fetch_assoc($sql)){
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="cart_admin/font-awesome-animation-1.1.1/package/css/font-awesome-animation.min.css">
 
+<style>
+    
+   .click:hover{
+       
+       color: red;
+       background:none;
+   }
+</style>
 </head>
 
 <body>
