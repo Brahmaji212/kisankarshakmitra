@@ -264,14 +264,14 @@ $productcount=mysqli_num_rows($sql1);
                 </div>
 
                 
-                <div class="col-lg-6">
-                    <!-- <form action="#">
+                <!-- <div class="col-lg-6">
+                    <form action="#">
                        
                         <input type="text" placeholder="What do yo u need?">
                         <button type="submit" class="site-btn">SEARCH</button>
-                    </form> -->
-                </div>
-                <!-- <div class="col-lg-3">
+                    </form>
+                </div> -->
+                <!-- <div class="col-lg-2" >
                     <div class="header__cart">
                         <ul>
                             <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
