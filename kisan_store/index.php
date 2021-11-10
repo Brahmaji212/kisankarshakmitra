@@ -211,6 +211,42 @@ $productcount=mysqli_num_rows($sql1);
                     
                
                             
+                    
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="header_main_1">
+                        <a href="index.php"><img src="img/kkm-logo.png" style="height:100px;">KISAN KARSHAK
+                            MITRA</a>
+                    </div>
+
+                </div>
+                <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                         <!--    <div class="header__top__right__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            </div> -->
+                           <!-- <div class="header__top__right__language">
+                                <img src="img/language.png" alt="">
+                                <div>English</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li  style="margin-left: 13%;"><a href="#">Spanis</a></li>
+                                    <li  style="margin-left: 13%;"><a href="#">English</a></li>
+                                </ul>
+                            </div>-->
+                            
+                    
+               
+                            
                             <div class="header__top__right__auth">
                             <div class="header__cart">
                                 <ul>
@@ -251,17 +287,6 @@ $productcount=mysqli_num_rows($sql1);
                             </div>
                         </div>
                     </div> 
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="header_main_1">
-                        <a href="index.php"><img src="img/kkm-logo.png" style="height:100px;">KISAN KARSHAK
-                            MITRA</a>
-                    </div>
-                </div>
 
                 
                 <!-- <div class="col-lg-6">
