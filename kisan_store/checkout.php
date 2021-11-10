@@ -5,58 +5,53 @@ session_start();
 if (!isset($_SESSION['login_status'])) {
     header('location: backend/login.php');
 }
-$id=$_GET['id'];
+$id = $_GET['id'];
 $qua = 1;
-    if(isset($_POST['plus']))
-    {   
-        $qua=$_POST['input'];
-        $qua=$qua+1;
-        
+if (isset($_POST['plus'])) {
+    $qua = $_POST['input'];
+    $qua = $qua + 1;
+}
+if (isset($_POST['minus'])) {
+    $qua = $_POST['input'];
+    $qua = $qua - 1;
+    if ($qua == 0) {
+        $qua = 1;
     }
-    if(isset($_POST['minus']))
-    {   
-        $qua=$_POST['input'];
-        $qua=$qua-1;
-        if($qua==0)
-        {
-            $qua=1;
-        }
-    }
+}
 
 
 
-	
-    
 
-include 'backend/database.php'; 
-$username=$_SESSION['loginname'];
-  
+
+
+include 'backend/database.php';
+$username = $_SESSION['loginname'];
+
 $qry = "select * from  customer_cart where customer_email='$username'";
 
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 
-$productcount=mysqli_num_rows($sql);
+$productcount = mysqli_num_rows($sql);
 // for calculating cart total items count.
-if($productcount == 0){
-    $cart_value=$productcount;
-}else if($productcount >0)
-{
-    $cart_value=$productcount;
+if ($productcount == 0) {
+    $cart_value = $productcount;
+} else if ($productcount > 0) {
+    $cart_value = $productcount;
 }
 
 // for calculating cart total amount.
 $query = "SELECT * FROM customer_cart where customer_email='$username'";
-$query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
+$query_run = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
 
-$total= 0;
-while ($num = mysqli_fetch_assoc ($query_run)) {
+$total = 0;
+while ($num = mysqli_fetch_assoc($query_run)) {
     $total += $num['total_price'];
 }
 
-    
 
 
-?> 
+
+?>
 
 
 <!DOCTYPE html>
@@ -215,7 +210,10 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <!--<span><?php //echo ₹cart_value; ?></span>--></a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i>
+                                    <!--<span><?php //echo ₹cart_value; 
+                                                ?></span>-->
+                                </a></li>
                             <li><a href="shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span><?php echo $cart_value; ?></span></a></li>
                         </ul>
                         <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
@@ -353,7 +351,7 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Phone<span>*</span></p>
-                                        <input type="text" name="phone"  id="phone" maxlength="10" required>
+                                        <input type="text" name="phone" id="phone" maxlength="10" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -385,8 +383,7 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                             </div>
                             <div class="checkout__input">
                                 <p>Order notes<span>*</span></p>
-                                <input type="text" name="note" id="note"
-                                    placeholder="Notes about your order, e.g. special notes for delivery.">
+                                <input type="text" name="note" id="note" placeholder="Notes about your order, e.g. special notes for delivery.">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
@@ -397,24 +394,26 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                         <tr align="center">
                                             <th>&emsp;Products &emsp;&emsp;</th>
                                             <th>&emsp;Quantity &emsp;&nbsp;&nbsp; </th>
-                                            <th>Total  </th>
+                                            <th>Total </th>
                                         </tr>
                                     </thead>
-                                    <?php if($productcount > 0){ ?>
-                                        <?php while ($row=mysqli_fetch_assoc($sql)){ $_SESSION['product_id']=$row['product_id']; ?>
-                                    <tbody>
-                                        <tr align="center" style="color: black;">
-                                            <td><?php echo $row['product_name'] ?></td>
-                                            <td><?php echo $row['quantity']  ?></td>
-                                            <td><?php echo $row['total_price']  ?></td>
-                                        </tr>
-                                    </tbody>
-                                    <?php } } ?>
+                                    <?php if ($productcount > 0) { ?>
+                                        <?php while ($row = mysqli_fetch_assoc($sql)) {
+                                            $_SESSION['product_id'] = $row['product_id']; ?>
+                                            <tbody>
+                                                <tr align="center" style="color: black;">
+                                                    <td><?php echo $row['product_name'] ?></td>
+                                                    <td><?php echo $row['quantity']  ?></td>
+                                                    <td><?php echo $row['total_price']  ?></td>
+                                                </tr>
+                                            </tbody>
+                                    <?php }
+                                    } ?>
                                 </table>
-                                
+
                                 <?php
-                                echo "<div class='checkout__order__subtotal'>Subtotal <span>₹".$total."</span></div>
-                                <div class='checkout__order__total'>Total <span>₹".$total."</span></div>"; ?>
+                                echo "<div class='checkout__order__subtotal'>Subtotal <span>₹" . $total . "</span></div>
+                                <div class='checkout__order__total'>Total <span>₹" . $total . "</span></div>"; ?>
                                 <!-- <div class="checkout__input__checkbox">
                                     <label for="acc-or">
                                         Create an account?
@@ -423,7 +422,7 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                     </label>
                                 </div> -->
                                 <!-- <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt -->
-                                    <!-- ut labore et dolore magna aliqua.</p> -->
+                                <!-- ut labore et dolore magna aliqua.</p> -->
                                 <!-- <div class="checkout__input__checkbox">
                                     <label for="payment">
                                         Payment Method
@@ -432,19 +431,19 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                     </label>
                                 </div> -->
                                 <div class="">
-                               
+
                                     <select for="" ">
                                         
                                         <option selected>Cash on Delivery only</option>
                                         <option >Debit card</option>
                                     </select>
                                 </div>
-                                <!-- <div class="checkout__input__checkbox">
-                                    <label for="paypal">
-                                        Paypal
-                                        <input type="checkbox" id="paypal">
-                                        <span class="checkmark"></span>
-                                    </label>
+                                <!-- <div class=" checkout__input__checkbox">
+                                        <label for="paypal">
+                                            Paypal
+                                            <input type="checkbox" id="paypal">
+                                            <span class="checkmark"></span>
+                                        </label>
                                 </div> -->
                                 <button type="submit" name="submit" class="site-btn" title="book your order">PLACE ORDER</button>
                             </div>
@@ -483,7 +482,7 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                             <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Our Sitemap</a></li>
                         </ul>
-                       
+
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
@@ -506,9 +505,15 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved  Designed by Aarush Technologies
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                        <div class="footer__copyright__text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script>
+                                    document.write(new Date().getFullYear());
+                                </script> All rights reserved Designed by Aarush Technologies
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
                         <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
                     </div>
                 </div>
@@ -527,7 +532,7 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 
- 
+
 
 </body>
 
