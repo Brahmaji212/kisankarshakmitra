@@ -10,6 +10,7 @@ include 'backend/database.php';
 
 // taking product id 
 $product_id=$_GET['product_id'];
+
 $username=$_SESSION['loginname'];
 // retrive the product data using id to store the details in cart
 $pqury="select * from products where product_id='$product_id'";
@@ -29,6 +30,7 @@ if($_GET['product_id']==true){
 $checkqry = "select * from customer_cart where  customer_email='$username'";
   $checksql = mysqli_query($dbc, $checkqry) or die(mysqli_error($dbc));
   if (mysqli_num_rows($checksql) > 0) {
+      
     $checkqry1 = "select * from customer_cart where  customer_email='$username' and product_id='$product_id'";
     $checksql1 = mysqli_query($dbc, $checkqry1) or die(mysqli_error($dbc));
       if(mysqli_num_rows($checksql1) > 0){
@@ -48,11 +50,13 @@ $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
   }
 }
 else if($product_id == true){ 
-    $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price')";
-$sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
-$qry = "select * from  customer_cart where customer_email='$username'";
-$sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
-$productcount=mysqli_num_rows($sql);
+  
+   
+        $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price')";
+        $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
+        $qry = "select * from  customer_cart where customer_email='$username'";
+        $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
+        $productcount=mysqli_num_rows($sql);
                             }
 }
 $qry = "select * from  customer_cart where  customer_email='$username'";
@@ -75,6 +79,9 @@ $query = "SELECT * FROM customer_cart where customer_email='$username'";
         while($num=mysqli_fetch_assoc($query_run))
         {
             $cart_total +=$num['total_price'];
+            $qr="update customer_cart set `cart_total`='$cart_total' where customer_email='$username'";
+            $qr_run = mysqli_query($dbc,$qr) or die(mysqli_error($dbc));
+
         }
 
 
@@ -172,7 +179,9 @@ if(isset($_GET['minus']))
 												.dropdown-content {
 													display: none;
 													position: absolute;
-													background-color: #f9f9f9;
+                                                    background-color: whitesmoke;
+                                                    
+                                                    
 													min-width: 160px;
 													box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 													z-index: 1;
@@ -216,7 +225,7 @@ if(isset($_GET['minus']))
         <div class="humberger__menu__cart">
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                <li><a href="cart.php"><i class="fa fa-shopping-bag"></i><span>3</span></a></li>
+                <li><a href="shoping-cart.php"><i class="fa fa-shopping-bag"></i><span>3</span></a></li>
             </ul>
             <div class="header__cart__price">item: <span>₹150.00</span></div>
         </div>
@@ -331,6 +340,7 @@ if(isset($_GET['minus']))
                                                      </a>
                                                     </a> 
                                                     <a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
+                                                    <a href="#"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
 													<a href="#"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
 													<a href="backend/logout.php"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>
 												</div>
@@ -428,6 +438,8 @@ if(isset($_GET['minus']))
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
                         <table>
+                        <?php if ($productcount > 0) { ?>
+                            <?php while ($row = mysqli_fetch_assoc($sql)) { ?>
                             <thead >
                                 <tr>
                                     <th class="">Products</th>
@@ -437,8 +449,7 @@ if(isset($_GET['minus']))
                                     <th> Remove</th>
                                 </tr>
                             </thead>
-                            <?php if ($productcount > 0) { ?>
-                            <?php while ($row = mysqli_fetch_assoc($sql)) { ?>
+                            
                             <tbody>
                                 <tr>
                                     <td class="shoping__cart__item">
@@ -508,13 +519,15 @@ if(isset($_GET['minus']))
                     </div>
                 </div>
             </div>
+           
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="index.php" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                        <a href="index.php" class="primary-btn cart-btn" style="color:#f1f1f1;background-color:gray;">CONTINUE SHOPPING</a>
+                        <a href="#" class="primary-btn cart-btn cart-btn-right" style="color:#f1f1f1;background-color:gray;">
                             Upadate Cart</a>
                     </div>
+                    <?php if($productcount>0) { ?>
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__continue">
@@ -538,6 +551,7 @@ if(isset($_GET['minus']))
                     </div>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </section>
     <!-- Shoping Cart Section End -->
