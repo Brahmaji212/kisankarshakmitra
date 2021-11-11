@@ -311,59 +311,59 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
             </div>
             <div class="checkout__form">
                 <h4>Billing Details</h4>
-                <form action="#">
+                <form action="order.php" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Fist Name<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" name="fname" id="fname" title="your first name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Last Name<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" name="lname" id="lname" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Country<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="country" id="country" required>
                             </div>
                             <div class="checkout__input">
                                 <p>Address<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
+                                <input type="text" placeholder="Street Address" class="checkout__input__add" name="addr" id="addr" required>
+                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)" name="addr1" id="addr1">
                             </div>
                             <div class="checkout__input">
                                 <p>Town/City<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="town" id="town" required>
                             </div>
                             <div class="checkout__input">
                                 <p>Country/State<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="state" id="state" required>
                             </div>
                             <div class="checkout__input">
                                 <p>Postcode / ZIP<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="pin" id="pin" required>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Phone<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" name="phone"  id="phone" maxlength="10" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" name="email" id="email" required>
                                     </div>
                                 </div>
                             </div>
-                            <div class="checkout__input__checkbox">
+                            <!-- <div class="checkout__input__checkbox">
                                 <label for="acc">
                                     Create an account?
                                     <input type="checkbox" id="acc">
@@ -374,8 +374,8 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                 please login at the top of the page</p>
                             <div class="checkout__input">
                                 <p>Account Password<span>*</span></p>
-                                <input type="text">
-                            </div>
+                                <input type="text" name="pass" id="pass">
+                            </div> -->
                             <div class="checkout__input__checkbox">
                                 <label for="diff-acc">
                                     Ship to a different address?
@@ -385,7 +385,7 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                             </div>
                             <div class="checkout__input">
                                 <p>Order notes<span>*</span></p>
-                                <input type="text"
+                                <input type="text" name="note" id="note"
                                     placeholder="Notes about your order, e.g. special notes for delivery.">
                             </div>
                         </div>
@@ -394,16 +394,18 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                 <h4>Your Order</h4>
                                 <table>
                                     <thead>
-                                        <tr>
-                                            <th>Products &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+                                        <tr align="center">
+                                            <th>&emsp;Products &emsp;&emsp;</th>
+                                            <th>&emsp;Quantity &emsp;&nbsp;&nbsp; </th>
                                             <th>Total  </th>
                                         </tr>
                                     </thead>
                                     <?php if($productcount > 0){ ?>
-                                        <?php while ($row=mysqli_fetch_assoc($sql)){ ?>
+                                        <?php while ($row=mysqli_fetch_assoc($sql)){ $_SESSION['product_id']=$row['product_id']; ?>
                                     <tbody>
-                                        <tr>
+                                        <tr align="center" style="color: black;">
                                             <td><?php echo $row['product_name'] ?></td>
+                                            <td><?php echo $row['quantity']  ?></td>
                                             <td><?php echo $row['total_price']  ?></td>
                                         </tr>
                                     </tbody>
@@ -413,30 +415,38 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                 <?php
                                 echo "<div class='checkout__order__subtotal'>Subtotal <span>₹".$total."</span></div>
                                 <div class='checkout__order__total'>Total <span>₹".$total."</span></div>"; ?>
-                                <div class="checkout__input__checkbox">
+                                <!-- <div class="checkout__input__checkbox">
                                     <label for="acc-or">
                                         Create an account?
                                         <input type="checkbox" id="acc-or">
                                         <span class="checkmark"></span>
                                     </label>
-                                </div>
+                                </div> -->
                                 <!-- <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt -->
                                     <!-- ut labore et dolore magna aliqua.</p> -->
-                                <div class="checkout__input__checkbox">
+                                <!-- <div class="checkout__input__checkbox">
                                     <label for="payment">
-                                        Check Payment
+                                        Payment Method
                                         <input type="checkbox" id="payment">
                                         <span class="checkmark"></span>
                                     </label>
+                                </div> -->
+                                <div class="">
+                               
+                                    <select for="" ">
+                                        
+                                        <option selected>Cash on Delivery only</option>
+                                        <option >Debit card</option>
+                                    </select>
                                 </div>
-                                <div class="checkout__input__checkbox">
+                                <!-- <div class="checkout__input__checkbox">
                                     <label for="paypal">
                                         Paypal
                                         <input type="checkbox" id="paypal">
                                         <span class="checkmark"></span>
                                     </label>
-                                </div>
-                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                                </div> -->
+                                <button type="submit" name="submit" class="site-btn" title="book your order">PLACE ORDER</button>
                             </div>
                         </div>
                     </div>

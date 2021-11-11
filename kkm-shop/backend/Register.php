@@ -2,7 +2,9 @@
 include 'database.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
-  $regname = $_POST['name'];
+  $first_name = $_POST['fname'];
+  $middle_name = $_POST['mname'];
+  $last_name = $_POST['lname'];
   $regemail = $_POST['email'];
   $regpass = $_POST['pass'];
   $regcnfpass = $_POST['conpsw'];
@@ -18,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     if ($regpass == $regcnfpass) {
       
-      $query = "INSERT INTO  `store_customer_registration`(`name`, `email`, `password`, `conf_password`, `phone` ) VALUES ('$regname','$regemail', '$regpass', '$regcnfpass', '$regphone')";
+      $query = "INSERT INTO  `store_customer_registration`(`first_name`,`middle_name`,`last_name`, `email`, `password`, `conf_password`, `phone` ) VALUES ('$first_name','$middle_name','$last_name','$regemail', '$regpass', '$regcnfpass', '$regphone')";
       $sql = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
       if ($sql) {
         session_start();
