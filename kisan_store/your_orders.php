@@ -13,7 +13,7 @@ $row2=mysqli_fetch_assoc($sql2);
 $order_id=$row2['order_id'];
 $username=$_SESSION['loginname'];
 
-$qry= "SELECT * FROM Order_details INNER JOIN customer_cart ON order_details.user_id='$username' where Order_details.product_id=customer_cart.product_id     ";
+$qry= "SELECT * FROM Order_details INNER JOIN customer_cart ON order_details.user_id=customer_cart.customer_email and Order_details.product_id=customer_cart.product_id where order_details.user_id='$username'    ";
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 $productcount=mysqli_num_rows($sql);
 
@@ -218,7 +218,7 @@ $productcount=mysqli_num_rows($sql);
                                     <td class="shoping__cart__item">
                                     <?php echo "<img src='cart_admin/backend/images//".$row['product_img']."'>"; ?>
                                         <h5> <?php echo $row['product_name'] ?></h5>
-                                        <h6><?php echo $row['order_id'] ?> </h6>
+                                        
                                     </td>
                                     <td class="shoping__cart__price">
                                     <?php echo "₹".$row['total_price'] ?>
