@@ -171,6 +171,7 @@ while ($num = mysqli_fetch_assoc($query_run)) {
         padding-left: 11px;
         padding-bottom: 15px;
         padding-top: 0px;
+        font-size: 18px;
     }
     .tbody td{
         padding-right:6px;
