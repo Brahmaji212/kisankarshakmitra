@@ -42,6 +42,7 @@ $count=mysqli_num_rows($sql2);
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="font-awesome-animation-1.1.1/package/css/font-awesome-animation.min.css">
     <!--
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
