@@ -439,7 +439,7 @@ if(isset($_GET['minus']))
                     <div class="shoping__cart__table">
                         <table>
                         <?php if ($productcount > 0) { ?>
-                            <?php while ($row = mysqli_fetch_assoc($sql)) { ?>
+
                             <thead >
                                 <tr>
                                     <th class="">Products</th>
@@ -449,7 +449,7 @@ if(isset($_GET['minus']))
                                     <th> Remove</th>
                                 </tr>
                             </thead>
-                            
+                            <?php while ($row = mysqli_fetch_assoc($sql)) { ?>
                             <tbody>
                                 <tr>
                                     <td class="shoping__cart__item">

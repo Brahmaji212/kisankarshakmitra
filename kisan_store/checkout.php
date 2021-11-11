@@ -93,10 +93,10 @@ while ($num = mysqli_fetch_assoc($query_run)) {
     .booking
     {
         color: black;
-        font-family: 'Times New Roman', Times, serif;
+        
         font: bold;
-        font-size: 20px;
-        text-shadow: black;
+        font-size: 18px;
+        font-weight: 700;
         
     }
     .book_date
@@ -107,14 +107,16 @@ while ($num = mysqli_fetch_assoc($query_run)) {
         border:transparent;
         padding-left: 0px;
         font: bold;
-        font-variant: header;
+        font-weight: 600;
+
     }
     .delivery
     {
         color: black;
-        font-family: 'Times New Roman', Times, serif;
+        
         font: bold;
-        font-size: 20px;
+        font-weight: 700;
+        font-size: 18px;
     }
     .del_date
     { 
@@ -124,18 +126,58 @@ while ($num = mysqli_fetch_assoc($query_run)) {
         border:transparent;
         padding-left: 0px;
         font: bold;
-        font-variant: header;
+        font-weight: 600;
 
     }
-    .payment {
-        padding-left: 120px;
+    #payment {
+        padding-left: 15px;
     }
     .pay{
         align-content: center;
-        color: darkgoldenrod;
-        font:bold;
-        background: whitesmoke;
+        color: white;
+        font:bolder;
+        background: skyblue;
+        padding-left: 47px;
+        padding-right: 47px;
+        letter-spacing: 4px;
+        font-weight: 800;
+    text-transform: uppercase;
+    
+    
+    background: #7fad39;
+    }
+    #payment option{
+        color: red;
+    }
+    .thead{
+        border-bottom:solid 1px; 
+        border-color:#e1e1e1; 
+        padding-top:0px; 
+        color:green;
+        border-bottom-width: 100%;
+        padding-bottom: 40px;
         
+        
+    }
+    .tbody
+    {
+        color: black; 
+        font-weight:800;
+         
+
+    }
+    .thead th{
+        padding-right:11px;
+        padding-left: 11px;
+        padding-bottom: 15px;
+        padding-top: 0px;
+    }
+    .tbody td{
+        padding-right:6px;
+        padding-left: 6px;
+        align-content: center;
+        padding-top: 3px;
+        padding-bottom: 3px;
     }
 </style>
 
@@ -456,9 +498,9 @@ while ($num = mysqli_fetch_assoc($query_run)) {
                                 <h4>Your Order</h4>
                                 <table>
                                     <thead>
-                                        <tr align="center">
-                                            <th>&emsp;Products &emsp;&emsp;</th>
-                                            <th>&emsp;Quantity &emsp;&nbsp;&nbsp; </th>
+                                        <tr align="" class="thead" >
+                                            <th>Products </th>
+                                            <th>Quantity  </th>
                                             <th>Total </th>
                                         </tr>
                                     </thead>
@@ -466,9 +508,9 @@ while ($num = mysqli_fetch_assoc($query_run)) {
                                         <?php while ($row = mysqli_fetch_assoc($sql)) {
                                             $_SESSION['product_id'] = $row['product_id']; ?>
                                             <tbody>
-                                                <tr align="center" style="color: black;">
+                                                <tr align="" class="tbody" >
                                                     <td><?php echo $row['product_name'] ?></td>
-                                                    <td><?php echo $row['quantity']  ?></td>
+                                                    <td align="center"><?php echo $row['quantity']  ?></td>
                                                     <td><?php echo $row['total_price']  ?></td>
                                                 </tr>
                                             </tbody>
@@ -477,8 +519,8 @@ while ($num = mysqli_fetch_assoc($query_run)) {
                                 </table>
 
                                 <?php
-                                echo "<div class='checkout__order__subtotal'>Booking date <span>" . date("d-m-Y") . "</span></div>
-                                <div class='checkout__order__total'>Subtotal <span>₹" . $total . "</span></div>
+                                echo "
+                                <div class='checkout__order__subtotal'>Subtotal <span>₹" . $total . "</span></div>
                                 <div class='checkout__order__total'>Total <span>₹" . $total . "</span></div>"; ?>
                                 <!-- <div class="checkout__input__checkbox">
                                     <label for="acc-or">
@@ -508,13 +550,14 @@ while ($num = mysqli_fetch_assoc($query_run)) {
                                     <label class="delivery">Delivery-date</label><input type="text" name="delivery_date" class="del_date" value="<?php echo date("d-m-Y", $startdate); ?> ">
                                    
 
-                                </div>
-                                <div class="payment">
+                                </div >
+                                <div class="row" id="payment">
+                                   
 
                                     <select class="pay" name="payment">
                                         
-                                        <option value="COD"  >Cash on Delivery</option>
-                                        <option selected>Payment Method</option>
+                                        <option value="COD" >Cash on Delivery</option>
+                                        
                                     </select>
                                 </div>
                                 
