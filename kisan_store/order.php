@@ -69,7 +69,8 @@ while($row=mysqli_fetch_assoc($sql)){
             },1000);
          </script>';
 
-    $delquery="delete from customer_cart where customer_email='$username'";
+    $delquery="update `customer_cart` set `Delete`='1' where `customer_email`='$username' and `product_id`='$product_id'";
+    // "update customer_cart set `Delete`='1' where customer_email='$username' and id='$id'"
     $delsql=mysqli_query($dbc,$delquery) or die(mysqli_error($dbc));
 
     $page = $_SERVER['PHP_SELF'];

@@ -73,7 +73,7 @@ if($productcount == 0){
 }
 
 // for calculating cart total amount.
-$query = "SELECT * FROM customer_cart where customer_email='$username'";
+$query = "SELECT * FROM customer_cart where customer_email='$username' and `Delete`='0'";
         $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
         
         while($num=mysqli_fetch_assoc($query_run))

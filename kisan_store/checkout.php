@@ -34,7 +34,7 @@ while ($startdate < $enddate) {
 include 'backend/database.php';
 $username = $_SESSION['loginname'];
 
-$qry = "select * from  customer_cart where customer_email='$username'";
+$qry = "select * from  customer_cart where customer_email='$username' and `Delete`='0'";
 
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 
@@ -47,7 +47,7 @@ if ($productcount == 0) {
 }
 
 // for calculating cart total amount.
-$query = "SELECT * FROM customer_cart where customer_email='$username'";
+$query = "SELECT * FROM customer_cart where customer_email='$username' and `Delete`='0'";
 $query_run = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
 
 $total = 0;
@@ -125,6 +125,7 @@ while ($num = mysqli_fetch_assoc($query_run)) {
         background: transparent;
         border:transparent;
         padding-left: 0px;
+        padding-right: 0px;
         font: bold;
         font-weight: 600;
 
@@ -167,8 +168,8 @@ while ($num = mysqli_fetch_assoc($query_run)) {
 
     }
     .thead th{
-        padding-right:11px;
-        padding-left: 11px;
+        padding-right:15px;
+        padding-left: 15px;
         padding-bottom: 15px;
         padding-top: 0px;
         font-size: 18px;

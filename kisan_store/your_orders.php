@@ -12,7 +12,7 @@ $count=mysqli_num_rows($sql2);
 // $row2=mysqli_fetch_assoc($sql2);
 // $product_id=$row2['product_id'];
 
-$qry= "SELECT * FROM Order_details INNER JOIN products ON Order_details.product_id=products.product_id";
+$qry= "SELECT * FROM Order_details INNER JOIN customer_cart ON Order_details.product_id=customer_cart.product_id and Order_details.user_id=customer_cart.customer_email ";
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 $productcount=mysqli_num_rows($sql);
 
@@ -223,7 +223,7 @@ $productcount=mysqli_num_rows($sql);
                                         <h5> <?php echo $row['product_name'] ?></h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                    <?php echo "₹".$row['product_price'] ?>
+                                    <?php echo "₹".$row['total_price'] ?>
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
@@ -236,9 +236,11 @@ $productcount=mysqli_num_rows($sql);
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                    <?php echo "₹".$row['total'] ?>
+                                    <?php echo $row['booking_date'] ?>
                                     </td>
-                                    
+                                    <td class="shoping__cart__total">
+                                    <?php echo $row['delivery_date'] ?>
+                                    </td>
                                     
                                         
                                     
