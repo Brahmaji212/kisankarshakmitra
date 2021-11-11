@@ -18,7 +18,7 @@ $prod_row = mysqli_fetch_assoc($prod_sql);
 // $prod_qry2="select * from products where product_id="$prod_row['product_id']"";
 
 
-$qry1 = "select * from  customer_cart where  customer_email='$username'";
+$qry1 = "select * from  customer_cart where  `customer_email`='$username' and `Delete`='0'";
 
 $sql1 = mysqli_query($dbc, $qry1) or die(mysqli_error($dbc));
 

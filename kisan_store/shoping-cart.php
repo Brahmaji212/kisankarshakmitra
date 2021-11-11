@@ -44,7 +44,7 @@ $checkqry = "select * from customer_cart where  customer_email='$username'";
   
   else { 
 
-$insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price')";
+$insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`,`Delete`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price','false')";
 $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
 
   }
@@ -52,14 +52,14 @@ $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
 else if($product_id == true){ 
   
    
-        $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price')";
+        $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`,`Delete`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price','false')";
         $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
         $qry = "select * from  customer_cart where customer_email='$username'";
         $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
         $productcount=mysqli_num_rows($sql);
                             }
 }
-$qry = "select * from  customer_cart where  customer_email='$username'";
+$qry = "select * from  customer_cart where  `customer_email`='$username' and `Delete`='0'";
 
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 

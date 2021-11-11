@@ -6,7 +6,15 @@ if(!isset($_SESSION['login_status']))
 {
     header('location: backend/login.php');
 }
+$qry2= "select * from order_details";
+$sql2 = mysqli_query($dbc, $qry2) or die(mysqli_error($dbc));
+$count=mysqli_num_rows($sql2);
+// $row2=mysqli_fetch_assoc($sql2);
+// $product_id=$row2['product_id'];
 
+$qry= "SELECT * FROM Order_details INNER JOIN products ON Order_details.product_id=products.product_id";
+$sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
+$productcount=mysqli_num_rows($sql);
 
 
 ?>
@@ -196,52 +204,52 @@ if(!isset($_SESSION['login_status']))
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
                         <table>
-                        <?php //if ($productcount > 0) { ?>
+                        <?php if ($productcount > 0) { ?>
 
                             <thead >
                                 <tr>
-                                    <th class="">Products</th>
-                                    <th>Price</th>
+                                    <th class="">Product image</th>
+                                    <th>Total price</th>
                                     <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th> Remove</th>
+                                    <th>Booking Date</th>
+                                    <th> Delivery Date</th>
                                 </tr>
                             </thead>
-                            <?php //while ($row = mysqli_fetch_assoc($sql)) { ?>
+                            <?php while ($row = mysqli_fetch_assoc($sql)) { ?>
                             <tbody>
                                 <tr>
                                     <td class="shoping__cart__item">
-                                    <?php //echo "<img src='cart_admin/backend/images//".$row['product_img']."'>"; ?>
-                                        <h5> <?php //echo $row['product_name'] ?></h5>
+                                    <?php echo "<img src='cart_admin/backend/images//".$row['product_img']."'>"; ?>
+                                        <h5> <?php echo $row['product_name'] ?></h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                    <?php //echo "₹".$row['product_price'] ?>
+                                    <?php echo "₹".$row['product_price'] ?>
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
-                                        <form method=" GET" action="">
-						                    <input type="submit" class="minus" name="minus" id="minus" value="<?php echo '-'; ?>">				
-						                    <input type="text" size="4" title="Qty" class="input" value="<?php   //echo $row['quantity'];  ?>" name="input" id="input" max="29" min="0" step="1" style="text-align: center;">
-                                            <input type='hidden' class='idno' name='idno' id='idno' value='<?php //echo $row['id']; ?>'   > 
-                                             <input type='submit' class='plus' name='plus' id='plus' value='+'  > 
-                                        </form>
+                                        
+						                   				
+						                    <input type="text" size="4" title="Qty" class="input" value="<?php   echo $row['quantity'];  ?>" name="input" id="input" max="29" min="0" step="1" style="text-align: center;">
+                                            
+                                            
+                                       
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                    <?php //echo "₹".$row['total_price'] ?>
+                                    <?php echo "₹".$row['total'] ?>
                                     </td>
                                     
-                                    <?php //echo '<td class="shoping__cart__item__close"><a href="cart_admin/remove/remove_from_cart.php?id='.$row['id'].'" ><span class="fa icon_close animated faa-bounce" onClick=\'javascript: return confirm("Please confirm deletion");\'></span></a></td>';?>
+                                    
                                         
                                     
                                 </tr>
-                                <?php //} ?>
-                  <?php //} else { ?>
+                                <?php } ?>
+                  <?php } else { ?>
                     <p align=center style="color:#4a4a4a;">
                   <strong  > 
                     <i class="fa fa-database animated faa-horizontal"></i> <br>
                     Your cart is empty continue shopping to add items!!!</strong></p> <br>
-            <?php // } ?>   
+            <?php  } ?>   
                                 <style>
                                     img {
                                              border: 1px solid #ddd;
