@@ -306,8 +306,8 @@ $count=mysqli_num_rows($sql2);
                 </div>
                 <div class="col-12 tm-block-col">
                     <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-                        <?php if($count>0){ ?>
                         <h2 class="tm-block-title">Orders List</h2>
+                        <?php if($count>0){ ?>
                         <table class="table">
                             <thead>
                                 <tr align="center">
@@ -337,7 +337,7 @@ $count=mysqli_num_rows($sql2);
                             </tbody>
                         </table>
                         <?php } else{ ?>
-                            <p align=center style="color:rgb(188 189 155);">
+                            <p align=center style="color:rgb(199 189 155);">
                   <strong  > 
                     <i class="fas fa-database faa-horizontal animated " ></i> <br>
                     Orders Not Yet Booked!</strong></p> <br>
