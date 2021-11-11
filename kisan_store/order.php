@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
 $username=$_SESSION['loginname'];
 
 // retrive the product data using id to store the details in cart
-$query="select * from customer_cart where customer_email='$username'";
+$query="select * from customer_cart where customer_email='$username' and `Delete`='1'";
 $sql=mysqli_query($dbc,$query) or die(mysqli_error($dbc));
 
 $first_name=$_POST['fname'];

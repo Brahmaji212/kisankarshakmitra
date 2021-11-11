@@ -31,7 +31,7 @@ $checkqry = "select * from customer_cart where  customer_email='$username'";
   $checksql = mysqli_query($dbc, $checkqry) or die(mysqli_error($dbc));
   if (mysqli_num_rows($checksql) > 0) {
       
-    $checkqry1 = "select * from customer_cart where  customer_email='$username' and product_id='$product_id'";
+    $checkqry1 = "select * from customer_cart where  customer_email='$username' and product_id='$product_id' and `Delete`='0'";
     $checksql1 = mysqli_query($dbc, $checkqry1) or die(mysqli_error($dbc));
       if(mysqli_num_rows($checksql1) > 0){
     echo '<script>';
@@ -340,7 +340,7 @@ if(isset($_GET['minus']))
                                                      </a>
                                                     </a> 
                                                     <a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
-                                                    <a href="#"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
+                                                    <a href="your_orders.php"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
 													<a href="#"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
 													<a href="backend/logout.php"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>
 												</div>

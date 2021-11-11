@@ -9,10 +9,11 @@ if(!isset($_SESSION['login_status']))
 $qry2= "select * from order_details";
 $sql2 = mysqli_query($dbc, $qry2) or die(mysqli_error($dbc));
 $count=mysqli_num_rows($sql2);
-// $row2=mysqli_fetch_assoc($sql2);
-// $product_id=$row2['product_id'];
+$row2=mysqli_fetch_assoc($sql2);
+$order_id=$row2['order_id'];
+$username=$_SESSION['loginname'];
 
-$qry= "SELECT * FROM Order_details INNER JOIN customer_cart ON Order_details.product_id=customer_cart.product_id and Order_details.user_id=customer_cart.customer_email ";
+$qry= "SELECT * FROM Order_details INNER JOIN customer_cart ON order_details.user_id='$username' where Order_details.product_id=customer_cart.product_id     ";
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 $productcount=mysqli_num_rows($sql);
 
@@ -169,11 +170,7 @@ $productcount=mysqli_num_rows($sql);
 													<a href="index.php"><i class="fa fa-shopping-cart animated faa-horizontal" style="color: green;"> </i> &nbsp; Store</a>
 													<a href="shoping-cart.php">
                                                         <i class="fa fa-shopping-bag animated faa-horizontal" style="color: green;">
-                                                        <?php if($productcount ==0){?>
-                                    <!-- <span> <?php  //echo $cart_value; ?> </span> -->
-                                                            <?php } else if($productcount > 0) { ?>
-                                                             <span> <?php $cart_value = $productcount; echo $cart_value; ?> </span>
-                                                             <?php } ?>
+                                                      
                                                              </i> &nbsp; Shoping-cart 
                                                      </a>
                                                     </a> 
@@ -215,12 +212,13 @@ $productcount=mysqli_num_rows($sql);
                                     <th> Delivery Date</th>
                                 </tr>
                             </thead>
-                            <?php while ($row = mysqli_fetch_assoc($sql)) { ?>
+                            <?php while ($row = mysqli_fetch_assoc($sql) and $username=$row2['user_id']) { ?>
                             <tbody>
                                 <tr>
                                     <td class="shoping__cart__item">
                                     <?php echo "<img src='cart_admin/backend/images//".$row['product_img']."'>"; ?>
                                         <h5> <?php echo $row['product_name'] ?></h5>
+                                        <h6><?php echo $row['order_id'] ?> </h6>
                                     </td>
                                     <td class="shoping__cart__price">
                                     <?php echo "₹".$row['total_price'] ?>
