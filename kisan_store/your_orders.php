@@ -98,8 +98,8 @@ $productcount=mysqli_num_rows($sql);
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./index.php">Store</a></li>
-                            <li class="active"><a href="./shop-grid.html">Orders</a></li>
+                            <li><a href="index.php">Store</a></li>
+                            <li class="active"><a href="your_orders.php">Orders</a></li>
                             <li><a href="#">Profile</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
@@ -108,8 +108,8 @@ $productcount=mysqli_num_rows($sql);
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Wishlist</a></li>
-                            <li><a href="../k_contact.html">Shoping Cart</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                            <li><a href="shoping-cart.php">Shoping Cart</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -121,16 +121,7 @@ $productcount=mysqli_num_rows($sql);
                                         <div class="dropdown">
 												<a class=""><i class="fa fa-bars"></i></a>  
 												<div class="dropdown-content">
-													<a href="index.php"><i class="fa fa-shopping-cart animated faa-horizontal" style="color: green;"> </i> &nbsp; Store</a>
-													<a href="shoping-cart.php">
-                                                        <i class="fa fa-shopping-bag animated faa-horizontal" style="color: green;">
-                                                      
-                                                             </i> &nbsp; Shoping-cart 
-                                                     </a>
-                                                    </a> 
-                                                    <a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
-                                                    <a href="#"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
-													<a href="#"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
+													
 													<a href="backend/logout.php"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>
 												</div>
 											</div>
@@ -164,6 +155,7 @@ $productcount=mysqli_num_rows($sql);
                                     <th>Quantity</th>
                                     <th>Booking Date</th>
                                     <th> Delivery Date</th>
+                                    <th> Payment</th>
                                 </tr>
                             </thead>
                             <?php while ($row = mysqli_fetch_assoc($sql)){ ?>
@@ -193,6 +185,9 @@ $productcount=mysqli_num_rows($sql);
                                     <td class="shoping__cart__total">
                                     <?php echo $row['delivery_date'] ?>
                                     </td>
+                                    <td class="shoping__cart__payment">
+                                    <?php echo $row['payment_method'] ?>
+                                    </td>
                                     
                                         
                                     
@@ -204,35 +199,7 @@ $productcount=mysqli_num_rows($sql);
                     <i class="fa fa-database animated faa-horizontal"></i> <br>
                     YOU ARE NOT YET BOOKED ANY ORDERS. !!!</strong></p> <br>
             <?php  } ?>   
-                                <style>
-                                    img {
-                                             border: 1px solid #ddd;
-                                             border-radius: 4px;
-                                             padding: 5px;
-                                             width: 150px;
-                                            }
-                                        strong{
-                                            align-content: center;
-                                        }
-                                        .plus{
-                                            border: transparent;
-                                            border: 0%;
-                                            
-                                        }
-                                        .plus:hover{
-                                            background-color: transparent;
-                                        }
-
-                                        .minus{
-                                            border:transparent;
-                                        }
-                                        .minus:hover{
-                                            background:transparent;
-                                        }
-                                        .input{
-                                            border: transparent;
-                                        }
-                                </style>
+                                
                               
                             </tbody>
                         </table>
