@@ -79,7 +79,7 @@ while($row=mysqli_fetch_assoc($sql)){
 
     $page = $_SERVER['PHP_SELF'];
     $sec = "10";
-    // header("Refresh: $sec; url=$page?id=1");
+    header("Refresh: $sec; url=$page?id=1");
  
     }
 

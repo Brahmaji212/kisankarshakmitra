@@ -19,7 +19,7 @@ if (isset($_POST['minus'])) {
     }
 }
 
-$startdate=strtotime("10-11-2021");
+$startdate=strtotime(date("d-m-Y"));
 $enddate=strtotime("+6 days", $startdate);
 
 while ($startdate < $enddate) {
