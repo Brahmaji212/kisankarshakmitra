@@ -207,7 +207,7 @@ $row1=mysqli_fetch_assoc($sql1);
                 
                   <tr align="center">
                     <th scope="row"><input type="checkbox" name='checkbox[]' value='<?php echo $row["user_id"]; ?>' id="checkbox"/></th>
-                    <td class="tm-product-name"><?php echo $row['name'] ?> </td>
+                    <td class="tm-product-name"><?php echo $row['first_name']." ".$row['middle_name']." ".$row['last_name'] ?> </td>
                     <td><?php echo $row['email']  ?></td>
                     <td><?php  echo $row['phone'] ?></td>
                     <!-- <td>  //echo $row['product_exp_date'] </td> -->
