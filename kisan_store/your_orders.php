@@ -218,7 +218,7 @@ $productcount=mysqli_num_rows($sql);
                                     <td class="shoping__cart__item">
                                     <?php echo "<img src='cart_admin/backend/images//".$row['product_img']."'>"; ?>
                                         <h5> <?php echo $row['product_name'] ?></h5>
-                                        <h5> <?php echo $row['order_id'] ?></h5>
+                                        
                                     </td>
                                     <td class="shoping__cart__price">
                                     <?php echo "₹".$row['total_price'] ?>
