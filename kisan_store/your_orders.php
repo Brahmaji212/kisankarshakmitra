@@ -102,7 +102,7 @@ $productcount=mysqli_num_rows($sql);
                             <li class="active"><a href="your_orders.php">Orders</a></li>
                             <li><a href="#">Profile</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="profile.php">View Profile</a></li>
                                     <li><a href="./shoping-cart.php">Shoping Cart</a></li>
                                     <li><a href="./checkout.html">Check Out</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
