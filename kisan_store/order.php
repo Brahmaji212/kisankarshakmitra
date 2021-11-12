@@ -78,8 +78,8 @@ while($row=mysqli_fetch_assoc($sql)){
     // $delsql=mysqli_query($dbc,$delquery) or die(mysqli_error($dbc));
 
     $page = $_SERVER['PHP_SELF'];
-    $sec = "5";
-    header("Refresh: $sec; url=$page?id=1");
+    $sec = "10";
+    // header("Refresh: $sec; url=$page?id=1");
  
     }
 
