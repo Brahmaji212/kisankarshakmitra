@@ -18,7 +18,7 @@ $prod_row = mysqli_fetch_assoc($prod_sql);
 // $prod_qry2="select * from products where product_id="$prod_row['product_id']"";
 
 
-$qry1 = "select * from  customer_cart where  customer_email='$username'";
+$qry1 = "select * from  customer_cart where  `customer_email`='$username' and `Delete`='0'";
 
 $sql1 = mysqli_query($dbc, $qry1) or die(mysqli_error($dbc));
 
@@ -60,6 +60,54 @@ $productcount=mysqli_num_rows($sql1);
 	<link href="css/index.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
 	<link href="css/ken-burns.css" rel="stylesheet" type="text/css" media="all" />
+
+
+
+
+                                            <style>
+												.dropbtn {
+													background-color: #77b81e;
+													color: white;
+													padding: 16px;
+													font-size: 16px;
+													border: none;
+													cursor: pointer;
+												}
+
+												.dropdown {
+													position: relative;
+													display: inline-block;
+												}
+
+												.dropdown-content {
+													display: none;
+													position: absolute;
+													background-color: #f9f9f9;
+													min-width: 160px;
+													box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+													z-index: 1;
+												}
+
+												.dropdown-content a {
+													color: black;
+													padding: 12px 16px;
+													text-decoration: none;
+													display: block;
+                                                    text-align: left;
+												}
+
+												.dropdown-content a:hover {
+													background-color: #f1f1f1
+												}
+
+												.dropdown:hover .dropdown-content {
+													display: block;
+												}
+
+												.dropdown:hover .dropbtn {
+													background-color: #77b81e;
+												}
+											</style>
 
 
 </head>
@@ -163,31 +211,7 @@ $productcount=mysqli_num_rows($sql1);
                     
                
                             
-                            <div class="header__top__right__auth">
-                            <div class="header__cart">
-                                <ul>
-                                
-                                    <li><a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i> <!--<span>0</span>--></a></li>
-                                    <li><a href="shoping-cart.php"><i class="fa fa-shopping-bag animated faa-horizontal" style="color: green;"></i> 
-                                    <?php if($productcount ==0){?>
-                                    <!-- <span> <?php  //echo $cart_value; ?> </span> -->
-                                    <?php } else if($productcount > 0) { ?>
-                                        <span> <?php $cart_value = $productcount; echo $cart_value; ?> </span>
-                                        <?php } ?>
-                                        
-                                        </a></li>
-                                
-                                    <li><a href="backend/logout.php" ><i class="fa fa-user"></i> Logout</a></li>
-                                    <li class="sidebar-dropdown">
-                                        <a href="#"><i class="fa fa-bars"></i></a> 
-                                       
-                                        
-                                    </li><br>
-                                    <?php echo " <a><i class='fa fa-envelope'></i>&nbsp;".$_SESSION["loginname"]."</a>"; ?>
-                                </ul>
-                        <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
-                            </div>
-                            </div>
+                    
                         </div>
                     </div> 
                 </div>
@@ -200,17 +224,79 @@ $productcount=mysqli_num_rows($sql1);
                         <a href="index.php"><img src="img/kkm-logo.png" style="height:100px;">KISAN KARSHAK
                             MITRA</a>
                     </div>
+
                 </div>
+                <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                         <!--    <div class="header__top__right__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            </div> -->
+                           <!-- <div class="header__top__right__language">
+                                <img src="img/language.png" alt="">
+                                <div>English</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li  style="margin-left: 13%;"><a href="#">Spanis</a></li>
+                                    <li  style="margin-left: 13%;"><a href="#">English</a></li>
+                                </ul>
+                            </div>-->
+                            
+                    
+               
+                            
+                            <div class="header__top__right__auth">
+                            <div class="header__cart">
+                                <ul>
+                                
+                                    <li><a href="#"> <?php echo " <a><i class='fa fa-envelope'></i>&nbsp;".$_SESSION["loginname"]."</a>"; ?></a></li>
+                                   
+                                
+                                    
+                                    <li class="sidebar-dropdown">
+                                        
+                                        <div class="dropdown">
+												<a class=""><i class="fa fa-bars"></i></a>  
+												<div class="dropdown-content">
+													<a href="index.php"><i class="fa fa-shopping-cart animated faa-horizontal" style="color: green;"> </i> &nbsp; Store</a>
+													<a href="shoping-cart.php">
+                                                        <i class="fa fa-shopping-bag animated faa-horizontal" style="color: green;">
+                                                        <?php if($productcount ==0){?>
+                                    <!-- <span> <?php  //echo $cart_value; ?> </span> -->
+                                                            <?php } else if($productcount > 0) { ?>
+                                                             <span> <?php $cart_value = $productcount; echo $cart_value; ?> </span>
+                                                             <?php } ?>
+                                                             </i> &nbsp; Shoping-cart 
+                                                     </a>
+                                                    </a> 
+                                                    <a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
+                                                    <a href="your_orders.php"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
+													<a href="#"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
+													<a href="backend/logout.php"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>
+												</div>
+											</div>
+                                       
+                                        
+                                    </li>
+                                   
+                                </ul>
+                        <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
+                            </div>
+                            </div>
+                        </div>
+                    </div> 
 
                 
-                <div class="col-lg-6">
-                    <!-- <form action="#">
+                <!-- <div class="col-lg-6">
+                    <form action="#">
                        
                         <input type="text" placeholder="What do yo u need?">
                         <button type="submit" class="site-btn">SEARCH</button>
-                    </form> -->
-                </div>
-                <!-- <div class="col-lg-3">
+                    </form>
+                </div> -->
+                <!-- <div class="col-lg-2" >
                     <div class="header__cart">
                         <ul>
                             <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>

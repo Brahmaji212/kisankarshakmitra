@@ -5,58 +5,60 @@ session_start();
 if (!isset($_SESSION['login_status'])) {
     header('location: backend/login.php');
 }
-$id=$_GET['id'];
+$id = $_GET['id'];
 $qua = 1;
-    if(isset($_POST['plus']))
-    {   
-        $qua=$_POST['input'];
-        $qua=$qua+1;
-        
+if (isset($_POST['plus'])) {
+    $qua = $_POST['input'];
+    $qua = $qua + 1;
+}
+if (isset($_POST['minus'])) {
+    $qua = $_POST['input'];
+    $qua = $qua - 1;
+    if ($qua == 0) {
+        $qua = 1;
     }
-    if(isset($_POST['minus']))
-    {   
-        $qua=$_POST['input'];
-        $qua=$qua-1;
-        if($qua==0)
-        {
-            $qua=1;
-        }
-    }
+}
 
+$startdate=strtotime("10-11-2021");
+$enddate=strtotime("+6 days", $startdate);
 
-
-	
-    
-
-include 'backend/database.php'; 
-$username=$_SESSION['loginname'];
+while ($startdate < $enddate) {
   
-$qry = "select * from  customer_cart where customer_email='$username'";
+  $startdate = strtotime("+1 day", $startdate);
+}
+// echo date("d-m-Y", $startdate) . "<br>";
+
+
+
+
+include 'backend/database.php';
+$username = $_SESSION['loginname'];
+
+$qry = "select * from  customer_cart where customer_email='$username' and `Delete`='0'";
 
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 
-$productcount=mysqli_num_rows($sql);
+$productcount = mysqli_num_rows($sql);
 // for calculating cart total items count.
-if($productcount == 0){
-    $cart_value=$productcount;
-}else if($productcount >0)
-{
-    $cart_value=$productcount;
+if ($productcount == 0) {
+    $cart_value = $productcount;
+} else if ($productcount > 0) {
+    $cart_value = $productcount;
 }
 
 // for calculating cart total amount.
-$query = "SELECT * FROM customer_cart where customer_email='$username'";
-$query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
+$query = "SELECT * FROM customer_cart where customer_email='$username' and `Delete`='0'";
+$query_run = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
 
-$total= 0;
-while ($num = mysqli_fetch_assoc ($query_run)) {
+$total = 0;
+while ($num = mysqli_fetch_assoc($query_run)) {
     $total += $num['total_price'];
 }
 
-    
 
 
-?> 
+
+?>
 
 
 <!DOCTYPE html>
@@ -82,6 +84,108 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+<style>
+    .checkout__order{
+        padding-bottom: 50px;
+        align-items: center;
+    }
+    .booking
+    {
+        color: black;
+        
+        font: bold;
+        font-size: 18px;
+        font-weight: 700;
+        
+    }
+    .book_date
+    {
+        color:black;
+        text-align: right;
+        background: transparent;
+        border:transparent;
+        padding-left: 0px;
+        font: bold;
+        font-weight: 600;
+
+    }
+    .delivery
+    {
+        color: black;
+        
+        font: bold;
+        font-weight: 700;
+        font-size: 18px;
+    }
+    .del_date
+    { 
+        color:black;
+        text-align: right;
+        background: transparent;
+        border:transparent;
+        padding-left: 0px;
+        padding-right: 0px;
+        font: bold;
+        font-weight: 600;
+
+    }
+    #payment {
+        padding-left: 15px;
+    }
+    .pay{
+        align-content: center;
+        color: white;
+        font:bolder;
+        background: skyblue;
+        padding-left: 47px;
+        padding-right: 47px;
+        letter-spacing: 4px;
+        font-weight: 800;
+    text-transform: uppercase;
+    
+    
+    background: #7fad39;
+    }
+    #payment option{
+        color: red;
+    }
+    .thead{
+        border-bottom:solid 1px; 
+        border-color:#e1e1e1; 
+        padding-top:0px; 
+        color:green;
+        border-bottom-width: 100%;
+        padding-bottom: 40px;
+        
+        
+    }
+    .tbody
+    {
+        color: black; 
+        font-weight:800;
+         
+
+    }
+    .thead th{
+        padding-right:15px;
+        padding-left: 15px;
+        padding-bottom: 15px;
+        padding-top: 0px;
+        font-size: 18px;
+    }
+    .tbody td{
+        padding-right:6px;
+        padding-left: 6px;
+        align-content: center;
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+</style>
+
+
+
+
 </head>
 
 <body>
@@ -215,7 +319,10 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <!--<span><?php //echo ₹cart_value; ?></span>--></a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i>
+                                    <!--<span><?php //echo ₹cart_value; 
+                                                ?></span>-->
+                                </a></li>
                             <li><a href="shoping-cart.php"><i class="fa fa-shopping-bag"></i> <span><?php echo $cart_value; ?></span></a></li>
                         </ul>
                         <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
@@ -311,59 +418,59 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
             </div>
             <div class="checkout__form">
                 <h4>Billing Details</h4>
-                <form action="#">
+                <form action="order.php" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Fist Name<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" name="fname" id="fname" title="your first name" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Last Name<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" name="lname" id="lname" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Country<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="country" id="country" required>
                             </div>
                             <div class="checkout__input">
                                 <p>Address<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
+                                <input type="text" placeholder="Street Address" class="checkout__input__add" name="addr" id="addr" required>
+                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)" name="addr1" id="addr1">
                             </div>
                             <div class="checkout__input">
                                 <p>Town/City<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="town" id="town" required>
                             </div>
                             <div class="checkout__input">
                                 <p>Country/State<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="state" id="state" required>
                             </div>
                             <div class="checkout__input">
                                 <p>Postcode / ZIP<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="pin" id="pin" required>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Phone<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" name="phone" id="phone" maxlength="10" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" name="email" id="email" required>
                                     </div>
                                 </div>
                             </div>
-                            <div class="checkout__input__checkbox">
+                            <!-- <div class="checkout__input__checkbox">
                                 <label for="acc">
                                     Create an account?
                                     <input type="checkbox" id="acc">
@@ -374,8 +481,8 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                 please login at the top of the page</p>
                             <div class="checkout__input">
                                 <p>Account Password<span>*</span></p>
-                                <input type="text">
-                            </div>
+                                <input type="text" name="pass" id="pass">
+                            </div> -->
                             <div class="checkout__input__checkbox">
                                 <label for="diff-acc">
                                     Ship to a different address?
@@ -385,8 +492,7 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                             </div>
                             <div class="checkout__input">
                                 <p>Order notes<span>*</span></p>
-                                <input type="text"
-                                    placeholder="Notes about your order, e.g. special notes for delivery.">
+                                <input type="text" name="note" id="note" placeholder="Notes about your order, e.g. special notes for delivery.">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
@@ -394,49 +500,77 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                                 <h4>Your Order</h4>
                                 <table>
                                     <thead>
-                                        <tr>
-                                            <th>Products &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
-                                            <th>Total  </th>
+                                        <tr align="" class="thead" >
+                                            <th>Products </th>
+                                            <th>Quantity  </th>
+                                            <th>Total </th>
                                         </tr>
                                     </thead>
-                                    <?php if($productcount > 0){ ?>
-                                        <?php while ($row=mysqli_fetch_assoc($sql)){ ?>
-                                    <tbody>
-                                        <tr>
-                                            <td><?php echo $row['product_name'] ?></td>
-                                            <td><?php echo $row['total_price']  ?></td>
-                                        </tr>
-                                    </tbody>
-                                    <?php } } ?>
+                                    <?php if ($productcount > 0) { ?>
+                                        <?php while ($row = mysqli_fetch_assoc($sql)) {
+                                            $_SESSION['product_id'] = $row['product_id']; ?>
+                                            <tbody>
+                                                <tr align="" class="tbody" >
+                                                    <td><?php echo $row['product_name'] ?></td>
+                                                    <td align="center"><?php echo $row['quantity']  ?></td>
+                                                    <td><?php echo $row['total_price']  ?></td>
+                                                </tr>
+                                            </tbody>
+                                    <?php }
+                                    } ?>
                                 </table>
-                                
+
                                 <?php
-                                echo "<div class='checkout__order__subtotal'>Subtotal <span>₹".$total."</span></div>
-                                <div class='checkout__order__total'>Total <span>₹".$total."</span></div>"; ?>
-                                <div class="checkout__input__checkbox">
+                                echo "
+                                <div class='checkout__order__subtotal'>Subtotal <span>₹" . $total . "</span></div>
+                                <div class='checkout__order__total'>Total <span>₹" . $total . "</span></div>"; ?>
+                                <!-- <div class="checkout__input__checkbox">
                                     <label for="acc-or">
                                         Create an account?
                                         <input type="checkbox" id="acc-or">
                                         <span class="checkmark"></span>
                                     </label>
-                                </div>
+                                </div> -->
                                 <!-- <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt -->
-                                    <!-- ut labore et dolore magna aliqua.</p> -->
-                                <div class="checkout__input__checkbox">
+                                <!-- ut labore et dolore magna aliqua.</p> -->
+                                <!-- <div class="checkout__input__checkbox">
                                     <label for="payment">
-                                        Check Payment
+                                        Payment Method
                                         <input type="checkbox" id="payment">
                                         <span class="checkmark"></span>
                                     </label>
+                                </div> -->
+                                <div class="row-cols-1 row-cols-lg-1" >
+                                    <?php
+                                        // $startdate=strtotime("10-11-2021");
+                                        // $enddate=strtotime("+6 days", $startdate);
+                                        // while ($startdate < $enddate) {
+                                        // $startdate = strtotime("+1 day", $startdate);
+                                        // } 
+                                    ?>
+                                    <label class="booking">Booking date</label><input type="text" name="booking_date" class="book_date" value="<?php echo date("d-m-Y"); ?>">
+                                    <label class="delivery">Delivery-date</label><input type="text" name="delivery_date" class="del_date" value="<?php echo date("d-m-Y", $startdate); ?> ">
+                                   
+
+                                </div >
+                                <div class="row" id="payment">
+                                   
+
+                                    <select class="pay" name="payment">
+                                        
+                                        <option value="COD" >Cash on Delivery</option>
+                                        
+                                    </select>
                                 </div>
-                                <div class="checkout__input__checkbox">
-                                    <label for="paypal">
-                                        Paypal
-                                        <input type="checkbox" id="paypal">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                                
+                                <!-- <div class=" checkout__input__checkbox">
+                                        <label for="paypal">
+                                            Paypal
+                                            <input type="checkbox" id="paypal">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                </div> -->
+                                <button type="submit" name="submit" class="site-btn" title="book your order">PLACE ORDER</button>
                             </div>
                         </div>
                     </div>
@@ -473,7 +607,7 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
                             <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Our Sitemap</a></li>
                         </ul>
-                       
+
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
@@ -496,9 +630,15 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved  Designed by Aarush Technologies
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                        <div class="footer__copyright__text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script>
+                                    document.write(new Date().getFullYear());
+                                </script> All rights reserved Designed by Aarush Technologies
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
                         <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
                     </div>
                 </div>
@@ -517,7 +657,7 @@ while ($num = mysqli_fetch_assoc ($query_run)) {
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 
- 
+
 
 </body>
 
