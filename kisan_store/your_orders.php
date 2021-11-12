@@ -44,54 +44,8 @@ $productcount=mysqli_num_rows($sql);
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="cart_admin/font-awesome-animation-1.1.1/package/css/font-awesome-animation.min.css">
-
-
-    <style>
-												.dropbtn {
-													background-color: #77b81e;
-													color: white;
-													padding: 16px;
-													font-size: 16px;
-													border: none;
-													cursor: pointer;
-												}
-
-												.dropdown {
-													position: relative;
-													display: inline-block;
-												}
-
-												.dropdown-content {
-													display: none;
-													position: absolute;
-                                                    background-color: whitesmoke;
-                                                    
-                                                    
-													min-width: 160px;
-													box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-													z-index: 1;
-												}
-
-												.dropdown-content a {
-													color: black;
-													padding: 12px 16px;
-													text-decoration: none;
-													display: block;
-                                                    text-align: left;
-												}
-
-												.dropdown-content a:hover {
-													background-color: #f1f1f1
-												}
-
-												.dropdown:hover .dropdown-content {
-													display: block;
-												}
-
-												.dropdown:hover .dropbtn {
-													background-color: #77b81e;
-												}
-											</style>   
+    <link rel="stylesheet" href="css/orderstyles.css" type="text/css">
+  
 
 </head>
 
@@ -144,9 +98,9 @@ $productcount=mysqli_num_rows($sql);
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="./index.php">Home</a></li>
-                            <li class="active"><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            <li><a href="./index.php">Store</a></li>
+                            <li class="active"><a href="./shop-grid.html">Orders</a></li>
+                            <li><a href="#">Profile</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
                                     <li><a href="./shoping-cart.php">Shoping Cart</a></li>
@@ -154,8 +108,8 @@ $productcount=mysqli_num_rows($sql);
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="../k_contact.html">Contact</a></li>
+                            <li><a href="./blog.html">Wishlist</a></li>
+                            <li><a href="../k_contact.html">Shoping Cart</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -205,7 +159,7 @@ $productcount=mysqli_num_rows($sql);
 
                             <thead >
                                 <tr>
-                                    <th class="">Product image</th>
+                                    <th class="shoping__product">Product image</th>
                                     <th>Total price</th>
                                     <th>Quantity</th>
                                     <th>Booking Date</th>
