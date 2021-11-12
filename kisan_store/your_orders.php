@@ -13,7 +13,7 @@ $row2=mysqli_fetch_assoc($sql2);
 $order_id=$row2['order_id'];
 $username=$_SESSION['loginname'];
 
-$qry= "SELECT * FROM Order_details INNER JOIN customer_cart ON order_details.user_id=customer_cart.customer_email and Order_details.product_id=customer_cart.product_id where order_details.user_id='$username'    ";
+$qry= "SELECT * FROM Order_details LEFT  JOIN customer_cart ON order_details.user_id=customer_cart.customer_email and Order_details.product_id=customer_cart.product_id where order_details.user_id='$username'   and `Delete`='1'  and order_details.order_id=customer_cart.order_id    ";
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 $productcount=mysqli_num_rows($sql);
 
@@ -212,13 +212,13 @@ $productcount=mysqli_num_rows($sql);
                                     <th> Delivery Date</th>
                                 </tr>
                             </thead>
-                            <?php while ($row = mysqli_fetch_assoc($sql) and $username=$row2['user_id']) { ?>
+                            <?php while ($row = mysqli_fetch_assoc($sql)){ ?>
                             <tbody>
                                 <tr>
                                     <td class="shoping__cart__item">
                                     <?php echo "<img src='cart_admin/backend/images//".$row['product_img']."'>"; ?>
                                         <h5> <?php echo $row['product_name'] ?></h5>
-                                        
+                                        <h5> <?php echo $row['order_id'] ?></h5>
                                     </td>
                                     <td class="shoping__cart__price">
                                     <?php echo "₹".$row['total_price'] ?>
@@ -248,7 +248,7 @@ $productcount=mysqli_num_rows($sql);
                     <p align=center style="color:#4a4a4a;">
                   <strong  > 
                     <i class="fa fa-database animated faa-horizontal"></i> <br>
-                    Your cart is empty continue shopping to add items!!!</strong></p> <br>
+                    YOU ARE NOT YET BOOKED ANY ORDERS. !!!</strong></p> <br>
             <?php  } ?>   
                                 <style>
                                     img {

@@ -50,8 +50,12 @@ while($row=mysqli_fetch_assoc($sql)){
 
     $insert="INSERT INTO `order_details` (`order_id`,`product_id`,`user_id`,`first_name`,`last_name`,`country`,`address1`,`address2`,`city`,`state`,`pin`,`phone`,`email`,`order_note`,`status`,`subtotal`,`total`,`quantity`,`booking_date`,`delivery_date`,`payment_method`)values('$order_id','$product_id','$username','$first_name','$last_name','$country','$address1','$address2','$city','$state','$pin','$phone','$email','$note','started','$total_price','$cart_total','$quantity','$booking_date','$delivery_date','$payment_method')";
     $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
+
+    $removeqry = "update customer_cart set `Delete`='1' , `order_id`='$order_id' where customer_email='$username' and `product_id`='$product_id'";
+    $sql1 = mysqli_query($dbc, $removeqry) or die(mysqli_error($dbc));
+
 }
-    if($sqlinsert)
+    if($sqlinsert & $sql1)
     {
         echo  '<p style="text-align:center; padding-top:100px; background-color:biscuit; color:green;" >
             <i class="fa fa-spinner fa-spin fa-slow fa-2x" ></i> <br> 
@@ -69,12 +73,12 @@ while($row=mysqli_fetch_assoc($sql)){
             },1000);
          </script>';
 
-    $delquery="update `customer_cart` set `Delete`='1' where `customer_email`='$username' and `product_id`='$product_id'";
-    // "update customer_cart set `Delete`='1' where customer_email='$username' and id='$id'"
-    $delsql=mysqli_query($dbc,$delquery) or die(mysqli_error($dbc));
+    // $delquery="update `customer_cart` set `Delete`='1' where `customer_email`='$username' and `product_id`='$product_id'";
+    // // "update customer_cart set `Delete`='1' where customer_email='$username' and id='$id'"
+    // $delsql=mysqli_query($dbc,$delquery) or die(mysqli_error($dbc));
 
     $page = $_SERVER['PHP_SELF'];
-    $sec = "10";
+    $sec = "5";
     header("Refresh: $sec; url=$page?id=1");
  
     }
