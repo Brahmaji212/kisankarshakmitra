@@ -165,9 +165,13 @@
 {
     padding: 24px 0px;
     padding-bottom: 0px;
+    
 }
 .header__menu ul{
-    padding-left: 0px;
+    padding-left: 19px;
+    background-color: whitesmoke;
+    width: 100%;
+    border-radius: 5px;
 
 
 }
