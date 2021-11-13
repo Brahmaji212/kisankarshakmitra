@@ -1,5 +1,6 @@
 body {
     background: rgb(201, 204, 201)
+    
 }
 
 .form-control:focus {
@@ -54,3 +55,7 @@ body {
     background-color: rgb(24, 230, 34);
     border-radius: 10px;
 }
+.profile_body
+{
+    background-color:rgba(207, 207, 205, 0.568);
+}   

@@ -130,6 +130,10 @@
     position: relative;
     display: inline-block;
 }
+.dropdown#bars
+{
+    color: red;
+}
 
 .dropdown-content {
     display: none;
@@ -161,17 +165,25 @@
 .dropdown:hover .dropbtn {
     background-color: #77b81e;
 }
+.header
+{
+    background-color: whitesmoke;
+}
 .header__menu
 {
     padding: 24px 0px;
     padding-bottom: 0px;
     
+    
 }
 .header__menu ul{
     padding-left: 19px;
-    background-color: whitesmoke;
-    width: 100%;
+    background-color: rgb(209, 200, 200);
+    width: 120%;
     border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
 
 
 }

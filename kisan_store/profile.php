@@ -33,9 +33,25 @@ if (!isset($_SESSION['login_status'])) {
     <link rel="stylesheet" href="" type="text/css">
 
 
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="cart_admin/font-awesome-animation-1.1.1/package/css/font-awesome-animation.min.css">
+    <link rel="stylesheet" href="css/orderstyles.css" type="text/css">
+  
+
     </head>
 
-<body>
+<?php include 'header.php'; ?>
+
+   
+<body class="profile_body">
+
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
@@ -69,7 +85,7 @@ if (!isset($_SESSION['login_status'])) {
         </div>
         <div class="col-md-4">
             <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;<a href="backend/logout.php" class="a">Logout</a></span></div><br>
+                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><a href="backend/logout.php" class="a">Logout</a></span></div><br>
                 <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
                 <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
             </div>
@@ -78,6 +94,8 @@ if (!isset($_SESSION['login_status'])) {
 </div>
 </div>
 </div>
+
+<?php include 'footer.php'; ?>
       </body>
  
 </html>
