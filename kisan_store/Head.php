@@ -1,100 +1,107 @@
-<!DOCTYPE html>
-<html lang="zxx">
+ <!-- Page Preloder -->
+ <?php
+error_reporting(0);
+session_start();
+include 'backend/database.php';
+if (!isset($_SESSION['login_status'])) {
+    header('location: backend/login.php');
+}
+$qry = "select * from store_customer_registration";
+$sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
+$row = mysqli_fetch_assoc($sql);
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Ogani Template">
-    <meta name="keywords" content="Ogani, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Kisan Karshak Mitra</title>
+$username=$_SESSION['loginname'];
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+$prod_qry = "select * from products";
+$prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
+$prod_row = mysqli_fetch_assoc($prod_sql);
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="navstyle.css" type="text/css">
-</head>
+// $prod_qry2="select * from products where product_id="$prod_row['product_id']"";
 
-<body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
+
+$qry1 = "select * from  customer_cart where  `customer_email`='$username' and `Delete`='0'";
+
+$sql1 = mysqli_query($dbc, $qry1) or die(mysqli_error($dbc));
+
+$productcount=mysqli_num_rows($sql1);
+
+
+?>
+    <style>
+												.dropbtn {
+													background-color: #77b81e;
+													color: white;
+													padding: 16px;
+													font-size: 16px;
+													border: none;
+													cursor: pointer;
+												}
+
+												.dropdown {
+													position: relative;
+													display: inline-block;
+												}
+
+												.dropdown-content {
+													display: none;
+													position: absolute;
+													background-color: #f9f9f9;
+													min-width: 160px;
+													box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+													z-index: 1;
+												}
+
+												.dropdown-content a {
+													color: black;
+													padding: 12px 16px;
+													text-decoration: none;
+													display: block;
+                                                    text-align: left;
+												}
+
+												.dropdown-content a:hover {
+													background-color: #f1f1f1
+												}
+
+												.dropdown:hover .dropdown-content {
+													display: block;
+												}
+
+												.dropdown:hover .dropbtn {
+													background-color: #77b81e;
+												}
+											</style>
+
+ 
+<!-- Humberger Begin -->
+<div class="humberger__menu__overlay"></div>
+<div class="humberger__menu__wrapper">
+    <div class="humberger__menu__logo">
+        <a href="#"><img style="width: 40%;" src="img/kkm-logo.png" alt=""></a>
     </div>
-
-    <!-- Humberger Begin -->
-    <div class="humberger__menu__overlay"></div>
-    <div class="humberger__menu__wrapper">
-        <div class="humberger__menu__logo">
-            <a href="#"><img src="img/kkm-logo.png" alt=""></a>
-        </div>
-        <div class="humberger__menu__cart">
-            <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
-        </div>
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__language">
-                <img src="img/language.png" alt="">
-                <div>English</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Spanis</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
-            </div>
-            <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
-            </div>
-        </div>
-        <!-- <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
-        </nav> -->
-        <div id="mobile-menu-wrap"></div>
-        <div class="header__top__right__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-        </div>
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> info@kisankarshakmitra.in</li>
-                <li>Free Shipping for all Order of ₹99</li>
-            </ul>
-        </div>
+    
+    <div id="mobile-menu-wrap"></div>
+    <div class="header__top__right__social">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-pinterest-p"></i></a>
     </div>
-    <!-- Humberger End -->
-
-    <!-- Header Section Begin -->
-    <header class="header">
+    <div class="humberger__menu__contact">
+        <ul>
+            <li><i class="fa fa-envelope"></i> info@kisankarshakmitra.in</li>
+            <li>Free Shipping for all Order of ₹99</li>
+        </ul>
+    </div>
+</div>
+  
+  
+  <!-- Header Section Begin -->
+   <header class="header">
         <div class="header__top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
                                 <li><i class="fa fa-envelope"></i> info@kisankarshakmitra.in</li>
@@ -102,70 +109,80 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="header__top__right">
-                            <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div>
-                            <!-- <div class="header__top__right__language">
-                                <img src="img/language.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div> -->
-                            <!-- <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
-                            </div> -->
-                        </div>
-                    </div>
+                    
+                         
+
+
+
+                    </div> 
                 </div>
             </div>
         </div>
-        <!-- <div class="container">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                <div class="col-lg-6">
+                    <div class="header_main_1">
+                        <a href="index.php"><img src="img/kkm-logo.png" style="height:100px;">KISAN KARSHAK
+                            MITRA</a>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+
+                
+                <div class="col-lg-6 col-md-6">
+                <div class="header__top__right">
+                <div class="header__top__right__auth">
+                            <div class="header__cart">
+                                <ul>
+                                
+                                    <li><a href="#"> <?php echo " <a><i class='fa fa-envelope'></i>&nbsp;".$_SESSION["loginname"]."</a>"; ?></a></li>
+                                   
+                                
+                                    
+                                    <li class="sidebar-dropdown">
+                                        
+                                        <div class="dropdown">
+												<a class=""><i class="fa fa-bars"></i></a>  
+												<div class="dropdown-content">
+													<a href="index.php"><i class="fa fa-shopping-cart animated faa-horizontal" style="color: green;"> </i> &nbsp; Store</a>
+													<a href="shoping-cart.php">
+                                                        <i class="fa fa-shopping-bag animated faa-horizontal" style="color: green;">
+                                                        <?php if($productcount ==0){?>
+                                    <!-- <span> <?php  //echo $cart_value; ?> </span> -->
+                                                            <?php } else if($productcount > 0) { ?>
+                                                             <span> <?php $cart_value = $productcount; echo $cart_value; ?> </span>
+                                                             <?php } ?>
+                                                             </i> &nbsp; Shoping-cart 
+                                                     </a>
+                                                    </a> 
+                                                    <a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
+                                                    <a href="your_orders.php"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
+													<a href="profile.php"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
+													<a href="backend/logout.php"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>
+												</div>
+											</div>
+                                       
+                                        
+                                    </li>
+                                   
                                 </ul>
-                            </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li class="active"><a href="./contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
+                        <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
+                            </div>
+                            </div>
                 </div>
-                <div class="col-lg-3">
+                <!-- <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>
+                </div> -->
                 </div>
-            </div>
             <div class="humberger__open">
                 <i class="fa fa-bars"></i>
             </div>
-        </div> -->
+        </div>
     </header>
     <!-- Header Section End -->
 
@@ -682,18 +699,21 @@
                             <script src="function.js"></script>
                         </div>
                     </div>
+
+
+
+
+
+                    
                         <!-- Main Nav Menu -->
             <div class="col-lg-9">
                         <div class="main_nav_menu ml-auto" style="padding: 0 0 0 337px;">
                             <ul class="standard_dropdown main_nav_dropdown">
-                                <li  ><a href="../index.html">Home<i class="fa fa-chevron-down"></i></a></li>
-                                <li  ><a href="../about.html">About<i class="fa fa-chevron-down"></i></a></li>
-                                <li "><a href="../memberships.html">Memberships<i class="fa fa-chevron-down"></i></a></li>
-                                
-                                            
-                                <li ><a href="../kkm-shop/shop-details.html">Products<i class="fa fa-chevron-down"></i></a></li>
-
-                                <li ><a href="../contact.html">Contact<i class="fa fa-chevron-down"></i></a></li>
+                                <li class="active" ><a href="index.php">Store<i class="fa fa-chevron-down"></i></a></li>
+                                <li  ><a href="k_about.php">About<i class="fa fa-chevron-down"></i></a></li>
+                                <li  ><a href="k_services.php">Services<i class="fa fa-chevron-down"></i></a></li>
+                                <li ><a href="k_memberships.php">Memberships<i class="fa fa-chevron-down"></i></a></li>
+                                <li ><a href="k_contact.php">Contact<i class="fa fa-chevron-down"></i></a></li>
                             </ul>
                         </div>
 
@@ -716,182 +736,3 @@
         </nav>
 
     </section>
-    <!-- Hero Section End -->
-
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>Contact Us</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <span>Contact Us</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-
-    <!-- Contact Section Begin -->
-    <section class="contact spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 text-center">
-                    <div class="contact__widget">
-                        <span class="icon_phone"></span>
-                        <h4>Phone</h4>
-                        <p>+01-3-8888-6868</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 text-center">
-                    <div class="contact__widget">
-                        <span class="icon_pin_alt"></span>
-                        <h4>Address</h4>
-                        <p>60-49 Road 11378 New York</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 text-center">
-                    <div class="contact__widget">
-                        <span class="icon_clock_alt"></span>
-                        <h4>Open time</h4>
-                        <p>10:00 am to 23:00 pm</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 text-center">
-                    <div class="contact__widget">
-                        <span class="icon_mail_alt"></span>
-                        <h4>Email</h4>
-                        <p>info@kisankarshakmitra.in</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Contact Section End -->
-
-    <!-- Map Begin -->
-    <div class="map">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49116.39176087041!2d-86.41867791216099!3d39.69977417971648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886ca48c841038a1%3A0x70cfba96bf847f0!2sPlainfield%2C%20IN%2C%20USA!5e0!3m2!1sen!2sbd!4v1586106673811!5m2!1sen!2sbd"
-            height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-        <div class="map-inside">
-            <i class="icon_pin"></i>
-            <div class="inside-widget">
-                <h4>New York</h4>
-                <ul>
-                    <li>Phone: +12-345-6789</li>
-                    <li>Add: 16 Creek Ave. Farmingdale, NY</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- Map End -->
-
-    <!-- Contact Form Begin -->
-    <div class="contact-form spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact__form__title">
-                        <h2>Leave Message</h2>
-                    </div>
-                </div>
-            </div>
-            <form action="#">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your name">
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your Email">
-                    </div>
-                    <div class="col-lg-12 text-center">
-                        <textarea placeholder="Your message"></textarea>
-                        <button type="submit" class="site-btn">SEND MESSAGE</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- Contact Form End -->
-
-    <!-- Footer Section Begin -->
-    <footer class="footer spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                        </div>
-                        <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +91 9014434468</li>
-                            <li>Email: info@kisankarshakmitra.in</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-                    <div class="footer__widget">
-                        <h6>Useful Links</h6>
-                        <ul>
-                            <li><a href="../about.html">About Us</a></li>
-                            <li><a href="../services.html">Services</a></li>
-                            <li><a href="../memberships.html">Membership</a></li>
-                            <li><a href="../contact.html">Contact</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
-                        </ul>
-                       
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="footer__widget">
-                        <h6>Join Our Newsletter Now</h6>
-                        <p>Get E-mail updates about our latest shop and special offers.</p>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your mail">
-                            <button type="submit" class="site-btn">Subscribe</button>
-                        </form>
-                        <div class="footer__widget__social">
-                            <a href="https://www.facebook.com/Kisan-Karshak-Mitra-101919921948814"><i class="fa fa-facebook"></i></a>
-                            <a href="https://www.instagram.com/kisan_karshak_mitra/"><i class="fa fa-instagram"></i></a>
-                            <a href="https://twitter.com/KisankarshakM"><i class="fa fa-twitter"></i></a>
-                            <a href="https://www.linkedin.com/company/75733190/ "><i class="fa fa-pinterest"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved  Designed by Aarush Technologies
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Section End -->
-
-    <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-
-
-
-</body>
-
-</html>
