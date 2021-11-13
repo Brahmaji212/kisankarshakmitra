@@ -14,152 +14,27 @@
    <script src="../js/jquery-2.1.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 	
-	
+	<!-- css links for category scroll bar -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="navstyle.css" type="text/css">
+	<link href="css/global.css" rel="stylesheet">
+	<link href="css/index.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+	<link href="css/ken-burns.css" rel="stylesheet" type="text/css" media="all" />
 	 
 
   </head>
 <body>
-<section id="header_main">
- <div class="container">
-  <div class="row">
-   <div class="col-sm-18 space_all">
-	<div class="col-sm-5 space_all">
-	 <div class="header_main_1">
-	  <a href="index.php"><img src="../img/kkm-logo.png" style="height:100px;">KISAN KARSHAK MITRA</a>
-	 </div>
-	</div>
-	<div class="col-sm-7 space_all">
-	 <div class="header_main_2 clearfix">
-	  <div class="col-sm-4 space_all">
-	   <div class="header_main_3 clearfix">
-	    <div class="col-sm-2">
-			<div class="header_main_2">
-				
-			  </div>
-		</div>
-		<div class="col-sm-10">
-		 </div>
-	   </div>
-	  </div>
-	  <div class="col-sm-4 space_all">
-	   <div class="header_main_3 clearfix">
-	    <div class="col-sm-2">
-		 <div class="header_main_4">
-		 </div>
-		</div>
-		<div class="col-sm-10">
-		 <div class="header_main_5">
-		    <style>
-			.dropbtn {
-				background-color: #77b81e;
-				color: white;
-				padding: 16px;
-				font-size: 16px;
-				border: none;
-				cursor: pointer;
-			  }
-			  
-			  .dropdown {
-				position: relative;
-				display: inline-block;
-			  }
-			  
-			  .dropdown-content {
-				display: none;
-				position: absolute;
-				background-color: #f9f9f9;
-				min-width: 160px;
-				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-				z-index: 1;
-			  }
-			  
-			  .dropdown-content a {
-				color: black;
-				padding: 12px 16px;
-				text-decoration: none;
-				display: block;
-			  }
-			  
-			  .dropdown-content a:hover {background-color: #f1f1f1}
-			  
-			  .dropdown:hover .dropdown-content {
-				display: block;
-			  }
-			  
-			  .dropdown:hover .dropbtn {
-				background-color: #77b81e;
-			  }
-			  </style>
-			  
-			  <div class="dropdown">
-				<button class="button hvr-shutter-out-horizontal">Login</button>
-				<div class="dropdown-content">
-					<a href="backend/adminlogin.php">Super Admin</a>
-				<a href="backend/adminlogin.php">Admin</a>
-				<a href="backend/cselogin.php">Employee</a>
-				<a href="backend/franchiselogin.php">Franchise/Agent</a>
-				</div>
-			  </div>
-		 </div>
-		</div>
-	   </div>
-	  </div>
-	  <div class="col-sm-4 space_all">
-	   <div class="header_main_2 clearfix">
-	    <div class="col-sm-2">
-		 <div class="header_main_4">
-		  </div>
-		</div>
-	</div>
-	  </div>
-	 </div>	 
-	</div>
-   </div>
-  </div>
- </div>
-</section>
-<section id="header"  >
-	<div class="row">
-		
-		
-		<div class="col">
-			<nav class="navbar navbar-default" role="navigation">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse"
-							data-target="#dropdown-thumbnail-preview">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="">KISAN KARSHAK MITRA</a>
-					</div>
+<?php include 'Head.php'; ?>
 
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse" id="dropdown-thumbnail-preview">
-						<ul class="nav navbar-nav">
-							<li  ><a href="index.php">Store</a></li>
-                                <li  ><a href="k_about.html">About</a></li>
-                                <li  ><a href="k_services.html">Services</a></li>
-                                <li ><a href="k_memberships.html">Memberships</a></li>
-							<!-- <li><a href="blog.html">Blog</a></li> -->
-							
-							<!-- <li><a href="gallery.html">Gallery</a></li> -->
 
-							<ul class="nav navbar-nav ">
-								
-								<li class="active"><a href="k_contact.html">Contact</a></li>
-							</ul>
-
-						</ul>
-					</div><!-- /.navbar-collapse -->
-				</div><!-- /.container-fluid -->
-			</nav>
-		</div>
-	</div>
-</section>
 <section id="contact_main">
  <div class="contact_main_3 clearfix">
   <div class="container">
@@ -324,6 +199,15 @@ $(document).ready(function(){
 		});	
 });
 	</script>
+	  <!-- Js Plugins -->
+	  <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 

@@ -772,10 +772,10 @@ $prod_row = mysqli_fetch_assoc($prod_sql);
                         <div class="main_nav_menu ml-auto" style="padding: 0 0 0 337px;">
                             <ul class="standard_dropdown main_nav_dropdown">
                                 <li class="active" ><a href="index.php">Store<i class="fa fa-chevron-down"></i></a></li>
-                                <li  ><a href="k_about.html">About<i class="fa fa-chevron-down"></i></a></li>
-                                <li  ><a href="k_services.html">Services<i class="fa fa-chevron-down"></i></a></li>
-                                <li ><a href="k_memberships.html">Memberships<i class="fa fa-chevron-down"></i></a></li>
-                                <li ><a href="k_contact.html">Contact<i class="fa fa-chevron-down"></i></a></li>
+                                <li  ><a href="k_about.php">About<i class="fa fa-chevron-down"></i></a></li>
+                                <li  ><a href="k_services.php">Services<i class="fa fa-chevron-down"></i></a></li>
+                                <li ><a href="k_memberships.php">Memberships<i class="fa fa-chevron-down"></i></a></li>
+                                <li ><a href="k_contact.php">Contact<i class="fa fa-chevron-down"></i></a></li>
                             </ul>
                         </div>
 
