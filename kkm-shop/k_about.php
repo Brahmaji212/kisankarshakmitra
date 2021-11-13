@@ -23,7 +23,7 @@
     <script src="../js/bootstrap.min.js"></script>
 
 	<!-- css links for category scroll bar -->
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"> -->
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
