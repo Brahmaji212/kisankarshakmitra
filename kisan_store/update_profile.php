@@ -12,14 +12,14 @@ if (!isset($_SESSION['login_status'])) {
  {
     include 'backend/database.php';
 
-    $username=$_SESSION['loginame'];
+    $username=$_SESSION['loginname'];
     $first_name=$_POST['first_name'];
     $last_name=$_POST['last_name'];
     $middle_name=$_POST['middle_name'];
     $email=$_POST['email'];
     $alt_email=$_POST['alt_email'];
     $phone=$_POST['phone'];
-    $adderss1=$_POST['address1'];
+    $address1=$_POST['address1'];
     $address2=$_POST['address2'];
     $pin=$_POST['pin'];
     $area=$_POST['area'];

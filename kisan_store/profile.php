@@ -47,12 +47,12 @@ if (!isset($_SESSION['login_status'])) {
 
    
 <body class="profile_body">
-<form action="update_profile.php" method="POST" enctype="multipart/form-data" >
+<form action="update_profile.php" method="POST" enctype="multipart/form-data" autocomplete="off">
 <div class="container rounded bg-white mt-5 mb-5" >
 
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="cart_admin/img/avatar.png"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="cart_admin/img/avatar.png"><span class="font-weight-bold"><?php echo $row['first_name']." ".$row['last_name'] ?></span><span class="text-black-50"><?php echo $row['email'] ?></span><span> </span></div>
         </div>
        
         <div class="col-md-5 border-right">
@@ -64,24 +64,24 @@ if (!isset($_SESSION['login_status'])) {
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="labels">First Name</label><input type="text" name="first_name" class="form-control" placeholder="first name" value="<?php echo $row['first_name'] ?>"></div>
                     <div class="col-md-6"><label class="labels">Middle Name</label><input type="text" name="middle_name" class="form-control" value="<?php echo $row['middle_name'] ?>" placeholder="middle name"></div>
-                    <div class="col-md-6"><label class="labels">Last Name</label><input type="text" name="last_name" class="form-control" value="" placeholder="last name"></div>
+                    <div class="col-md-6"><label class="labels">Last Name</label><input type="text" name="last_name" class="form-control" value="<?php echo $row['last_name'] ?>" placeholder="last name"></div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone" class="form-control" placeholder="phone number" value="<?php echo $row['phone'] ?>"></div>
-                    <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" name="address1" class="form-control" placeholder="enter address line 1" value=""></div>
-                    <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" name="address2" class="form-control" placeholder="enter address line 2" value=""></div>
-                    <div class="col-md-12"><label class="labels">Postcode</label><input type="text" name="pin" class="form-control" placeholder="Enter postcode" value=""></div>
-                    <div class="col-md-12"><label class="labels">State</label><input type="text" name="state" class="form-control" placeholder="Enter state" value=""></div>
-                    <div class="col-md-12"><label class="labels">Area</label><input type="text" name="area" class="form-control" placeholder="Enter Area" value=""></div>
+                    <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" name="address1" class="form-control" placeholder="enter address line 1" value="<?php echo $row['address1'] ?>"></div>
+                    <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" name="address2" class="form-control" placeholder="enter address line 2" value="<?php echo $row['address2'] ?>"></div>
+                    <div class="col-md-12"><label class="labels">Postcode</label><input type="text" name="pin" class="form-control" placeholder="Enter postcode" value="<?php echo $row['pin'] ?>"></div>
+                    <div class="col-md-12"><label class="labels">State</label><input type="text" name="state" class="form-control" placeholder="Enter state" value="<?php echo $row['state'] ?>"></div>
+                    <div class="col-md-12"><label class="labels">Area</label><input type="text" name="area" class="form-control" placeholder="Enter Area" value="<?php echo $row['area'] ?>"></div>
                     <div class="col-md-12"><label class="labels">Email ID</label><input type="text" name="email" class="form-control" placeholder=" email id" value="<?php echo $row['email'] ?>"></div>
                     <div class="col-md-12"><label class="labels">Alternate Email ID</label><input type="text" name="alt_email" class="form-control" placeholder=" alternate email id" value="<?php echo $row['alt_email'] ?>"></div>
                     <div class="col-md-12"><label class="labels">Education</label><input type="text" name="" class="form-control" placeholder="education" value=""></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Country</label><input type="text" name="country" class="form-control" placeholder="country" value=""></div>
+                    <div class="col-md-6"><label class="labels">Country</label><input type="text" name="country" class="form-control" placeholder="country" value="<?php echo $row['country'] ?>"></div>
                     <div class="col-md-6"><label class="labels">Region</label><input type="text" name="region" class="form-control" value="" placeholder="state"></div>
                 </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" onClick="javascript: return confirm('Click on ok to save the profile');">Save Profile</button></div>
             </div>
         </div>
         <div class="col-md-4">
