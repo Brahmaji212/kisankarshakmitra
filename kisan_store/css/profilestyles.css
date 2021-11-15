@@ -118,7 +118,7 @@ body {
     background-color: transparent;
     border: transparent;
     text-align: center;
-    color:white;
+    color:rgb(245, 237, 237);
     font-weight: 600;
     font-size: 20px;
 }
@@ -127,7 +127,7 @@ body {
 .card.badge
 {
     padding-left: 0px;
-    background-color: grey;
+    background-color: rgb(109, 113, 116);
     align-self: center;
 }
 
@@ -136,7 +136,7 @@ body {
     color: rgb(29, 27, 27);
     padding-left: 350px;
 }
-.container.body .card a:hover
+.container.body .card a i:hover
 {
     color: rgb(245, 241, 241);
 }
@@ -151,13 +151,11 @@ body {
     margin-left: 20px;
     align-items: center;
     text-align: center;
-    color: rgb(223, 240, 230);
+    color: rgb(235, 241, 238);
 }
 
-.profile_image a i
+.profile_image a i:hover
 {
-    padding-top: 10px;
-    
-    
-    
+    /* padding-top: 10px; */
+    color: #f35c5c;
 }
