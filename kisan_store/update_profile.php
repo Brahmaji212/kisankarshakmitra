@@ -37,12 +37,12 @@ if (!isset($_SESSION['login_status'])) {
         //$_SESSION['product']=$proname;
         echo '<script>';
         echo 'alert("Updated Successfully");';
-        echo 'window.location.href= "index.php"; 
+        echo 'window.location.href= "profile.php?id=1"; 
               </script>';
       }else{
         echo '<script>';
         echo 'alert("Unable To Submit Details");';
-        echo 'window.location.href= "profile.php"; 
+        echo 'window.location.href= "profile.php?id=1"; 
               </script>';
       }
 

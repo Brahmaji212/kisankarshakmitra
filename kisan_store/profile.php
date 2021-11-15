@@ -45,14 +45,50 @@ if (!isset($_SESSION['login_status'])) {
 
 <?php include 'header.php'; ?>
 
+
    
 <body class="profile_body">
+    <?php if($_GET['id'] == 1) { ?>
+        <div class="container body">
+
+    <?php 
+    echo '<div class="profile_page">
+    <form action="profile.php" method="post" >
+    
+    
+    </form>
+    </div>' ;
+    ?>
+    <div class="card badge ">
+        <div class="row mt-1">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="cart_admin/img/avatar.png" ><i class='fa fa-camera'></i><span class="font-weight-bold"><?php echo $row['first_name']." ".$row['last_name'] ?></span><span class="text-black-50"><?php echo $row['email'] ?></span><span> </span></div>
+            
+            
+            
+            <div class="container data">
+                <input type="text" name="first_name" class="form-control" placeholder="first name" value="<?php echo $row['address1']." ".$row['address2']." ".$row['state'] ?>">
+                <input type="text" name="first_name" class="form-control" placeholder="first name" value="<?php echo $row['country'] ?>">
+                
+            </div>
+        </div>    
+        <a href="profile.php?id=2"><i class="fa fa-edit"></i></a>
+    </div>
+    </div>
+<?php } ?>
+
+
+
+<?php if($_GET['id'] == 2){ ?>
 <form action="update_profile.php" method="POST" enctype="multipart/form-data" autocomplete="off">
 <div class="container rounded bg-white mt-5 mb-5" >
-
+    
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="cart_admin/img/avatar.png"><span class="font-weight-bold"><?php echo $row['first_name']." ".$row['last_name'] ?></span><span class="text-black-50"><?php echo $row['email'] ?></span><span> </span></div>
+                    <div class="back">
+                        <a href="profile.php?id=1"><i class="fa fa-backward fa-2x"></i></a>
+                    </div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="cart_admin/img/avatar.png" ><i class='fa fa-camera'></i><span class="font-weight-bold"><?php echo $row['first_name']." ".$row['last_name'] ?></span><span class="text-black-50"><?php echo $row['email'] ?></span><span> </span></div>
+        
         </div>
        
         <div class="col-md-5 border-right">
@@ -96,6 +132,7 @@ if (!isset($_SESSION['login_status'])) {
 
 </div>
 </form>
+<?php } ?>
 </div>
 </div>
 

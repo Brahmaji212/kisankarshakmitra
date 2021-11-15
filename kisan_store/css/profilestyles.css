@@ -58,5 +58,73 @@ body {
 .profile_body
 {
     background-color:rgba(207, 207, 205, 0.568);
+}
+.back
+{
+    padding-top: 10px;
 }   
+.back a
+{
+    color: grey;
+    background-color: none;
+}
+.back a:hover
+{
+    
+    color: green;
+    
 
+}
+
+.profile_body .profile_page 
+{
+    
+    padding-top: 10px;
+    padding-left: 91%;
+}
+.profile_body .profile_page input
+{
+    border-radius: 5px;
+    background-color: whitesmoke;
+    color: grey;
+    font-weight: 600;
+    background-color: palegoldenrod;
+}
+.container.body
+{
+    /* background-color: grey; */
+    border: solid 5px rgb(122, 131, 122);
+    padding-right: 50px;
+    padding-left: 23%;
+    padding-bottom: 25px;
+    color: white;
+}
+
+.container.data
+{
+    padding-top: 10px;
+    padding-bottom: 100px;
+}
+.container.data input
+{
+    
+    background-color: transparent;
+    border: transparent;
+    text-align: center;
+    color:white;
+    font-weight: 600;
+}
+
+
+.card.badge
+{
+    padding-left: 0px;
+    background-color: grey;
+    align-self: center;
+}
+
+.container.body .card a
+{
+    color: white;
+    padding-left: 350px;
+}

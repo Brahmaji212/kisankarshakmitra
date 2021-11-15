@@ -40,7 +40,7 @@
                             <li class=""><a href="your_orders.php">Orders</a></li>
                             <li><a href="#">Profile</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="profile.php">View Profile</a></li>
+                                    <li><a href="profile.php?id=1">View Profile</a></li>
                                     <li><a href="./shoping-cart.php">Shoping Cart</a></li>
                                     <li><a href="./checkout.html">Check Out</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
