@@ -473,7 +473,7 @@ if(isset($_GET['minus']))
                                     <?php echo "₹".$row['total_price'] ?>
                                     </td>
                                     
-                                    <?php echo '<td class="shoping__cart__item__close"><a href="cart_admin/remove/remove_from_cart.php?id='.$row['id'].'" ><span class="fa icon_close animated faa-bounce" onClick=\'javascript: return confirm("Please confirm deletion");\'></span></a></td>';?>
+                                    <?php echo '<td class="shoping__cart__item__close"><a href="cart_admin/remove/remove_from_cart.php?id='.$row['id'].'" ><span class="fa icon_close animated faa-bounce" onClick=\"javascript: return confirm("Please confirm deletion");\"></span></a></td>';?>
                                         
                                     
                                 </tr>

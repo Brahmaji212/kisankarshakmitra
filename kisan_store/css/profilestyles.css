@@ -58,5 +58,104 @@ body {
 .profile_body
 {
     background-color:rgba(207, 207, 205, 0.568);
+}
+.back
+{
+    padding-top: 10px;
 }   
+.back a
+{
+    color: grey;
+    background-color: none;
+}
+.back a:hover
+{
+    
+    color: green;
+    
 
+}
+
+.profile_body .profile_page 
+{
+    
+    padding-top: 10px;
+    padding-left: 91%;
+}
+.profile_body .profile_page input
+{
+    border-radius: 5px;
+    background-color: whitesmoke;
+    color: grey;
+    font-weight: 600;
+    background-color: palegoldenrod;
+}
+.container.body
+{
+    background-color: rgb(187, 176, 176);
+    border: solid 5px rgb(127, 133, 127);
+    padding-right: 50%;
+    padding-left: 30%;
+    padding-bottom: 25px;
+    color: white;
+    /* background-image: url('../img/profile/background.png'); */
+    /* background-repeat: no-repeat; */
+    
+}
+
+.container.data
+{
+    padding-top: 0px;
+    padding-bottom: 10px;
+    
+
+    
+    
+}
+.container.data label
+{
+    
+    background-color: transparent;
+    border: transparent;
+    text-align: center;
+    color:rgb(245, 237, 237);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+
+.card.badge
+{
+    padding-left: 0px;
+    background-color: rgb(109, 113, 116);
+    align-self: center;
+}
+
+.container.body .card a
+{
+    color: rgb(29, 27, 27);
+    padding-left: 350px;
+}
+.container.body .card a i:hover
+{
+    color: rgb(245, 241, 241);
+}
+.about_profile
+{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+.about_profile label
+{
+    margin-right: 20px;
+    margin-left: 20px;
+    align-items: center;
+    text-align: center;
+    color: rgb(235, 241, 238);
+}
+
+.profile_image a i:hover
+{
+    /* padding-top: 10px; */
+    color: #f35c5c;
+}
