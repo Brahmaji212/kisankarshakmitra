@@ -68,15 +68,16 @@ if (!isset($_SESSION['login_status'])) {
                             echo "<i class='fa fa-user-circle fa-5x'></i> ";
 
                             } else {
+                                $_SESSION['image']=$row['profile_img'];
                                  echo "<img class='rounded-circle mt-5' width='150px' src='img/profile//".$row['profile_img']."' >";  
                             }
              ?>
-                <span class="font-weight-bold"><?php echo $row['first_name']." ".$row['last_name'] ?></span>
+               <br> <span class="font-weight-bold" style="font-weight: 600; font-size:17px;"><?php echo $row['first_name']." ".$row['last_name'] ?></span>
                 <span class="text-black-50"><?php  ?></span><span> </span>
             </div>
             <div class="about_profile"> 
             <div class="row-cols-md-6">
-                <label for="orders">Orders</label>
+                <label for="orders"> Orders</label>
                 <label for="wishlist">Wishlist</label>
                 <label for="cart">Cart</label>
             </div>
@@ -90,7 +91,8 @@ if (!isset($_SESSION['login_status'])) {
             
             
             <div class="container data">
-                <label for=""><?php echo $row['address1']." ".$row['address2'] ?></label><br>
+                <label for=""><?php echo $row['address1'] ?></label><br>
+                <label for=""><?php echo $row['address2'] ?></label><br>
                 <label for=""><?php echo $row['state']." ".$row['country'] ?></label><br>
                 <label for=""><?php echo $row['phone'] ?></label><br>
                 <label for=""><?php echo $row['email'] ?></label>
@@ -114,14 +116,15 @@ if (!isset($_SESSION['login_status'])) {
                     </div>
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <?php if($row['profile_img']==NULL){ 
-                        echo "<i class='fa fa-user-circle fa-5x'></i> ";
+                        echo "<i class='fa fa-user-circle fa-5x' style='color:rgb(74, 139, 238);'></i> ";
 
                     } else {
-                        echo "<img class='rounded-circle mt-5' width='150px' src='img/profile//".$row['profile_img']."' >";  
+                        echo "<img class='rounded-circle mt-5' width='150px' src='img/profile//".$row['profile_img']."' > 
+                        <span class='profile_image'><a href='remove_profile_img.php?id=".$row['user_id']."' style='color: grey;' onClick=\"javascript: return confirm('Please confirm deletion');\"> <i class='fa fa-trash'></i> </a></span>";  
                     } ?>
                 
                
-                <?php //echo "<img src='backend/images//".$row['profile_img']."' alt='Product image' class='img-fluid d-block mx-auto'>"; ?>
+                
                 <div class="custom-file mt-3 mb-3">
                   <input id="fileInput" name="fileInput" type="file" style="display:none;" />
                   <input
