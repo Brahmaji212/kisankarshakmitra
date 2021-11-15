@@ -82,9 +82,9 @@ if (!isset($_SESSION['login_status'])) {
                 <label for="cart">Cart</label>
             </div>
             <div class="row-cols-md-6">
-                <label for="order_details">20</label>
+                <label for="order_details">5</label>
                 <label for="wishlist_details">10</label>
-                <label for="cart_details">9</label>
+                <label for="cart_details">4</label>
             </div>
             </div>    
             
