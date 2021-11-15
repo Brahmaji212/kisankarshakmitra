@@ -92,8 +92,8 @@ body {
 }
 .container.body
 {
-    /* background-color: grey; */
-    /* border: solid 5px rgb(127, 133, 127); */
+    background-color: rgb(187, 176, 176);
+    border: solid 5px rgb(127, 133, 127);
     padding-right: 50%;
     padding-left: 30%;
     padding-bottom: 25px;

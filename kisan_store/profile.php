@@ -120,7 +120,7 @@ if (!isset($_SESSION['login_status'])) {
 
                     } else {
                         echo "<img class='rounded-circle mt-5' width='150px' src='img/profile//".$row['profile_img']."' > 
-                        <span class='profile_image'><a href='remove_profile_img.php?id=".$row['user_id']."' style='color: grey;' onClick=\"javascript: return confirm('Please confirm deletion');\"> <i class='fa fa-trash'></i> </a></span>";  
+                        <span class='profile_image'><a href='remove_profile_img.php?id=".$row['user_id']."'  onClick=\"javascript: return confirm('Please confirm deletion');\"> <i class='fa fa-trash fa-2x' style='color: grey; background:whitesmoke; border-radius:40px;'></i> </a></span>";  
                     } ?>
                 
                
