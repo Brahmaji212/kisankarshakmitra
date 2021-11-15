@@ -48,6 +48,7 @@ if (!isset($_SESSION['login_status'])) {
 
    
 <body class="profile_body">
+    <!-- profile view started  -->
     <?php if($_GET['id'] == 1) { ?>
         <div class="container body">
 
@@ -61,7 +62,19 @@ if (!isset($_SESSION['login_status'])) {
     ?>
     <div class="card badge ">
         <div class="row mt-1">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="cart_admin/img/avatar.png" ><span class="font-weight-bold"><?php echo $row['first_name']." ".$row['last_name'] ?></span><span class="text-black-50"><?php echo $row['email'] ?></span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <?php 
+                    if($row['profile_img']==NULL){ 
+                            echo "<i class='fa fa-user-circle fa-5x'></i> ";
+
+                            } else {
+                                 echo "<img class='rounded-circle mt-5' width='150px' src='img/profile//".$row['profile_img']."' >";  
+                            }
+             ?>
+                <span class="font-weight-bold"><?php echo $row['first_name']." ".$row['last_name'] ?></span>
+                <span class="text-black-50"><?php  ?></span><span> </span>
+            </div>
+            <div class="about_profile"> 
             <div class="row-cols-md-6">
                 <label for="orders">Orders</label>
                 <label for="wishlist">Wishlist</label>
@@ -72,24 +85,24 @@ if (!isset($_SESSION['login_status'])) {
                 <label for="wishlist_details">10</label>
                 <label for="cart_details">9</label>
             </div>
-                
+            </div>    
             
             
             
             <div class="container data">
-                <input type="text" name="first_name" class="form-control" placeholder="first name" value="<?php echo $row['address1'].", ".$row['address2'] ?>">
-                <input type="text" name="first_name" class="form-control" placeholder="first name" value="<?php echo $row['state'].", ".$row['country'] ?>">
-                <input type="text" name="first_name" class="form-control" placeholder="first name" value="<?php echo $row['phone'] ?>">
-                
+                <label for=""><?php echo $row['address1']." ".$row['address2'] ?></label><br>
+                <label for=""><?php echo $row['state']." ".$row['country'] ?></label><br>
+                <label for=""><?php echo $row['phone'] ?></label><br>
+                <label for=""><?php echo $row['email'] ?></label>
             </div>
         </div>    
-        <a href="profile.php?id=2"><i class="fa fa-edit"></i></a>
+        <a href="profile.php?id=2"><i class="fa fa-edit fa-2x"></i></a>
     </div>
     </div>
 <?php } ?>
+<!-- profile view ended -->
 
-
-
+<!-- profile edit  -->
 <?php if($_GET['id'] == 2){ ?>
 <form action="update_profile.php" method="POST" enctype="multipart/form-data" autocomplete="off">
 <div class="container rounded bg-white mt-5 mb-5" >
@@ -99,8 +112,29 @@ if (!isset($_SESSION['login_status'])) {
                     <div class="back">
                         <a href="profile.php?id=1"><i class="fa fa-backward fa-2x"></i></a>
                     </div>
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="cart_admin/img/avatar.png" ><i class='fa fa-camera'></i><span class="font-weight-bold"><?php echo $row['first_name']." ".$row['last_name'] ?></span><span class="text-black-50"><?php echo $row['email'] ?></span><span> </span></div>
-        
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <?php if($row['profile_img']==NULL){ 
+                        echo "<i class='fa fa-user-circle fa-5x'></i> ";
+
+                    } else {
+                        echo "<img class='rounded-circle mt-5' width='150px' src='img/profile//".$row['profile_img']."' >";  
+                    } ?>
+                
+               
+                <?php //echo "<img src='backend/images//".$row['profile_img']."' alt='Product image' class='img-fluid d-block mx-auto'>"; ?>
+                <div class="custom-file mt-3 mb-3">
+                  <input id="fileInput" name="fileInput" type="file" style="display:none;" />
+                  <input
+                    type="button"
+                    class="btn btn-primary btn-block "
+                    value="<?php echo 'Edit photo' ?>"
+                    onclick="document.getElementById('fileInput').click();"
+                  />
+                </div>
+                <span class="font-weight-bold"><?php echo $row['first_name']." ".$row['last_name'] ?></span>
+                <span class="text-black-50"><?php echo $row['email'] ?></span><span> </span>
+            </div>
+            
         </div>
        
         <div class="col-md-5 border-right">

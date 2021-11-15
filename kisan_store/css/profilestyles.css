@@ -104,8 +104,9 @@ body {
 {
     padding-top: 10px;
     padding-bottom: 100px;
+    
 }
-.container.data input
+.container.data label
 {
     
     background-color: transparent;
@@ -113,6 +114,7 @@ body {
     text-align: center;
     color:white;
     font-weight: 600;
+    font-size: 20px;
 }
 
 
@@ -125,6 +127,22 @@ body {
 
 .container.body .card a
 {
-    color: white;
+    color: rgb(29, 27, 27);
     padding-left: 350px;
+}
+.container.body .card a:hover
+{
+    color: rgb(245, 241, 241);
+}
+.about_profile
+{
+    font-size: 20px;
+}
+.about_profile label
+{
+    margin-right: 20px;
+    margin-left: 20px;
+    align-items: center;
+    text-align: center;
+    color: rgb(141, 219, 233);
 }
