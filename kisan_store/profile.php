@@ -61,13 +61,25 @@ if (!isset($_SESSION['login_status'])) {
     ?>
     <div class="card badge ">
         <div class="row mt-1">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="cart_admin/img/avatar.png" ><i class='fa fa-camera'></i><span class="font-weight-bold"><?php echo $row['first_name']." ".$row['last_name'] ?></span><span class="text-black-50"><?php echo $row['email'] ?></span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="cart_admin/img/avatar.png" ><span class="font-weight-bold"><?php echo $row['first_name']." ".$row['last_name'] ?></span><span class="text-black-50"><?php echo $row['email'] ?></span><span> </span></div>
+            <div class="row-cols-md-6">
+                <label for="orders">Orders</label>
+                <label for="wishlist">Wishlist</label>
+                <label for="cart">Cart</label>
+            </div>
+            <div class="row-cols-md-6">
+                <label for="order_details">20</label>
+                <label for="wishlist_details">10</label>
+                <label for="cart_details">9</label>
+            </div>
+                
             
             
             
             <div class="container data">
-                <input type="text" name="first_name" class="form-control" placeholder="first name" value="<?php echo $row['address1']." ".$row['address2']." ".$row['state'] ?>">
-                <input type="text" name="first_name" class="form-control" placeholder="first name" value="<?php echo $row['country'] ?>">
+                <input type="text" name="first_name" class="form-control" placeholder="first name" value="<?php echo $row['address1'].", ".$row['address2'] ?>">
+                <input type="text" name="first_name" class="form-control" placeholder="first name" value="<?php echo $row['state'].", ".$row['country'] ?>">
+                <input type="text" name="first_name" class="form-control" placeholder="first name" value="<?php echo $row['phone'] ?>">
                 
             </div>
         </div>    

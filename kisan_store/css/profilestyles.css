@@ -94,8 +94,8 @@ body {
 {
     /* background-color: grey; */
     border: solid 5px rgb(122, 131, 122);
-    padding-right: 50px;
-    padding-left: 23%;
+    padding-right: 50%;
+    padding-left: 30%;
     padding-bottom: 25px;
     color: white;
 }
