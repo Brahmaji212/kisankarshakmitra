@@ -90,7 +90,14 @@ $countemp = mysqli_num_rows($sql);
                     <td><?php echo $row['empname'] ?></td>
                     <td><?php echo $row['empmail'] ?></td>
                     <!-- <td>0</td> -->
-                    <?php  echo "<td><a href='../remove/removeemployee.php?id=".$row['empid']."'><i class='fa fa-trash-alt'></i></a></td>"; ?>
+                    <?php
+                    if($row1['adminemail'] == $username || $row2['admin2email'] == $username){ 
+                      echo "<td><a  href='../remove/removeemployee.php?id=".$row['empid']."'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('Please confirm deletion');\"></i></a></td>"; 
+                  } else {
+                  echo "<td><a href='#'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('You are not Autharized Super Admin');\"></i></a></td>"; 
+                  }
+                  ?>
+                    
                     <!-- <td>3</td>
                 <td><a href='viewagent.php?id=3&type=frnc' target='_blank'>aditya</a></td>
                 <td>aditya@gmail.com</td>

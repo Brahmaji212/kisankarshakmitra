@@ -92,7 +92,7 @@ $countadmin = mysqli_num_rows($sql);
                     <?php if ($row1['adminemail'] == $username) {
                     echo " <td><a href='../remove/removeadmin2.php?id=" . $row['admin2id'] . "'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('Please confirm deletion');\"></i></a></td>"; 
                    } else {
-                    echo "<td><a href='#'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('You are not Autharized Super Admin');\"></i></a></td>";
+                    echo "<td><a href='#'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('You are not Autharized Super Admin to DELETE');\"></i></a></td>";
                   }?>
                   </tr>
                 <?php } ?>

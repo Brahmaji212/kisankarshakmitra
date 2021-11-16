@@ -91,8 +91,13 @@ $countagents = mysqli_num_rows($sql);
                     <td><?php echo $row['agentname'] ?></td>
                     <td><?php echo $row['agentemail'] ?></td>
                     <!-- <td>0</td> -->
-                    
-                    <?php  echo "<td><a  href='../remove/removeagents.php?id=".$row['agentid']."'><i class='fa fa-trash-alt'></i></a></td>"; ?>
+                    <?php
+                    if($row1['adminemail'] == $username || $row2['admin2email'] == $username){ 
+                      echo "<td><a  href='../remove/removeagents.php?id=".$row['agentid']."'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('Please confirm deletion');\"></i></a></td>"; 
+                  } else {
+                  echo "<td><a href='#'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('You are not Autharized Super Admin to DELETE');\"></i></a></td>"; 
+                  }
+                  ?>
                   </tr> <?php
                       }
                         ?>

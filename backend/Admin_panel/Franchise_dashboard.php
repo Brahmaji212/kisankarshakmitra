@@ -89,7 +89,13 @@ $countfranchises = mysqli_num_rows($sql);
                     <td><?php echo $row['franname'] ?></td>
                     <td><?php echo $row['franemail'] ?></td>
                     <!-- <td>0</td> -->
-                    <?php  echo "<td><a href='../remove/removefranchise.php?id=".$row['franid']."'><i class='fa fa-trash-alt'></i></a></td>"; ?>
+                    <?php
+                    if($row1['adminemail'] == $username || $row2['admin2email'] == $username){ 
+                      echo "<td><a  href='../remove/removefranchise.php?id=".$row['franid']."'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('Please confirm deletion');\"></i></a></td>"; 
+                  } else {
+                  echo "<td><a href='#'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('You are not Autharized Super Admin');\"></i></a></td>"; 
+                  }
+                  ?>
                   </tr>
                 <?php
                 }

@@ -91,7 +91,14 @@ $countassociates = mysqli_num_rows($sql);
                     <td><?php echo $row['assoname'] ?></td>
                     <td><?php echo $row['assoemail'] ?></td>
                     <!-- <td>0</td> -->
-                    <?php  echo "<td><a href='../remove/removeassociates.php?id=".$row['assoid']."'><i class='fa fa-trash-alt'></i></a></td>"; ?>
+                    <?php
+                    if($row1['adminemail'] == $username || $row2['admin2email'] == $username){ 
+                      echo "<td><a  href='../remove/removeassociates.php?id=".$row['assoid']."'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('Please confirm deletion');\"></i></a></td>"; 
+                  } else {
+                  echo "<td><a href='#'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('You are not Autharized Super Admin to DELETE');\"></i></a></td>"; 
+                  }
+                  ?>
+                    
                   </tr>
                 <?php
                 }
