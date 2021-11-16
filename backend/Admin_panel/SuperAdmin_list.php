@@ -89,7 +89,7 @@ $countadmin = mysqli_num_rows($sql);
                     <td><?php echo $row['adminemail'] ?></td>
                     <!-- <td><a href="removedetails.php?id='.$row['adminid'].'">Remove</a></td> -->
                     <?php if (isset($_SESSION['loginname'])) {
-                      echo "<td><a href='../SuperAdmin/removeadmin.php?id=" . $row['adminid'] . "'><i class='fa fa-trash-alt'></i></a></td>";
+                      echo "<td><a href='../remove/removeadmin.php?id=" . $row['adminid'] . "'><i class='fa fa-trash-alt'></i></a></td>";
                     } else {
                       echo "<td><a href='#'><i class='fa fa-trash-alt'></i></a></td>";
                     } ?>

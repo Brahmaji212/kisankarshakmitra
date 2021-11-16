@@ -90,7 +90,7 @@ $countemp = mysqli_num_rows($sql);
                     <td><?php echo $row['empname'] ?></td>
                     <td><?php echo $row['empmail'] ?></td>
                     <!-- <td>0</td> -->
-                    <?php  echo "<td><a href='../SuperAdmin/removeemployee.php?id=".$row['empid']."'><i class='fa fa-trash-alt'></i></a></td>"; ?>
+                    <?php  echo "<td><a href='../remove/removeemployee.php?id=".$row['empid']."'><i class='fa fa-trash-alt'></i></a></td>"; ?>
                     <!-- <td>3</td>
                 <td><a href='viewagent.php?id=3&type=frnc' target='_blank'>aditya</a></td>
                 <td>aditya@gmail.com</td>

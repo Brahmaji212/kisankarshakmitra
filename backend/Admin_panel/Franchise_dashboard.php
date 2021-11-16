@@ -89,7 +89,7 @@ $countfranchises = mysqli_num_rows($sql);
                     <td><?php echo $row['franname'] ?></td>
                     <td><?php echo $row['franemail'] ?></td>
                     <!-- <td>0</td> -->
-                    <?php  echo "<td><a href='../SuperAdmin/removefranchise.php?id=".$row['franid']."'><i class='fa fa-trash-alt'></i></a></td>"; ?>
+                    <?php  echo "<td><a href='../remove/removefranchise.php?id=".$row['franid']."'><i class='fa fa-trash-alt'></i></a></td>"; ?>
                   </tr>
                 <?php
                 }

@@ -92,7 +92,7 @@ $countagents = mysqli_num_rows($sql);
                     <td><?php echo $row['agentemail'] ?></td>
                     <!-- <td>0</td> -->
                     
-                    <?php  echo "<td><a  href='../SuperAdmin/removeagents.php?id=".$row['agentid']."'><i class='fa fa-trash-alt'></i></a></td>"; ?>
+                    <?php  echo "<td><a  href='../remove/removeagents.php?id=".$row['agentid']."'><i class='fa fa-trash-alt'></i></a></td>"; ?>
                   </tr> <?php
                       }
                         ?>
