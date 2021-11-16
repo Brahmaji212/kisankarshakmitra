@@ -47,7 +47,7 @@
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Wishlist</a></li>
+                            <li><a href="wishlist.php">Wishlist</a></li>
                             <li><a href="shoping-cart.php">Shoping Cart</a></li>
                         </ul>
                     </nav>
