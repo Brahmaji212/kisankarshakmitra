@@ -60,69 +60,8 @@ $countagents = mysqli_num_rows($sql);
         </div><br>
 
         <div class="sidebar-menu">
-          <ul>
-            <li class="sidebar-dropdown">
-              <a href="../SuperAdmin/SuperAdmin_Dashboard.php">
-                <!-- <i class="far fa-meter"></i> -->
-                <i class="fas fa-chart-line fa-9x"></i>
-                <span>Dashboard</span>
-              </a>
-            </li>
 
-            <li class="sidebar-dropdown">
-              <a href="../SuperAdmin/SuperAdmin_Agent.php">
-                <i class="far fa-user"></i>
-                <span>Agents</span>
-
-              </a>
-
-            </li>
-            <li class="sidebar-dropdown">
-              <a href="../SuperAdmin/SuperAdmin_Franchise.php">
-                <i class="far fa-user"></i>
-                <span>Franchises</span>
-
-              </a>
-
-            </li>
-            <li class="sidebar-dropdown">
-              <a href="../SuperAdmin/SuperAdmin_employe.php">
-                <i class="far fa-user"></i>
-                <span>Employees</span>
-              </a>
-
-            </li>
-            <li class="sidebar-dropdown">
-              <a href="../SuperAdmin/SuperAdmin_Associate.php">
-                <i class="far fa-user"></i>
-                <span>Associates</span>
-              </a>
-            </li>
-            <li class="sidebar-dropdown">
-              <a href="../SuperAdmin/Admindashboard.php">
-                <i class="far fa-user"></i>
-                <span>Admins</span>
-              </a>
-            </li>
-            <!-- <li class="sidebar-dropdown">
-              <a href="../dashboard/approvalpending.php">
-                <i class="far fa-user"></i>
-                <span>Approval</span>
-              </a>
-            </li> -->
-            <li class="sidebar-dropdown">
-              <a href="../SuperAdmin/SuperAdmin_customerlist.php">
-                <i class="far fa-user"></i>
-                <span>Customers</span>
-              </a>
-            </li>
-            <li class="sidebar-dropdown">
-              <a href="../dashboardlogout.php">
-                <i class="far fa-user"></i>
-                <span>Logout</span>
-              </a>
-            </li>
-          </ul>
+        <?php include 'sidenav.php' ?>
 
     </nav>
     <!-- sidebar-wrapper  -->

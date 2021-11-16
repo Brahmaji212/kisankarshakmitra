@@ -19,7 +19,7 @@ if ($admincount > 0) {
                 $_SESSION['adminname'] = 1;
                 $_SESSION['login_status'] = 1;
                 $_SESSION['loginname'] = $username;
-                header('location: SuperAdmin/SuperAdmin_Dashboard.php');
+                header('location: Admin_panel/dashboard.php');
             } else {
                 echo "
             <script>
