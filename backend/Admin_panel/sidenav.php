@@ -4,8 +4,11 @@ include 'database.php';
 $username=$_SESSION['loginname'];
 
 $qurey1="select * from adminlist";
-$sql1=mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
+$sql1=mysqli_query($dbc, $qurey1) or die(mysqli_error($dbc));
 $row1=mysqli_fetch_assoc($sql1);
+$qurey2="select * from admin2list";
+$sql2=mysqli_query($dbc, $qurey2) or die(mysqli_error($dbc));
+$row2=mysqli_fetch_assoc($sql2);
 ?>
 
 <html>
@@ -49,6 +52,7 @@ $row1=mysqli_fetch_assoc($sql1);
                                     <span>Associates</span>
                                 </a>
                             </li>
+                            <?php if($row1['adminemail'] == $username){ ?>
                             <li class="sidebar-dropdown">
                                 <a href="#">
                                   <i class="far fa-user"></i>
@@ -68,6 +72,15 @@ $row1=mysqli_fetch_assoc($sql1);
                                   </ul>
                                 </div>
                               </li>
+                              <?php } else if($row2['admin2email'] == $username) { ?>
+                            <li class="sidebar-dropdown">
+                                <a href="../Admin_panel/Admindashboard.php">
+                                    <i class="far fa-user"></i>
+                                    <span>Admin</span>
+                                </a>
+                                
+                            </li>
+                          <?php } ?>
                             <!-- <li class="sidebar-dropdown">
                                 <a href="../dashboard/approvalpending.php">
                                     <i class="far fa-user"></i>
