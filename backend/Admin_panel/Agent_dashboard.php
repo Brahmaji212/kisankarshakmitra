@@ -102,7 +102,9 @@ $countagents = mysqli_num_rows($sql);
               } ?>
           <br>
           </br>
+          <?php if($row1['adminemail'] == $username || $row2['admin2email'] == $username){ ?>
           <button class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Agents</button>
+          <?php } ?>
           </div>
         </div>
 

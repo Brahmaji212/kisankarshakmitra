@@ -103,7 +103,9 @@ $countassociates = mysqli_num_rows($sql);
               <br>
               <br>
             <?php } ?>
+            <?php if($row1['adminemail'] == $username || $row2['admin2email'] == $username){ ?>
             <button class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add New Associate</button>
+              <?php } ?>
           </div>
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

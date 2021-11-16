@@ -99,9 +99,9 @@ $countfranchises = mysqli_num_rows($sql);
                 echo "<strong>No DATA FOUND</strong>";
               } ?>
 
-
+<?php if($row1['adminemail'] == $username || $row2['admin2email'] == $username){ ?>
           <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add New Franchises</button>
-
+<?php } ?>
 
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

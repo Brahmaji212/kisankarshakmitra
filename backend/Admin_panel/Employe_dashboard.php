@@ -100,8 +100,9 @@ $countemp = mysqli_num_rows($sql);
               <?php }
               } ?>
             </table><!-- Trigger the modal with a button -->
-
+            <?php if($row1['adminemail'] == $username || $row2['admin2email'] == $username){ ?>
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add New Employee</button>
+            <?php } ?>
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
