@@ -18,7 +18,7 @@ if ($admincount > 0) {
                 $_SESSION['admin2name'] = 1;
                 $_SESSION['login_status'] = 1;
                 $_SESSION['loginname'] = $username;
-                header('location: Admin/kkm.php');
+                header('location: Admin_panel/dashboard.php');
             } else {
                 echo "
             <script>

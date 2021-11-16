@@ -18,7 +18,7 @@ if ($csecount > 0) {
                     session_start();
                     $_SESSION['login_status'] = 1;
                     $_SESSION['loginname'] = $username;
-                    header('location: dashboard/kkm.php');
+                    header('location: Admin_panel/dashboard.php');
                 } else {
                     echo "
                 <script>

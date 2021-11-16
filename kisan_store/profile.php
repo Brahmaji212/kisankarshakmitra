@@ -45,6 +45,24 @@ if (!isset($_SESSION['login_status'])) {
 
 <?php include 'header.php'; ?>
 
+<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2 style="color: grey;">Profile</h2>
+                        <div class="breadcrumb__option">
+                        
+                            <a href="./index.php" style="color: grey;">Home</a>
+                            <span style="color:grey;">Profile</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
    
 <body class="profile_body">
@@ -65,7 +83,7 @@ if (!isset($_SESSION['login_status'])) {
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
             <?php 
                     if($row['profile_img']==NULL){ 
-                            echo "<i class='fa fa-user-circle fa-5x'></i> ";
+                            echo "<i class='fa fa-user-circle fa-5x '></i> ";
 
                             } else {
                                 $_SESSION['image']=$row['profile_img'];
@@ -91,11 +109,12 @@ if (!isset($_SESSION['login_status'])) {
             
             
             <div class="container data">
+            <label for=""><?php echo $row['phone'] ?></label><br>
+                <label for=""><?php echo $row['email'] ?></label><br>
                 <label for=""><?php echo $row['address1'] ?></label><br>
                 <label for=""><?php echo $row['address2'] ?></label><br>
-                <label for=""><?php echo $row['state']." ".$row['country'] ?></label><br>
-                <label for=""><?php echo $row['phone'] ?></label><br>
-                <label for=""><?php echo $row['email'] ?></label>
+                <label for=""><?php echo $row['state']." ".$row['country'] ?></label>
+                
             </div>
         </div>    
         <a href="profile.php?id=2"><i class="fa fa-edit fa-2x"></i></a>
