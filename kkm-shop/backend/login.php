@@ -19,7 +19,7 @@ if ($admincount > 0) {
                 $_SESSION['adminname'] = 1;
                 $_SESSION['login_status'] = 1;
                 $_SESSION['loginname'] = $username;
-                header('location: ../index.php');
+                header('location: ../../kisan_store/index.php');
             } else {
                 echo "
             <script>
