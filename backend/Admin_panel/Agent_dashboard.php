@@ -123,7 +123,7 @@ $countagents = mysqli_num_rows($sql);
                 </button>
               </div>
               <div class="modal-body">
-                <form action="../SuperAdmin/adds/addagent.php" method="POST" autocapitalize="characters">
+                <form action="../adds/addagent.php" method="POST" autocapitalize="characters">
                   <div class="form-group">
                     <input type="text" class="form-control" name="agentname" id="recipient-name" placeholder="Enter Agent  Agent Name">
                   </div>

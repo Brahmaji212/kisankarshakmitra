@@ -119,7 +119,7 @@ $countfranchises = mysqli_num_rows($sql);
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form method="POST" action="../SuperAdmin/adds/addfranchise.php">
+                  <form method="POST" action="../adds/addfranchise.php">
                     <div class="form-group">
 
                       <input type="text" class="form-control" name="franchisename" id="recipient-name" placeholder="Enter Franchize Owner Name">

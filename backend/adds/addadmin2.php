@@ -14,18 +14,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $_SESSION['adminin'] = $adminname;
       echo '<script>';
       echo 'alert("Submitted Successfully");';
-      echo 'window.location.href= "../dashboard/Admindashboard.php"; 
+      echo 'window.location.href= "../Admin_panel/Admindashboard.php"; 
           </script>';
     } else {
       echo '<script>';
       echo 'alert("Unable To Submit Details");';
-      echo 'window.location.href= "../dashboard/Admindashboard.php"; 
+      echo 'window.location.href= "../Admin_panel/Admindashboard.php"; 
           </script>';
     }
   } else {
     echo '<script>';
     echo 'alert("Confirm Password Do Not Match");';
-    echo 'window.location.href= "../dashboard/Admindashboard.php"; 
+    echo 'window.location.href= "../Admin_panel/Admindashboard.php"; 
           </script>';
   }
 }

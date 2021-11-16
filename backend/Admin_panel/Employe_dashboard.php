@@ -120,7 +120,7 @@ $countemp = mysqli_num_rows($sql);
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form action="../SuperAdmin/adds/addemplist.php" method="POST">
+                    <form action="..adds/addemplist.php" method="POST">
                       <div class="form-group">
 
                         <input type="text" class="form-control" name="empname" id="recipient-name" placeholder="Enter Employee Name" title=" Name should contain only characters" required>

@@ -125,7 +125,7 @@ $countassociates = mysqli_num_rows($sql);
                 </button>
               </div>
               <div class="modal-body">
-                <form action="../SuperAdmin/adds/addassociates.php" method="POST">
+                <form action="../adds/addassociates.php" method="POST">
                   <div class="form-group">
 
                     <input type="text" class="form-control" id="recipient-name" name="nameassociates" title="Please Enter 'Your' Name" required="" placeholder="Enter Associate Name" >

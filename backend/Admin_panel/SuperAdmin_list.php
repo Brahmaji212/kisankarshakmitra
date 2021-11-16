@@ -121,7 +121,7 @@ $countadmin = mysqli_num_rows($sql);
                   <div class="modal-body">
 
 
-                    <form method="post" action="../SuperAdmin/adds/addadmin.php" role="form">
+                    <form method="post" action="../adds/addadmin.php" role="form">
                       <div class="form-group">
                         <input class="form-control" type="text" name="adminname" placeholder="Admin name" title="Please Enter 'Your' Name" required="">
 
