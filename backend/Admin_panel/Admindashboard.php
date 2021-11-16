@@ -89,10 +89,10 @@ $countadmin = mysqli_num_rows($sql);
                     <td><?php echo $row['admin2name'] ?></td>
                     <td><?php echo $row['admin2email'] ?></td>
                     <!-- <td><a href="removedetails.php?id='.$row['adminid'].'">Remove</a></td> -->
-                    <?php if (isset($_SESSION['loginname'])== $row['admin2email'] || isset($_SESSION['loginname'])== $row['adminemail'] ) {
-                    echo " <td><a href='../remove/removeadmin2.php?id=" . $row['admin2id'] . "'><i class='fa fa-trash-alt'></i></a></td>"; 
+                    <?php if ($row1['adminemail'] == $username) {
+                    echo " <td><a href='../remove/removeadmin2.php?id=" . $row['admin2id'] . "'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('Please confirm deletion');\"></i></a></td>"; 
                    } else {
-                    echo "<td><a href='#'>Remove</a></td>";
+                    echo "<td><a href='#'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('You are not Autharized Super Admin');\"></i></a></td>";
                   }?>
                   </tr>
                 <?php } ?>
@@ -100,8 +100,7 @@ $countadmin = mysqli_num_rows($sql);
             <?php } else { ?>
               <strong>No Data Available!!!</strong> <br><br>
             <?php } ?>
-            <?php 
-            if (isset($_SESSION['loginname'])) {?>
+            <?php if($row1['adminemail'] == $username){ ?>
               <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add new
                 Admin</button>
                 
