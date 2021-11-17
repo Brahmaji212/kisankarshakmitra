@@ -79,6 +79,13 @@ $productcount=mysqli_num_rows($sql1);
                                                 {
                                                     color: green;
                                                 } */
+                                                
+                                                .rotated #bar:hover
+                                                {
+                                                    transform: rotate(180deg); /* Equal to rotateZ(45deg) */
+                                                    transition-duration: 0.5s;
+                                                }
+                                                
 											</style>
 
  
@@ -150,7 +157,7 @@ $productcount=mysqli_num_rows($sql1);
                                     <li class="sidebar-dropdown">
                                         
                                         <div class="dropdown">
-												<a class=""><i class="fa fa-bars" id="bar" ></i></a>  
+												<a class="rotated"><i class="fa fa-bars  " id="bar" ></i></a>  
 												<div class="dropdown-content">
 													<a href="index.php"><i class="fa fa-shopping-cart animated faa-horizontal" style="color: green;"> </i> &nbsp; Store</a>
 													<a href="shoping-cart.php">
