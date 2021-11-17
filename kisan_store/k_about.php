@@ -36,6 +36,7 @@
 	<link href="css/index.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
 	<link href="css/ken-burns.css" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="cart_admin/font-awesome-animation-1.1.1/package/css/font-awesome-animation.min.css">
 
 
   </head>
