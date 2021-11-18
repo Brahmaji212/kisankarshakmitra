@@ -5,7 +5,7 @@ if (!isset($_SESSION['login_status'])) {
     header('location: ../adminlogin.php');
 }
 
-$qry = "select * from agents where Approval='pending'";
+$qry = "select * from agents";
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 $countagents = mysqli_num_rows($sql);
 
@@ -81,7 +81,7 @@ $countagents = mysqli_num_rows($sql);
                   <th>Agent id</th>
                   <th>Agent Name</th>
                   <th>Username</th>
-                  <th>Approve</th>
+                  <th>Approval</th>
                   <!-- <th>Number Of Cards Sold</th> -->
                   <th>Remove</th>
 
@@ -92,7 +92,18 @@ $countagents = mysqli_num_rows($sql);
                     <td><?php echo $row['agentid'] ?></td>
                     <td><?php echo $row['agentname'] ?></td>
                     <td><?php echo $row['agentemail'] ?></td>
-                    <td><a href='approveagent.php?id=<?php echo $row['agentid'] ?>' class='btn btn-success' onClick="javascript: return confirm('Confirm Approval');">Approve</a></td>
+                    <?php if($row['Approval']== 'pending'){ ?>
+                    <td align="">
+                        <a href='approveagent.php?id=<?php echo $row['agentid'] ?>' class='btn btn-success'
+                         onClick="javascript: return confirm('Confirm Approval');">Approve</a>
+                    </td>
+                    <?php } 
+                    if($row['Approval']== 'Success'){ ?>
+                    <td>
+                        <a style="color:white; background-color:red;" href='disapprove.php?id=<?php echo $row['agentid'] ?>'
+                         class='btn btn-success ' onClick="javascript: return confirm('Confirm Dis Approval');">Dis Approve</a>
+                    </td>
+                     <?php } ?>
                     <!-- <td>0</td> -->
                     <?php
                     if($row1['adminemail'] == $username || $row2['admin2email'] == $username ){ 

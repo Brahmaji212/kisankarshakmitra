@@ -91,13 +91,17 @@ $countagents = mysqli_num_rows($sql);
                     <td><?php echo $row['agentid'] ?></td>
                     <td><?php echo $row['agentname'] ?></td>
                     <td><?php echo $row['agentemail'] ?></td>
-                    <?php if($row['Approval'] == 'Success'){ 
-                    echo " <td> <i class='fas fa-circle fa-10px' style='color:green;'></i> ".$row['Approval']." </td>";
+                    
+                    <td><?php if($row['Approval'] == 'Success'){ 
+                    echo "  <i class='fas fa-circle fa-10px' style='color:green;'></i>  ";
                     } ?>
                     <?php if($row['Approval'] == 'pending'){ 
-                    echo " <td  > <i class='fas fa-circle fa-10px' style='color:orange;'></i> ".$row['Approval']." </td>";
-                    } ?>
-                    <!-- <td>0</td> -->
+                    echo "  <i class='fas fa-circle fa-10px' style='color:orange;'></i>  ";
+                    } 
+                      
+                    ?>
+                    <?php echo $row['Approval']; ?> </td>
+                    
 
                     <?php
                     if($row1['adminemail'] == $username || $row2['admin2email'] == $username ){ 
@@ -143,7 +147,7 @@ $countagents = mysqli_num_rows($sql);
                   </div>
 
                   <div class="form-group">
-                    <input type="text" class="form-control" name="agentphone" id="recipient-name" placeholder="Enter Agent Mobile Number" pattern="[0-9]{12}" title="please enter 'your' Mobile number" required>
+                    <input type="text" class="form-control" name="agentphone" id="recipient-name" placeholder="Enter Agent Mobile Number" pattern="[0-9]{10}" title="please enter 'your' Mobile number" required>
                   </div>
                   <div class="form-group">
 

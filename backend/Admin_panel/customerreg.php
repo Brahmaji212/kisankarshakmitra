@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $info = pathinfo($image);
         $extension = $info['extension'];
         $tmp_name = $_FILES['image']['tmp_name'];
-        move_uploaded_file($tmp_name, "../dashboard/client-images/" . $image);
+        move_uploaded_file($tmp_name, "../Admin_panel/client-images/" . $image);
     }
     $blood_group = ($_POST['blood_group']);
     $date_of_birth = ($_POST['date_of_birth']);
@@ -72,7 +72,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     window.location.href= "SuperAdmin_customerreg.php";
               </script>';
     } else {
-        $sql = " INSERT INTO `customer_form` (`name_of_applicant`, `fathers_name`, `date_of_application`, `mailing_address`, `city`, `pin`, `mobile_1`, `whatsapp_number`, `email_address`, `photograph`, `blood_group`, `date_of_birth`, `place_of_birth`, `father_name`, `mother_name`, `married_status`, `pan_card_number`, `aadhar_number`,`cardmembership`, `paymentstatus`, `executives`) VALUES ('$name_of_applicant', '$fathers_name', '$date_of_application', '$mailing_address', '$city', '$pin', '$mobile_1', '$whatsapp_number','$email_address', '$image', '$blood_group', '$date_of_birth', '$place_of_birth', '$father_name', '$mother_name', '$married_status', '$pan_card_number', '$aadhar_number', '$cardmembership', '$paymentstatus', '$executives')";
+        $sql = " INSERT INTO `customer_form` (`name_of_applicant`, `fathers_name`, `date_of_application`, `mailing_address`, `city`,
+         `pin`, `mobile_1`, `whatsapp_number`, `email_address`, `photograph`, `blood_group`, `date_of_birth`, `place_of_birth`, 
+         `father_name`, `mother_name`, `married_status`, `pan_card_number`, `aadhar_number`,`cardmembership`, `paymentstatus`, 
+         `executives`) VALUES ('$name_of_applicant', '$fathers_name', '$date_of_application', '$mailing_address', '$city', 
+         '$pin', '$mobile_1', '$whatsapp_number','$email_address', '$image', '$blood_group', '$date_of_birth', '$place_of_birth',
+          '$father_name', '$mother_name', '$married_status', '$pan_card_number', '$aadhar_number', '$cardmembership', '$paymentstatus',
+           '$executives')";
 
         $result = mysqli_query($dbc, $sql) or die(mysqli_error($dbc));
         $flag = false;
@@ -82,14 +88,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($flag == true) {
             if ($result) {
                 $_SESSION['registered_in'] = $name_of_applicant;
-                echo '<script type="text/javascript">
+                $_SESSION['mobile']=$mobile_1;
+                
+
+            echo '<script type="text/javascript">
                     alert("Submitted Successfully!!!");
-                    window.location.href= "SuperAdmin_customerlist.php";
+                    window.location.href= "customerreg.php";
                     </script>';
             } else {
                 echo '<script type="text/javascript">';
                 echo 'alert("Something went wrong!!!")';
-                echo 'window.location.href= "SuperAdmin_customerreg.php"';
+                echo 'window.location.href= "customerreg.php"';
                 echo '</script>';
             }
         }
@@ -173,7 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             Application Details Carefully / Please Try to View in Desktop ***</marquee>
                         <div class="container">
 
-                            <form action="SuperAdmin_customerreg.php" method="POST" class="agile_form" enctype="multipart/form-data">
+                            <form action="customerreg.php" method="POST" class="agile_form" enctype="multipart/form-data">
                                 <div class="row" style="padding-top: 20px;">
                                     <div class="col-lg-4 col-md-4 col-sm-6">
                                         <label>Name Of
