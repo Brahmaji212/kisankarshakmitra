@@ -28,29 +28,27 @@ $productcount=mysqli_num_rows($sql1);
 
 ?>
     <style>
-												.dropbtn {
-													background-color: #77b81e;
-													color: white;
-													padding: 16px;
-													font-size: 16px;
-													border: none;
-													cursor: pointer;
-												}
+												
 
 												.dropdown {
 													position: relative;
 													display: inline-block;
                                                     
+                                                    
 												}
 
 												.dropdown-content {
 													display: none;
-													position: absolute;
+                                                    position: absolute;
 													background-color: #f9f9f9;
 													min-width: 160px;
 													box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 													z-index: 1;
+                                                   
+                                                    
+											
 												}
+                                               
 
 												.dropdown-content a {
 													color: black;
@@ -58,27 +56,38 @@ $productcount=mysqli_num_rows($sql1);
 													text-decoration: none;
 													display: block;
                                                     text-align: left;
+                                                    
+                                                   
+                                                    
+                                                    
 												}
 
 												.dropdown-content a:hover {
-													background-color: #f1f1f1
+													background-color: gray;
+                                                    transform: rotate(0deg);
+                                                    transform-style: preserve-3d;
+                                                    transition-duration: 1s;
+                                                    
 												}
 
 												.dropdown:hover .dropdown-content {
-													display: block;
+													
+                                                    display:block;
+                                                   
+                                                    animation-delay: 10s;
+                                                   
+                                                    
 												}
-
-												.dropdown:hover .dropbtn {
-													background-color: #77b81e;
-												}
-                                                /* .dropdown i 
+                                                .dropdown:hover .dropdown-content:hover
                                                 {
-                                                    color: red;
+                                                        
+                                                        transform: scaleX(1.05);
+                                                    transform-style: preserve-3d;
+                                                    transition-duration: 1s;
                                                 }
-                                                .dropdown i::after
-                                                {
-                                                    color: green;
-                                                } */
+
+												
+                                              
                                                 
                                                 .rotated #bar:hover
                                                 {
@@ -159,8 +168,8 @@ $productcount=mysqli_num_rows($sql1);
                                         <div class="dropdown">
 												<a class="rotated"><i class="fa fa-bars  " id="bar" ></i></a>  
 												<div class="dropdown-content">
-													<a href="index.php"><i class="fa fa-shopping-cart animated faa-horizontal" style="color: green;"> </i> &nbsp; Store</a>
-													<a href="shoping-cart.php">
+													<a href="index.php" class="conent1"><i class="fa fa-shopping-cart animated faa-horizontal" style="color: green;"> </i> &nbsp; Store</a>
+													<a href="shoping-cart.php" class="conent2">
                                                         <i class="fa fa-shopping-bag animated faa-horizontal" style="color: green;">
                                                         <?php if($productcount ==0){?>
                                     <!-- <span> <?php  //echo $cart_value; ?> </span> -->
@@ -170,10 +179,10 @@ $productcount=mysqli_num_rows($sql1);
                                                              </i> &nbsp; Shoping-cart 
                                                      </a>
                                                     </a> 
-                                                    <a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
-                                                    <a href="your_orders.php"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
-													<a href="profile.php"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
-													<a href="backend/logout.php"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>
+                                                    <a href="#" class="conent3"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
+                                                    <a href="your_orders.php" class="conent4"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
+													<a href="profile.php" class="conent5"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
+													<a href="backend/logout.php" class="conent6"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>
 												</div>
 											</div>
                                        

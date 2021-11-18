@@ -1,6 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['login_status'])) {
+    header('location: ../cselogin.php');
+  }
 include '../database.php';
+
 $confiramtion = 1;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name_of_applicant = ($_POST['name_of_applicant']);

@@ -34,7 +34,7 @@
 
 				<form class="login100-form " onSubmit="return checkPassword(this)" action="cselog.php" method="POST">
 					<span class="login100-form-title">
-						Employee Login
+						CSE Login
 					</span>
 
 					<div class="wrap-input100 ">
