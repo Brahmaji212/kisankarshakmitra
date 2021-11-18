@@ -51,7 +51,7 @@ $countadmin = mysqli_num_rows($sql);
         </div>
         <div class="sidebar-header">
           <div class="user-pic">
-            <img class="img-responsive img-rounded" src="../dashboard/images/kkm-logo.png" alt="User picture">
+            <img class="img-responsive img-rounded" src="images/kkm-logo.png" alt="User picture">
           </div>
 
         </div>

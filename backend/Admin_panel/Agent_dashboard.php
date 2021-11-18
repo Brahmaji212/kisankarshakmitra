@@ -51,7 +51,7 @@ $countagents = mysqli_num_rows($sql);
         </div>
         <div class="sidebar-header">
           <div class="user-pic">
-            <img class="img-responsive img-rounded" src="../dashboard/images/kkm-logo.png" alt="User picture">
+            <img class="img-responsive img-rounded" src="images/kkm-logo.png" alt="User picture">
           </div>
 
         </div>
@@ -92,7 +92,7 @@ $countagents = mysqli_num_rows($sql);
                     <td><?php echo $row['agentemail'] ?></td>
                     <!-- <td>0</td> -->
                     <?php
-                    if($row1['adminemail'] == $username || $row2['admin2email'] == $username){ 
+                    if($row1['adminemail'] == $username || $row2['admin2email'] == $username ){ 
                       echo "<td><a  href='../remove/removeagents.php?id=".$row['agentid']."'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('Please confirm deletion');\"></i></a></td>"; 
                   } else {
                   echo "<td><a href='#'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('You are not Autharized Super Admin to DELETE');\"></i></a></td>"; 
@@ -107,7 +107,7 @@ $countagents = mysqli_num_rows($sql);
               } ?>
           <br>
           </br>
-          <?php if($row1['adminemail'] == $username || $row2['admin2email'] == $username){ ?>
+          <?php if( $row1['adminemail'] == $username || $row2['admin2email'] == $username || $row3['regemail'] == $username ){ ?>
           <button class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Agents</button>
           <?php } ?>
           </div>

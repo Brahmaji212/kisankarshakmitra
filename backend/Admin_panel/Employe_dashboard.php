@@ -52,7 +52,7 @@ $countemp = mysqli_num_rows($sql);
         </div>
         <div class="sidebar-header">
           <div class="user-pic">
-            <img class="img-responsive img-rounded" src="../dashboard/images/kkm-logo.png" alt="User picture">
+            <img class="img-responsive img-rounded" src="images/kkm-logo.png" alt="User picture">
           </div>
 
         </div>
@@ -107,7 +107,7 @@ $countemp = mysqli_num_rows($sql);
               <?php }
               } ?>
             </table><!-- Trigger the modal with a button -->
-            <?php if($row1['adminemail'] == $username || $row2['admin2email'] == $username){ ?>
+            <?php if($row1['adminemail'] == $username || $row2['admin2email'] == $username || $row3['regemail'] == $username){ ?>
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add New Employee</button>
             <?php } ?>
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

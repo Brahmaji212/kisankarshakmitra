@@ -53,7 +53,7 @@ $countassociates = mysqli_num_rows($sql);
         </div>
         <div class="sidebar-header">
           <div class="user-pic">
-            <img class="img-responsive img-rounded" src="../dashboard/images/kkm-logo.png" alt="User picture">
+            <img class="img-responsive img-rounded" src="images/kkm-logo.png" alt="User picture">
           </div>
 
         </div>
@@ -110,7 +110,7 @@ $countassociates = mysqli_num_rows($sql);
               <br>
               <br>
             <?php } ?>
-            <?php if($row1['adminemail'] == $username || $row2['admin2email'] == $username){ ?>
+            <?php if($row1['adminemail'] == $username || $row2['admin2email'] == $username || $row3['regemail'] == $username){ ?>
             <button class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add New Associate</button>
               <?php } ?>
           </div>

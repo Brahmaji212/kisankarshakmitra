@@ -9,6 +9,9 @@ $row1=mysqli_fetch_assoc($sql1);
 $qurey2="select * from admin2list";
 $sql2=mysqli_query($dbc, $qurey2) or die(mysqli_error($dbc));
 $row2=mysqli_fetch_assoc($sql2);
+$qurey3="select * from registercse where regemail='$username'";
+$sql3=mysqli_query($dbc, $qurey3) or die(mysqli_error($dbc));
+$row3=mysqli_fetch_assoc($sql3);
 ?>
 
 <html>
