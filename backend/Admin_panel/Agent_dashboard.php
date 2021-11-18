@@ -91,8 +91,14 @@ $countagents = mysqli_num_rows($sql);
                     <td><?php echo $row['agentid'] ?></td>
                     <td><?php echo $row['agentname'] ?></td>
                     <td><?php echo $row['agentemail'] ?></td>
-                    <td style=""><?php echo $row['Approval'] ?></td>
+                    <?php if($row['Approval'] == 'Success'){ 
+                    echo " <td> <i class='fas fa-circle fa-10px' style='color:green;'></i> ".$row['Approval']." </td>";
+                    } ?>
+                    <?php if($row['Approval'] == 'pending'){ 
+                    echo " <td  > <i class='fas fa-circle fa-10px' style='color:orange;'></i> ".$row['Approval']." </td>";
+                    } ?>
                     <!-- <td>0</td> -->
+
                     <?php
                     if($row1['adminemail'] == $username || $row2['admin2email'] == $username ){ 
                       echo "<td><a  href='../remove/removeagents.php?id=".$row['agentid']."'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('Please confirm deletion');\"></i></a></td>"; 
