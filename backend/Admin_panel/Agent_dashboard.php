@@ -80,6 +80,7 @@ $countagents = mysqli_num_rows($sql);
                   <th>Agent id</th>
                   <th>Agent Name</th>
                   <th>Username</th>
+                  <th>Approval</th>
                   <!-- <th>Number Of Cards Sold</th> -->
                   <th>Remove</th>
 
@@ -90,6 +91,7 @@ $countagents = mysqli_num_rows($sql);
                     <td><?php echo $row['agentid'] ?></td>
                     <td><?php echo $row['agentname'] ?></td>
                     <td><?php echo $row['agentemail'] ?></td>
+                    <td style="color: red;"><?php echo $row['Approval'] ?></td>
                     <!-- <td>0</td> -->
                     <?php
                     if($row1['adminemail'] == $username || $row2['admin2email'] == $username ){ 

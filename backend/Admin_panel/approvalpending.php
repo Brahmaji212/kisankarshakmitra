@@ -1,8 +1,13 @@
 <?php
 session_start();
+include 'database.php';
 if (!isset($_SESSION['login_status'])) {
     header('location: ../adminlogin.php');
 }
+
+$qry = "select * from agents";
+$sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
+$countagents = mysqli_num_rows($sql);
 
 ?>
 
@@ -68,35 +73,41 @@ if (!isset($_SESSION['login_status'])) {
 
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <table class="table table-bordered col-md-8">
+                    <?php if ($countagents > 0) {?>
+            <table class="table table-bordered col-md-8">
 
-                            <thead>
-                                <tr>
-                                    <th>Agent ID</th>
-                                    <th>Name</th>
-                                    <th>email</th>
-                                    <th>mobile</th>
-                                    <th>district</th>
-                                    <th>Approve</th>
-                                </tr>
-                            </thead>
-                            <tr>
-                                <td>10</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><a href='approveagent.php?id=10' class='btn btn-success'>Approve</a></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><a href='approveagent.php?id=10' class='btn btn-success'>Approve</a></td>
-                            </tr>
-                        </table>
+              <thead>
+                <tr>
+                  <th>Agent id</th>
+                  <th>Agent Name</th>
+                  <th>Username</th>
+                  <th>Approve</th>
+                  <!-- <th>Number Of Cards Sold</th> -->
+                  <th>Remove</th>
+
+                </tr>
+              </thead>
+              <?php while ($row = mysqli_fetch_assoc($sql)) { ?>
+                  <tr>
+                    <td><?php echo $row['agentid'] ?></td>
+                    <td><?php echo $row['agentname'] ?></td>
+                    <td><?php echo $row['agentemail'] ?></td>
+                    <td><a href='approveagent.php?id=<?php echo $row['agentid'] ?>' class='btn btn-success'>Approve</a></td>
+                    <!-- <td>0</td> -->
+                    <?php
+                    if($row1['adminemail'] == $username || $row2['admin2email'] == $username ){ 
+                      echo "<td><a  href='../remove/removeagents.php?id=".$row['agentid']."'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('Please confirm deletion');\"></i></a></td>"; 
+                  } else {
+                  echo "<td><a href='#'><i class='fa fa-trash-alt' onClick=\"javascript: return confirm('You are not Autharized Super Admin to DELETE');\"></i></a></td>"; 
+                  }
+                  ?>
+                  </tr> <?php
+                      }
+                        ?>
+            </table><!-- Trigger the modal with a button -->
+          <?php } else {
+                echo "<strong>No Agents Found</strong>";
+              } ?> <br>
                         <h1>Assosciates</h1>No Approvals required<br><br>
                         <h1>Franchise</h1>No Approvals required<br><br>
                         <h1>Employee</h1>No Approvals required<br><br>

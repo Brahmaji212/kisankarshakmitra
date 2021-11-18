@@ -8,8 +8,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $agentdistrict = $_POST['agentdistrict'];
   $agentemail = $_POST['agentemail'];
   $agentaddress = $_POST['agentaddress'];
+  $approval="pending";
 
-  $query = "INSERT INTO `agents`( `agentname`, `agentaadhar`, `agentpan`, `agentphone`, `agentemail`, `agentdistrict`, `agentaddress`) VALUES ('$agentname', '$agentaadhar', '$agentpan', '$agentphone', '$agentemail','$agentdistrict','$agentaddress')";
+  $query = "INSERT INTO `agents`( `agentname`, `agentaadhar`, `agentpan`, `agentphone`, `agentemail`, `agentdistrict`, `agentaddress`,`Approval`) VALUES ('$agentname', '$agentaadhar', '$agentpan', '$agentphone', '$agentemail','$agentdistrict','$agentaddress','$approval')";
   $sql = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
   if($sql) {
     session_start();
