@@ -48,7 +48,7 @@ if (!isset($_SESSION['login_status'])) {
                 </div>
                 <div class="sidebar-header">
                     <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="../dashboard/images/kkm-logo.png" alt="User picture">
+                        <img class="img-responsive img-rounded" src="images/kkm-logo.png" alt="User picture">
                     </div>
 
                 </div>
@@ -57,80 +57,8 @@ if (!isset($_SESSION['login_status'])) {
                 </div><br>
 
                 <div class="sidebar-menu">
-                    <ul>
-                        <li class="sidebar-dropdown">
-                            <a href="../dashboard/kkm.php">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-
-                        <li class="sidebar-dropdown">
-                            <a href="../dashboard/Agentdashboard.php">
-                                <i class="far fa-user"></i>
-                                <span>Agents</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="../dashboard/franchizedashboard.php">
-                                <i class="far fa-user"></i>
-                                <span>Franchises</span>
-
-                            </a>
-
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="../dashboard/employlist.php">
-                                <i class="far fa-user"></i>
-                                <span>Employees</span>
-                            </a>
-
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="../dashboard/Associatedashboard.php">
-                                <i class="far fa-user"></i>
-                                <span>Associates</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="../dashboard/Admindashboard.php">
-                                <i class="far fa-user"></i>
-                                <span>Admins</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="../dashboard/approvalpending.php">
-                                <i class="far fa-user"></i>
-                                <span>Approval</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="far fa-user"></i>
-                                <span>Customers</span>
-
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="customerreg.php">Customer Registration
-
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="customardashboard.php">Customer List</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="../dashboardlogout.php">
-                                <i class="far fa-user"></i>
-                                <span>Logout</span>
-                            </a>
-                        </li>
-                    </ul>
+         
+                <?php include 'sidenav.php'; ?>
 
         </nav>
         <!-- sidebar-wrapper  -->

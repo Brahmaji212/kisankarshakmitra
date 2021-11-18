@@ -84,12 +84,14 @@ $row3=mysqli_fetch_assoc($sql3);
                                 
                             </li>
                           <?php } ?>
-                            <!-- <li class="sidebar-dropdown">
-                                <a href="../dashboard/approvalpending.php">
+                          <?php if($row1['adminemail'] == $username){ ?>
+                            <li class="sidebar-dropdown">
+                                <a href="../Admin_panel/approvalpending.php">
                                     <i class="far fa-user"></i>
                                     <span>Approval</span>
                                 </a>
-                            </li> -->
+                            </li>
+                            <?php } ?>
                             <li class="sidebar-dropdown">
                                 <a href="#"><i class="far fa-user"></i><span>Customers</span></a>
                                 <div class="sidebar-submenu">
