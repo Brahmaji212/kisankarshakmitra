@@ -5,7 +5,7 @@ if (!isset($_SESSION['login_status'])) {
     header('location: ../adminlogin.php');
 }
 
-$qry = "select * from agents";
+$qry = "select * from agents where Approval='pending'";
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 $countagents = mysqli_num_rows($sql);
 
@@ -92,7 +92,7 @@ $countagents = mysqli_num_rows($sql);
                     <td><?php echo $row['agentid'] ?></td>
                     <td><?php echo $row['agentname'] ?></td>
                     <td><?php echo $row['agentemail'] ?></td>
-                    <td><a href='approveagent.php?id=<?php echo $row['agentid'] ?>' class='btn btn-success'>Approve</a></td>
+                    <td><a href='approveagent.php?id=<?php echo $row['agentid'] ?>' class='btn btn-success' onClick="javascript: return confirm('Confirm Approval');">Approve</a></td>
                     <!-- <td>0</td> -->
                     <?php
                     if($row1['adminemail'] == $username || $row2['admin2email'] == $username ){ 
