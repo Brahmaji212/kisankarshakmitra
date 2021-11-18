@@ -32,7 +32,7 @@
 
 				<form action="franchiselog.php" method="POST" class="login100-form " onSubmit="return checkPassword(this)">
 					<span class="login100-form-title">
-						Franchise/ Agents/  Associates Login
+						Franchise Login
 					</span>
 
 					<div class="wrap-input100 " >
