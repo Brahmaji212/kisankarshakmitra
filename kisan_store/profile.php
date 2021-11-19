@@ -39,7 +39,7 @@ if (!isset($_SESSION['login_status'])) {
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="cart_admin/font-awesome-animation-1.1.1/package/css/font-awesome-animation.min.css">
     <link rel="stylesheet" href="css/orderstyles.css" type="text/css">
-  
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     </head>
 
