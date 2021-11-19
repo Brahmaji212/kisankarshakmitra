@@ -33,68 +33,66 @@ $productcount=mysqli_num_rows($sql1);
 												.dropdown {
 													position: relative;
 													display: inline-block;
-                                                    
-                                                    
+                                                   
 												}
-
 												.dropdown-content {
 													display: none;
                                                     position: absolute;
-													background-color: #f9f9f9;
+													/* background-color: #f9f9f9; */
 													min-width: 160px;
 													box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 													z-index: 1;
-                                                   
-                                                    
-											
+                                                    transform: scale3d(2);
 												}
-                                               
-
 												.dropdown-content a {
 													color: black;
 													padding: 12px 16px;
 													text-decoration: none;
 													display: block;
                                                     text-align: left;
-                                                    
-                                                   
-                                                    
-                                                    
+                                                    background-color: white;
 												}
 
 												.dropdown-content a:hover {
-													background-color: gray;
-                                                    transform: rotate(0deg);
-                                                    transform-style: preserve-3d;
-                                                    transition-duration: 1s;
-                                                    
+                                                    display:inherit;
+													background-color: #b5aeae;
+                                                    transition-duration: 0.5s;
+                                                    padding: 5px 5px 5px 5px; 
+                                                    border-bottom: solid 1px green; 
+                                                     
 												}
 
-												.dropdown:hover .dropdown-content {
+												.dropdown:hover .dropdown-content{
 													
                                                     display:block;
-                                                   
-                                                    animation-delay: 10s;
-                                                   
                                                     
+                                                   
+                                               
 												}
                                                 .dropdown:hover .dropdown-content:hover
                                                 {
                                                         
-                                                        transform: scaleX(1.05);
+                                                  
+                                                        
                                                     transform-style: preserve-3d;
-                                                    transition-duration: 1s;
+                                                    transition-duration: 0.5s;
+                                               
                                                 }
 
-												
-                                              
-                                                
-                                                .rotated #bar:hover
+												.rotated #bar
                                                 {
-                                                    transform: rotate(180deg); /* Equal to rotateZ(45deg) */
-                                                    transition-duration: 0.5s;
+                                                    color: green;
+                                                    
                                                 }
-                                                
+                                              
+                                                .rotated #bar:hover 
+                                                {
+                                                    /* transform: rotate(180deg); /* Equal to rotateZ(45deg) */
+                                                    /* transition-duration: 0.5s; */ 
+                                                    
+                                                    /* background-color: green; */
+                                                    color: darkgreen;
+                                                }
 											</style>
 
  

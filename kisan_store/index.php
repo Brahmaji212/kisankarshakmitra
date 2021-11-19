@@ -27,7 +27,7 @@ $productcount=mysqli_num_rows($sql1);
 
 ?>
 
-
+<!-- +17197388031 number for sending text message using twilio api -->
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -81,23 +81,29 @@ $productcount=mysqli_num_rows($sql1);
 
 												.dropdown-content {
 													display: none;
-													position: absolute;
-													background-color: #f9f9f9;
+                                                    position: absolute;
+													/* background-color: #f9f9f9; */
 													min-width: 160px;
 													box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 													z-index: 1;
+                                                    transform: scale3d(2);
 												}
 
 												.dropdown-content a {
-													color: black;
+                                                    color: black;
 													padding: 12px 16px;
 													text-decoration: none;
 													display: block;
                                                     text-align: left;
+                                                    background-color: white;
 												}
 
 												.dropdown-content a:hover {
-													background-color: #f1f1f1
+													
+                                                    background-color: #b5aeae;
+                                                    transition-duration: 0.5s;
+                                                    padding: 5px 5px 5px 5px; 
+                                                    border-bottom: solid 1px green; 
 												}
 
 												.dropdown:hover .dropdown-content {

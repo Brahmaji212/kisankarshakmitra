@@ -193,10 +193,14 @@ if(isset($_GET['minus']))
 													text-decoration: none;
 													display: block;
                                                     text-align: left;
+                                                    background-color: white;
 												}
 
 												.dropdown-content a:hover {
-													background-color: #f1f1f1
+                                                    background-color: #b5aeae;
+                                                    transition-duration: 0.5s;
+                                                    padding: 5px 5px 5px 5px; 
+                                                    border-bottom: solid 1px green; 
 												}
 
 												.dropdown:hover .dropdown-content {
