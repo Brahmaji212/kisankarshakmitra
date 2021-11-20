@@ -9,7 +9,7 @@ $row1=mysqli_fetch_assoc($sql1);
 $qurey2="select * from admin2list";
 $sql2=mysqli_query($dbc, $qurey2) or die(mysqli_error($dbc));
 $row2=mysqli_fetch_assoc($sql2);
-$qurey3="select * from registercse where regemail='$username'";
+$qurey3="select * from registercse";
 $sql3=mysqli_query($dbc, $qurey3) or die(mysqli_error($dbc));
 $row3=mysqli_fetch_assoc($sql3);
 ?>
@@ -55,7 +55,7 @@ $row3=mysqli_fetch_assoc($sql3);
                                     <span>Associates</span>
                                 </a>
                             </li>
-                            <?php if($row1['adminemail'] == $username){ ?>
+                            <?php if($row1['adminemail'] == $_SESSION['loginname']){ ?>
                             <li class="sidebar-dropdown">
                                 <a href="#">
                                   <i class="far fa-user"></i>
@@ -75,7 +75,7 @@ $row3=mysqli_fetch_assoc($sql3);
                                   </ul>
                                 </div>
                               </li>
-                              <?php } else if($row2['admin2email'] == $username) { ?>
+                              <?php } else if($row2['admin2email'] == $_SESSION['loginname']) { ?>
                             <li class="sidebar-dropdown">
                                 <a href="../Admin_panel/Admindashboard.php">
                                     <i class="far fa-user"></i>
@@ -84,7 +84,7 @@ $row3=mysqli_fetch_assoc($sql3);
                                 
                             </li>
                           <?php } ?>
-                          <?php if($row1['adminemail'] == $username){ ?>
+                          <?php if($row1['adminemail'] == $_SESSION['loginname']){ ?>
                             <li class="sidebar-dropdown">
                                 <a href="../Admin_panel/approvalpending.php">
                                     <i class="far fa-user"></i>
