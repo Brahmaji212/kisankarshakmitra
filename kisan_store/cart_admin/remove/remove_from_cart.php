@@ -7,7 +7,7 @@ $id = $_GET['id'];
 // $sql = mysqli_query($dbc, $removeqry) or die(mysqli_error($dbc));
 
 $username=$_SESSION['loginname'];
-$removeqry = "update customer_cart set `Delete`='1' where customer_email='$username' and id='$id'";
+$removeqry = "delete from customer_cart  where customer_email='$username' and id='$id'";
 $sql = mysqli_query($dbc, $removeqry) or die(mysqli_error($dbc));
 
 if ($sql) :
