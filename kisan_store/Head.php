@@ -43,6 +43,7 @@ $productcount=mysqli_num_rows($sql1);
 													box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 													z-index: 1;
                                                     transform: scale3d(2);
+                                                    
 												}
 												.dropdown-content a {
 													color: black;
