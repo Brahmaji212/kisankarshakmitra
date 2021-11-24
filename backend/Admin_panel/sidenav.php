@@ -3,19 +3,20 @@
 include 'database.php';
 $username=$_SESSION['loginname'];
 
-$qurey1="select * from adminlist";
+$qurey1="select * from adminlist ";
 $sql1=mysqli_query($dbc, $qurey1) or die(mysqli_error($dbc));
 $row1=mysqli_fetch_assoc($sql1);
-$qurey2="select * from admin2list";
+$qurey2="select * from admin2list where admin2email='$username'";
 $sql2=mysqli_query($dbc, $qurey2) or die(mysqli_error($dbc));
 $row2=mysqli_fetch_assoc($sql2);
-$qurey3="select * from registercse";
+$qurey3="select * from registercse" ;
 $sql3=mysqli_query($dbc, $qurey3) or die(mysqli_error($dbc));
 $row3=mysqli_fetch_assoc($sql3);
 ?>
 
 <html>
 <ul>
+    <?php if($username == true) { ?>
                             <li class="sidebar-dropdown">
                                 <a href="../Admin_panel/dashboard.php">
                                     <!-- <i class="far fa-meter"></i> -->
@@ -55,7 +56,7 @@ $row3=mysqli_fetch_assoc($sql3);
                                     <span>Associates</span>
                                 </a>
                             </li>
-                            <?php if($row1['adminemail'] == $_SESSION['loginname']){ ?>
+                            <?php if($row1['adminemail'] == $username ){ ?>
                             <li class="sidebar-dropdown">
                                 <a href="#">
                                   <i class="far fa-user"></i>
@@ -75,7 +76,7 @@ $row3=mysqli_fetch_assoc($sql3);
                                   </ul>
                                 </div>
                               </li>
-                              <?php } else if($row2['admin2email'] == $_SESSION['loginname']) { ?>
+                              <?php } else if($row2['admin2email'] == $username) { ?>
                             <li class="sidebar-dropdown">
                                 <a href="../Admin_panel/Admindashboard.php">
                                     <i class="far fa-user"></i>
@@ -112,4 +113,5 @@ $row3=mysqli_fetch_assoc($sql3);
                                 </a>
                             </li>
                         </ul>
+    <?php } ?>
 </html>

@@ -93,10 +93,10 @@ $countagents = mysqli_num_rows($sql);
                     <td><?php echo $row['agentemail'] ?></td>
                     
                     <td><?php if($row['Approval'] == 'Success'){ 
-                    echo "  <i class='fas fa-circle fa-10px' style='color:green;'></i>  ";
+                    echo "  <i class='fas fa-check-circle fa-10px' style='color:green;'></i>  ";
                     } ?>
                     <?php if($row['Approval'] == 'pending'){ 
-                    echo "  <i class='fas fa-circle fa-10px' style='color:orange;'></i>  ";
+                    echo "  <i class='fas fa-adjust fa-10px' style='color:orange; transform:rotate(180deg);'></i>  ";
                     } 
                       
                     ?>
@@ -119,7 +119,7 @@ $countagents = mysqli_num_rows($sql);
               } ?>
           <br>
           </br>
-          <?php if( $row1['adminemail'] == $username || $row2['admin2email'] == $username || $row3['regemail'] == $username ){ ?>
+          <?php if( $row1['adminemail'] == $username  || $row2['admin2email'] == $username || $row3['regemail'] == $username ){ ?>
           <button class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Agents</button>
           <?php } ?>
           </div>
