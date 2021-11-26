@@ -94,13 +94,11 @@ $countagents = mysqli_num_rows($sql);
                     
                     <td><?php if($row['Approval'] == 'Success'){ 
                     echo "  <i class='fas fa-check-circle fa-10px' style='color:green;'></i>  ";
-                    } ?>
-                    <?php if($row['Approval'] == 'pending'){ 
+                    } else if($row['Approval'] == 'pending'){ 
                     echo "  <i class='fas fa-adjust fa-10px' style='color:orange; transform:rotate(180deg);'></i>  ";
                     } 
                       
-                    ?>
-                    <?php echo $row['Approval']; ?> </td>
+                     echo $row['Approval']; ?> </td>
                     
 
                     <?php
@@ -168,7 +166,8 @@ $countagents = mysqli_num_rows($sql);
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn b
+                tn-secondary" data-dismiss="modal">Close</button>
 
               </div>
             </div>

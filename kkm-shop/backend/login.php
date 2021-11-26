@@ -24,7 +24,7 @@ if ($admincount > 0) {
                 echo "
             <script>
             alert('Invalid Credentails Try Again');
-            window.location.href = 'login.php';
+            window.location.href = 'login.html';
             </script>";
             }
         }
@@ -34,7 +34,7 @@ if ($admincount > 0) {
             <script>
             alert('Create An Account');
             window.location.href = 'Register.php';
-            window.location.href = 'login.php';
+            window.location.href = 'login.html';
             </script>";
 }
 $dbc->close();
