@@ -14,10 +14,17 @@ if (!isset($_SESSION['login_status'])) {
     $qry1= "select * from order_details where user_id='$username'";
     $sql1 = mysqli_query($dbc, $qry1) or die(mysqli_error($dbc));
     $order_count=mysqli_num_rows($sql1);
+    if($order_count <= 0)
+    {
+        $order_count=0;
+    }
     $qry2= "select * from customer_cart where customer_email='$username' and `Delete`='0'";
     $sql2 = mysqli_query($dbc, $qry2) or die(mysqli_error($dbc));
     $cart_total=mysqli_num_rows($sql2);
-    
+    if($cart_total <= 0)
+    {
+        $order_count=0;
+    }
    
 
 
