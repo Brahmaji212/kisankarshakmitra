@@ -1,5 +1,5 @@
 body {
-    background: rgb(201, 204, 201)
+    background: rgb(243, 247, 243)
     
 }
 
@@ -81,18 +81,19 @@ body {
     
     padding-top: 10px;
     padding-left: 91%;
+    
 }
 .profile_body .profile_page input
 {
     border-radius: 5px;
-    background-color: whitesmoke;
+    background-color: rgb(255, 255, 255);
     color: grey;
     font-weight: 600;
     background-color: palegoldenrod;
 }
 .container.body
 {
-    background-color: rgb(187, 176, 176);
+    background-color: rgb(255, 255, 255);
     border: solid 5px rgb(127, 133, 127);
     padding-right: 50%;
     padding-left: 30%;
@@ -127,18 +128,19 @@ body {
 .card.badge
 {
     padding-left: 0px;
-    background-color: rgb(109, 113, 116);
+    background-color: rgb(71, 72, 73);
     align-self: center;
 }
 
 .container.body .card a
 {
-    color: rgb(29, 27, 27);
+    color: rgb(250, 243, 243);
     padding-left: 350px;
 }
 .container.body .card a i:hover
 {
-    color: rgb(245, 241, 241);
+    color: rgb(183, 247, 206);
+    
 }
 .about_profile
 {

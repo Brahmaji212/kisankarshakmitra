@@ -11,6 +11,12 @@ if (!isset($_SESSION['login_status'])) {
     $qry = "select * from store_customer_registration where email='$username'";
     $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
     $row = mysqli_fetch_assoc($sql);
+    $qry1= "select * from order_details where user_id='$username'";
+    $sql1 = mysqli_query($dbc, $qry1) or die(mysqli_error($dbc));
+    $order_count=mysqli_num_rows($sql1);
+    $qry2= "select * from customer_cart where customer_email='$username' and `Delete`='0'";
+    $sql2 = mysqli_query($dbc, $qry2) or die(mysqli_error($dbc));
+    $cart_total=mysqli_num_rows($sql2);
     
    
 
@@ -100,9 +106,9 @@ if (!isset($_SESSION['login_status'])) {
                 <label for="cart">Cart</label>
             </div>
             <div class="row-cols-md-6">
-                <label for="order_details">5</label>
+                <label for="order_details"> <?php echo $order_count; ?> </label>
                 <label for="wishlist_details">10</label>
-                <label for="cart_details">4</label>
+                <label for="cart_details"><?php echo $cart_total; ?></label>
             </div>
             </div>    
             
