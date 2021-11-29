@@ -65,7 +65,7 @@ while($row=mysqli_fetch_assoc($sql)){
         $product_stock=$stock-1;
         $sold=$row2['unit_sold'];
         $sold=$sold+1;
-        $update = "update products set `product_stock`='$product_stock' where  `product_id`='$product_id'";
+        $update = "update products set `product_stock`='$product_stock' , `unit_sold`='$sold' where  `product_id`='$product_id'";
         $sqlupdate = mysqli_query($dbc, $update) or die(mysqli_error($dbc));
 
         echo  '<p style="text-align:center; padding-top:100px; background-color:biscuit; color:green;" >
