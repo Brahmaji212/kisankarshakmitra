@@ -72,6 +72,12 @@ if($productcount == 0){
     $cart_value=$productcount;
 }
 
+$qry2 = "select * from  wishlist where  `customer_email`='$username'";
+
+$sql2 = mysqli_query($dbc, $qry2) or die(mysqli_error($dbc));
+
+$wish_count=mysqli_num_rows($sql2);
+
 // for calculating cart total amount.
 $query = "SELECT * FROM customer_cart where customer_email='$username' and `Delete`='0'";
         $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
@@ -343,7 +349,13 @@ if(isset($_GET['minus']))
                                                              </i> &nbsp; Shoping-cart 
                                                      </a>
                                                     </a> 
-                                                    <a href="wishlist.php"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
+                                                    <a href="wishlist.php">
+                                                        <i class="fa fa-heart animated faa-horizontal" style="color: green;">
+                                                        <?php if($wish_count ==0){?>
+                                                            <?php } else if($wish_count > 0) { ?>
+                                                             <span> <?php $wish_value = $wish_count; echo $wish_value; ?> </span>
+                                                             <?php } ?>
+                                                    </i>&nbsp; &nbsp; Wish list  </a>
                                                     <a href="your_orders.php"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
 													<a href="profile.php?id=1"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
 													<a href="backend/logout.php"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>

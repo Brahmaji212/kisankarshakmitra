@@ -25,6 +25,12 @@ $sql1 = mysqli_query($dbc, $qry1) or die(mysqli_error($dbc));
 
 $productcount=mysqli_num_rows($sql1);
 
+$qry2 = "select * from  wishlist where  `customer_email`='$username'";
+
+$sql2 = mysqli_query($dbc, $qry2) or die(mysqli_error($dbc));
+
+$wish_count=mysqli_num_rows($sql2);
+
 
 ?>
     <style>
@@ -178,9 +184,15 @@ $productcount=mysqli_num_rows($sql1);
                                                              </i> &nbsp; Shoping-cart 
                                                      </a>
                                                     </a> 
-                                                    <a href="#" class="conent3"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
+                                                    <a href="wishlist.php" class="conent3">
+                                                        <i class="fa fa-heart animated faa-horizontal" style="color: green;">
+                                                        <?php if($wish_count ==0){?>
+                                                            <?php } else if($wish_count > 0) { ?>
+                                                             <span> <?php $wish_value = $wish_count; echo $wish_value; ?> </span>
+                                                             <?php } ?>
+                                                    </i>&nbsp; Wish list  </a>
                                                     <a href="your_orders.php" class="conent4"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
-													<a href="profile.php" class="conent5"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
+													<a href="profile.php?id=1" class="conent5"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
 													<a href="backend/logout.php" class="conent6"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>
 												</div>
 											</div>
