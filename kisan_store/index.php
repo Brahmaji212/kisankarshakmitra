@@ -24,6 +24,11 @@ $sql1 = mysqli_query($dbc, $qry1) or die(mysqli_error($dbc));
 
 $productcount=mysqli_num_rows($sql1);
 
+$qry2 = "select * from  wishlist where  `customer_email`='$username'";
+
+$sql2 = mysqli_query($dbc, $qry2) or die(mysqli_error($dbc));
+
+$wish_count=mysqli_num_rows($sql2);
 
 ?>
 
@@ -277,7 +282,14 @@ $productcount=mysqli_num_rows($sql1);
                                                              </i> &nbsp; Shoping-cart 
                                                      </a>
                                                     </a> 
-                                                    <a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
+                                                    <a href="wishlist.php">
+                                                        <i class="fa fa-heart animated faa-horizontal" style="color: green;">
+                                                        <?php if($wish_count ==0){?>
+                                                            <?php } else if($wish_count > 0) { ?>
+                                                             <span> <?php $wish_value = $wish_count; echo $wish_value; ?> </span>
+                                                             <?php } ?>
+                                                    
+                                                    </i>&nbsp; Wish list  </a>
                                                     <a href="your_orders.php"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
 													<a href="profile.php?id=1"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
 													<a href="backend/logout.php"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>
@@ -960,7 +972,7 @@ $productcount=mysqli_num_rows($sql1);
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
                          <ul class="featured__item__pic__hover">
-                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
                           <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
                        </ul>
@@ -987,7 +999,7 @@ $productcount=mysqli_num_rows($sql1);
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
                          <ul class="featured__item__pic__hover">
-                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
                           <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
                        </ul>
@@ -1013,7 +1025,7 @@ $productcount=mysqli_num_rows($sql1);
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
                          <ul class="featured__item__pic__hover">
-                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
                           <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
                        </ul>
@@ -1039,7 +1051,7 @@ $productcount=mysqli_num_rows($sql1);
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
                          <ul class="featured__item__pic__hover">
-                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
                           <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
                        </ul>
@@ -1065,7 +1077,7 @@ $productcount=mysqli_num_rows($sql1);
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
                          <ul class="featured__item__pic__hover">
-                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
                           <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
                        </ul>
@@ -1091,7 +1103,7 @@ $productcount=mysqli_num_rows($sql1);
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
                          <ul class="featured__item__pic__hover">
-                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
                           <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
                        </ul>
@@ -1117,7 +1129,7 @@ $productcount=mysqli_num_rows($sql1);
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
                          <ul class="featured__item__pic__hover">
-                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
                           <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
                        </ul>
@@ -1144,7 +1156,7 @@ $productcount=mysqli_num_rows($sql1);
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
                          <ul class="featured__item__pic__hover">
-                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
                           <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
                        </ul>
@@ -1170,7 +1182,7 @@ $productcount=mysqli_num_rows($sql1);
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
                          <ul class="featured__item__pic__hover">
-                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
                           <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
                        </ul>
@@ -1196,7 +1208,7 @@ $productcount=mysqli_num_rows($sql1);
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
                          <ul class="featured__item__pic__hover">
-                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
                           <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
                        </ul>

@@ -1,219 +1,3 @@
-<!--Section: Block Content-->
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Ogani Template">
-    <meta name="keywords" content="Ogani, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> <?php echo "Ksan Shoping-cart"; ?> </title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"> -->
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="cart_admin/font-awesome-animation-1.1.1/package/css/font-awesome-animation.min.css">
-    <link rel="stylesheet" href="css/orderstyles.css" type="text/css">
-  
-
-</head>
-<body>
-<section>
-
-  <!-- Grid row -->
-  <div class="row">
-
-    <!-- Grid column -->
-    <div class="col-md-4 mb-5">
-
-      <!-- Card -->
-      <div class="">
-
-        <div class="view zoom overlay z-depth-2 rounded">
-          <img class="img-fluid w-100"
-            src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg" alt="Sample">
-          <a href="#!">
-            <div class="mask">
-              <img class="img-fluid w-100"
-                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg">
-              <div class="mask rgba-black-slight"></div>
-            </div>
-          </a>
-        </div>
-
-        <div class="text-center pt-4">
-
-          <h5>Blue denim shirt</h5>
-          <p class="mb-2 text-muted text-uppercase small">Shirts</p>
-          <ul class="rating">
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-          </ul>
-          <hr>
-          <h6 class="mb-3">17.99 $</h6>
-          <button type="button" class="btn btn-primary btn-sm mr-1 mb-2"><i
-              class="fa fa-shopping-cart pr-2"></i>Add to cart</button>
-          <button type="button" class="btn btn-light btn-sm mr-1 mb-2"><i
-              class="fa fa-info-circle pr-2"></i>Details</button>
-          <button type="button" class="btn btn-elegant btn-sm px-3 mb-2 material-tooltip-main"
-            data-toggle="tooltip" data-placement="top" title="Remove from wishlist"><i
-              class="fa fa-times"></i></button>
-
-        </div>
-
-      </div>
-      <!-- Card -->
-
-    </div>
-    <!-- Grid column -->
-
-    <!-- Grid column -->
-    <div class="col-md-4 mb-5">
-
-      <!-- Card -->
-      <div class="">
-
-        <div class="view zoom overlay z-depth-2 rounded">
-          <img class="img-fluid w-100"
-            src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg" alt="Sample">
-          <a href="#!">
-            <div class="mask">
-              <img class="img-fluid w-100"
-                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg">
-              <div class="mask rgba-black-slight"></div>
-            </div>
-          </a>
-        </div>
-
-        <div class="text-center pt-4">
-
-          <h5>Red hoodie</h5>
-          <p class="mb-2 text-muted text-uppercase small">Hoodies</p>
-          <ul class="rating">
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="far fa-star fa-sm text-primary"></i>
-            </li>
-          </ul>
-          <hr>
-          <h6 class="mb-3">35.99 $</h6>
-          <button type="button" class="btn btn-primary btn-sm mr-1 mb-2"><i
-              class="fa fa-shopping-cart pr-2"></i>Add to cart</button>
-          <button type="button" class="btn btn-light btn-sm mr-1 mb-2"><i
-              class="fa fa-info-circle pr-2"></i>Details</button>
-          <button type="button" class="btn btn-elegant btn-sm px-3 mb-2 material-tooltip-main"
-            data-toggle="tooltip" data-placement="top" title="Remove from wishlist"><i
-              class="fa fa-times"></i></button>
-
-        </div>
-
-      </div>
-      <!-- Card -->
-
-    </div>
-    <!-- Grid column -->
-
-    <!-- Grid column -->
-    <div class="col-md-4 mb-5">
-
-      <!-- Card -->
-      <div class="">
-
-        <div class="view zoom overlay z-depth-2 rounded">
-          <img class="img-fluid w-100"
-            src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14a.jpg" alt="Sample">
-          <h4 class="mb-0"><span class="badge badge-primary badge-pill badge-news">Sale</span></h4>
-          <a href="#!">
-            <div class="mask">
-              <img class="img-fluid w-100"
-                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg">
-              <div class="mask rgba-black-slight"></div>
-            </div>
-          </a>
-        </div>
-
-        <div class="text-center pt-4">
-
-          <h5>Grey sweater</h5>
-          <p class="mb-2 text-muted text-uppercase small">Sweaters</p>
-          <ul class="rating">
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-            <li>
-              <i class="fa fa-star fa-sm text-primary"></i>
-            </li>
-          </ul>
-          <hr>
-          <h6 class="mb-3">
-            <span class="text-danger mr-1">$21.99</span>
-            <span class="text-grey"><s>$36.99</s></span>
-          </h6>
-          <button type="button" class="btn btn-primary btn-sm mr-1 mb-2"><i
-              class="fa fa-shopping-cart pr-2"></i>Add to cart</button>
-          <button type="button" class="btn btn-light btn-sm mr-1 mb-2"><i
-              class="fa fa-info-circle pr-2"></i>Details</button>
-          <button type="button" class="btn btn-elegant btn-sm px-3 mb-2 material-tooltip-main"
-            data-toggle="tooltip" data-placement="top" title="Remove from wishlist"><i
-              class="fa fa-times"></i></button>
-
-        </div>
-
-      </div>
-      <!-- Card -->
-
-    </div>
-    <!-- Grid column -->
-
-  </div>
-  <!-- Grid row -->
-
-</section>
-<!--Section: Block Content-->
-</body>
-</html>
-
 
 <?php
 error_reporting(0);
@@ -235,33 +19,30 @@ $psql=mysqli_query($dbc,$pqury) or die(mysqli_error($dbc));
 $prow=mysqli_fetch_assoc($psql);
 
 $product_name=$prow['product_name'];
-$product_des=$prow['product_description'];
 $product_cat=$prow['product_category'];
-$product_exp=$prow['product_exp_date'];
 $product_stock=$prow['product_stock'];
 $product_img=$prow['product_img'];
 $product_price=$prow['product_price'];
-$total_price=$prow['product_price']*1;
 $quantity=1;
 if($_GET['product_id']==true){
-$checkqry = "select * from customer_cart where  customer_email='$username'";
+$checkqry = "select * from wishlist where  customer_email='$username'";
   $checksql = mysqli_query($dbc, $checkqry) or die(mysqli_error($dbc));
   if (mysqli_num_rows($checksql) > 0) {
       
-    $checkqry1 = "select * from customer_cart where  customer_email='$username' and product_id='$product_id' and `Delete`='0'";
+    $checkqry1 = "select * from wishlist where  customer_email='$username' and product_id='$product_id' ";
     $checksql1 = mysqli_query($dbc, $checkqry1) or die(mysqli_error($dbc));
       if(mysqli_num_rows($checksql1) > 0){
     echo '<script>';
-    echo 'alert("This item already in cart");';
+    echo 'alert("This product already added");';
    
-    echo 'window.location.href= "shoping-cart.php"; 
+    echo 'window.location.href= "wishlist.php"; 
     </script>';
   } 
  
   
   else { 
 
-$insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`,`Delete`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price','false')";
+$insert="INSERT INTO `wishlist` (`product_id`,`customer_email`, `product_name`, `product_stock`, `product_img`, `product_price`)values('$product_id','$username','$product_name','$product_stock','$product_img','$product_price')";
 $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
 
   }
@@ -269,85 +50,27 @@ $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
 else if($product_id == true){ 
   
    
-        $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`,`Delete`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price','false')";
+        $insert="INSERT INTO `wishlist` (`product_id`,`customer_email`, `product_name`, `product_stock`, `product_img`, `product_price`)values('$product_id','$username','$product_name','$product_stock','$product_img','$product_price')";
         $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
-        $qry = "select * from  customer_cart where customer_email='$username'";
+        $qry = "select * from  wishlist where customer_email='$username'";
         $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
-        $productcount=mysqli_num_rows($sql);
+        $wishllist_count=mysqli_num_rows($sql);
                             }
 }
-$qry = "select * from  customer_cart where  `customer_email`='$username' and `Delete`='0'";
+$qry = "select * from  wishlist where  `customer_email`='$username' ";
 
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 
-$productcount=mysqli_num_rows($sql);
+$wishllist_count=mysqli_num_rows($sql);
 
-if($productcount == 0){
-    $cart_value=$productcount;
-}else if($productcount >0)
+if($wishllist_count == 0){
+    $wish_value=$wishllist_count;
+}else if($wishllist_count >0)
 {
-    $cart_value=$productcount;
+    $wish_value=$wishllist_count;
 }
 
-// for calculating cart total amount.
-$query = "SELECT * FROM customer_cart where customer_email='$username' and `Delete`='0'";
-        $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
-        
-        while($num=mysqli_fetch_assoc($query_run))
-        {
-            $cart_total +=$num['total_price'];
-            $qr="update customer_cart set `cart_total`='$cart_total' where customer_email='$username'";
-            $qr_run = mysqli_query($dbc,$qr) or die(mysqli_error($dbc));
 
-        }
-
-
-// increasing product price quantity.  
-
-if(isset($_GET['plus']))
-{   
-    $ID=$_GET['idno'];
-    $query = "SELECT * FROM customer_cart where id='$ID'";
-    $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
-    $num=mysqli_fetch_assoc($query_run);
-   
-    $qua=$_GET['input'];
-    
-    $qua=$qua+1;
-    $total= $num['product_price']*$qua;
-    $qr="update `customer_cart` set `quantity`='$qua' , `total_price`='$total' where `customer_cart`.`id`='$ID'";
-    $qr_run=mysqli_query($dbc,$qr);
-    $page = $_SERVER['PHP_SELF'];
-    $sec = "0";
-    header("Refresh: $sec; url=$page");
-    
-}
-if(isset($_GET['minus']))
-{   
-    $ID=$_GET['idno'];
-    $query = "SELECT * FROM customer_cart where id='$ID'";
-    $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
-    $num=mysqli_fetch_assoc($query_run);
-
-    $qua=$_GET['input'];
-    $qua=$qua-1;
-    $total= $num['product_price']*$qua;
-    $qr="update `customer_cart` set `quantity`='$qua', `total_price`='$total' where `customer_cart`.`id`='$ID'";
-    $qr_run=mysqli_query($dbc,$qr);
-    $page = $_SERVER['PHP_SELF'];
-    $sec = "0";
-    header("Refresh: $sec; url=$page");
-    if($qua==0)
-    {
-        $qua=1;
-        $total= $num['product_price']*$qua;
-        $qr="update `customer_cart` set `quantity`='$qua', `total_price`='$total' where `customer_cart`.`id`='$ID'";
-        $qr_run=mysqli_query($dbc,$qr);
-        $page = $_SERVER['PHP_SELF'];
-        $sec = "0";
-        header("Refresh: $sec; url=$page");
-    }
-}
 
 
 ?> 
@@ -361,7 +84,7 @@ if(isset($_GET['minus']))
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> <?php echo "Ksan Shoping-cart"; ?> </title>
+    <title> <?php echo "Ksan Wishlist"; ?> </title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -376,6 +99,7 @@ if(isset($_GET['minus']))
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="cart_admin/font-awesome-animation-1.1.1/package/css/font-awesome-animation.min.css">
+    <link rel="stylesheet" href="css/orderstyles.css" type="text/css">
 
 
     <style>
@@ -427,6 +151,26 @@ if(isset($_GET['minus']))
 												.dropdown:hover .dropbtn {
 													background-color: #77b81e;
 												}
+                                                .shoping__cart__table table tbody tr td.shoping__cart__item__close span {
+	                                                font-size: 22px;
+                                                    font-weight: 700;
+	                                                color: gray;
+	                                                cursor: pointer;
+                                                }
+                                                .shoping__cart__table table tbody tr td.shoping__cart__total a{
+                                                	font-size: 13px;
+                                                	color: white;
+	                                                
+                                                	
+                                                    
+                                                    }
+                                                    .shoping__cart__table table tbody tr td.shoping__cart__total i{
+                                                	font-size: 13px;
+                                                	color: white;
+	                                                
+                                                	
+                                                    
+                                                    }    
 											</style>   
 
 </head>
@@ -489,150 +233,9 @@ if(isset($_GET['minus']))
     <!-- Humberger End -->
 
     <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="header__top__left">
-                            <ul>
-                                <li><i class="fa fa-envelope"></i> info@kisankarshakmitra.in</li>
-                                <li>Free Shipping for all Order of ₹99</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="header__top__right">
-                            <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div>
-                           
-                           
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.php"><img src="img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li><a href="./index.php">Home</a></li>
-                            <li class="active"><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.php">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="../k_contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul>
-                        <li class="sidebar-dropdown">
-                                        
-                                        <div class="dropdown">
-												<a class=""><i class="fa fa-bars"></i></a>  
-												<div class="dropdown-content">
-													<a href="index.php"><i class="fa fa-shopping-cart animated faa-horizontal" style="color: green;"> </i> &nbsp; Store</a>
-													<a href="shoping-cart.php">
-                                                        <i class="fa fa-shopping-bag animated faa-horizontal" style="color: green;">
-                                                        <?php if($productcount ==0){?>
-                                    <!-- <span> <?php  //echo $cart_value; ?> </span> -->
-                                                            <?php } else if($productcount > 0) { ?>
-                                                             <span> <?php $cart_value = $productcount; echo $cart_value; ?> </span>
-                                                             <?php } ?>
-                                                             </i> &nbsp; Shoping-cart 
-                                                     </a>
-                                                    </a> 
-                                                    <a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
-                                                    <a href="your_orders.php"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
-													<a href="#"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
-													<a href="backend/logout.php"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>
-												</div>
-											</div>
-                                       
-                                        
-                                    </li>
-                        </ul>
-                        <!-- <div class="header__cart__price">item: <span>₹150.00</span></div> -->
-                    </div>
-                </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
+    <?php include 'header.php'; ?>
     <!-- Header Section End -->
 
-    <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+91 9014434468</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
@@ -640,10 +243,10 @@ if(isset($_GET['minus']))
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Shopping Cart</h2>
+                        <h2>Wishlist</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.php">Home</a>
-                            <span>Shopping Cart</span>
+                            <span>Wishlist</span>
                         </div>
                     </div>
                 </div>
@@ -659,14 +262,14 @@ if(isset($_GET['minus']))
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
                         <table>
-                        <?php if ($productcount > 0) { ?>
+                        <?php if ($wishllist_count > 0) { ?>
 
                             <thead >
                                 <tr>
-                                    <th class="">Products</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
+                                    <th class="">Product Name</th>
+                                    <th> Unit Price</th>
+                                    <th>Stock Status</th>
+                                    <th>Add to cart</th>
                                     <th> Remove</th>
                                 </tr>
                             </thead>
@@ -682,19 +285,23 @@ if(isset($_GET['minus']))
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
-                                        <form method=" GET" action="">
-						                    <input type="submit" class="minus" name="minus" id="minus" value="<?php echo '-'; ?>">				
-						                    <input type="text" size="4" title="Qty" class="input" value="<?php   echo $row['quantity'];  ?>" name="input" id="input" max="29" min="0" step="1" style="text-align: center;">
-                                            <input type='hidden' class='idno' name='idno' id='idno' value='<?php echo $row['id']; ?>'   > 
-                                             <input type='submit' class='plus' name='plus' id='plus' value='+'  > 
-                                        </form>
+                                       <label for=""></label>
+						                    <label for="status"> 
+                                            <?php if($row['product_stock'] > 0) {   
+                                            echo '<label style="color:green;">In Stock</label>'; }
+                                            else if($row['product_stock'] == 0){
+                                                echo '<label style="color:red;">Out of Stock</label>';
+                                            } ?></label>
+                                        
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                    <?php echo "₹".$row['total_price'] ?>
+                                    <button type="button" class="btn btn-primary btn-sm mr-1 mb-2"><i class="fa fa-shopping-cart pr-2"></i> 
+                                    <?php echo '<a href="shoping-cart.php?product_id='.$row['product_id'].'" title="add to cart" >Add to cart</a>  '?>
+                                    </button>
                                     </td>
                                     
-                                    <?php echo '<td class="shoping__cart__item__close"><a href="cart_admin/remove/remove_from_cart.php?id='.$row['id'].'" onClick=\'javascript: return confirm("Please confirm deletion");\'><span class="fa icon_close animated faa-bounce" ></span></a></td>';?>
+                                    <?php echo '<td class="shoping__cart__item__close"><a href="cart_admin/remove/remove_from_wishlist.php?id='.$row['id'].'" onClick=\'javascript: return confirm("Please confirm deletion");\'><span class="fa icon_close animated faa-bounce" ></span></a></td>';?>
                                         
                                     
                                 </tr>
@@ -703,14 +310,14 @@ if(isset($_GET['minus']))
                     <p align=center style="color:#4a4a4a;">
                   <strong  > 
                     <i class="fa fa-database animated faa-horizontal"></i> <br>
-                    Your cart is empty continue shopping to add items!!!</strong></p> <br>
+                    Your wishlist is empty!!!</strong></p> <br>
             <?php } ?>   
                                 <style>
                                     img {
                                              border: 1px solid #ddd;
                                              border-radius: 4px;
                                              padding: 5px;
-                                             width: 150px;
+                                             width: 200px;
                                             }
                                         strong{
                                             align-content: center;
@@ -744,35 +351,10 @@ if(isset($_GET['minus']))
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="index.php" class="primary-btn cart-btn" style="color:#f1f1f1;background-color:gray;">CONTINUE SHOPPING</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right" style="color:#f1f1f1;background-color:gray;">
-                            Upadate Cart</a>
+                        <a href="index.php" class="primary-btn cart-btn cart-btn-right" style="color:#f1f1f1;background-color:gray;">
+                            CONTINUE SHOPING</a>
                     </div>
-                    <?php if($productcount>0) { ?>
-                </div>
-                <div class="col-lg-6">
-                    <div class="shoping__continue">
-                        <div class="shoping__discount">
-                            <h5>Discount Codes</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Enter your coupon code">
-                                <button type="submit" class="site-btn">APPLY COUPON</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="shoping__checkout">
-                        <h5>Cart Total</h5>
-                        <ul>
-                            <li>Subtotal <span><?php echo "₹".$cart_total.".00"; ?></span></li>
-                            <li>Total <span><?php echo "₹".$cart_total.".00"; ?></span></li>
-                        </ul>
-                        <a href="checkout.php" class="primary-btn">PROCEED TO CHECKOUT</a>
-                    </div>
-                </div>
-            </div>
-            <?php } ?>
+                 
         </div>
     </section>
     <!-- Shoping Cart Section End -->
