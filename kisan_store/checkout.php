@@ -570,7 +570,7 @@ while ($num = mysqli_fetch_assoc($query_run)) {
                                             <span class="checkmark"></span>
                                         </label>
                                 </div> -->
-                                <button type="submit" name="submit" class="site-btn" title="book your order">PLACE ORDER</button>
+                                <button type="submit" name="submit" class="site-btn" title="book your order" onClick='javascript: return confirm("click on ok to confirm place order");'>PLACE ORDER</button>
                             </div>
                         </div>
                     </div>

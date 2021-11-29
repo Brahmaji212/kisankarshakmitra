@@ -54,14 +54,24 @@ while($row=mysqli_fetch_assoc($sql)){
     $removeqry = "update customer_cart set `Delete`='1' , `order_id`='$order_id' where customer_email='$username' and `product_id`='$product_id'";
     $sql1 = mysqli_query($dbc, $removeqry) or die(mysqli_error($dbc));
 
+    $query2="select * from products where product_id=".$row['product_id']."";
+    $sql2=mysqli_query($dbc,$query2) or die(mysqli_error($dbc));
+    $row2=mysqli_fetch_assoc($sql2);
+
 }
     if($sqlinsert & $sql1)
     {
+        $stock=$row2['product_stock'];
+        $product_stock=$stock-1;
+        $update = "update products set `product_stock`='$product_stock' where  `product_id`='$product_id'";
+        $sqlupdate = mysqli_query($dbc, $update) or die(mysqli_error($dbc));
+
         echo  '<p style="text-align:center; padding-top:100px; background-color:biscuit; color:green;" >
             <i class="fa fa-spinner fa-spin fa-slow fa-2x" ></i> <br> 
             <h5 style="text-align:center; color:green;">please wait your order is confirming.. dont refresh upto <span id="countdowntimer" style="color:red;">10 </span>&nbsp; seconds  </h5>
             </p>';
-    
+        
+
 
     echo '<script type="text/javascript">
             var timeleft = 10;
