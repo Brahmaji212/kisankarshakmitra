@@ -291,6 +291,9 @@ if($wishllist_count == 0){
                                             echo '<label style="color:green;">In Stock</label>'; }
                                             else if($row['product_stock'] == 0){
                                                 echo '<label style="color:red;">Out of Stock</label>';
+                                            }
+                                            else if($row['product_stock'] <= 5){
+                                                echo '<label style="color:red;">Hurry up, very less stock! </label>';
                                             } ?></label>
                                         
                                         </div>
@@ -322,24 +325,7 @@ if($wishllist_count == 0){
                                         strong{
                                             align-content: center;
                                         }
-                                        .plus{
-                                            border: transparent;
-                                            border: 0%;
-                                            
-                                        }
-                                        .plus:hover{
-                                            background-color: transparent;
-                                        }
-
-                                        .minus{
-                                            border:transparent;
-                                        }
-                                        .minus:hover{
-                                            background:transparent;
-                                        }
-                                        .input{
-                                            border: transparent;
-                                        }
+                                        
                                 </style>
                               
                             </tbody>

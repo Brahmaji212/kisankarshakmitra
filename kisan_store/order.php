@@ -63,6 +63,8 @@ while($row=mysqli_fetch_assoc($sql)){
     {
         $stock=$row2['product_stock'];
         $product_stock=$stock-1;
+        $sold=$row2['unit_sold'];
+        $sold=$sold+1;
         $update = "update products set `product_stock`='$product_stock' where  `product_id`='$product_id'";
         $sqlupdate = mysqli_query($dbc, $update) or die(mysqli_error($dbc));
 

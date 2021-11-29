@@ -745,11 +745,11 @@ $wish_count=mysqli_num_rows($sql2);
             <div class="col-lg-9">
                         <div class="main_nav_menu ml-auto" style="padding: 0 0 0 337px;">
                             <ul class="standard_dropdown main_nav_dropdown">
-                                <li class="active" ><a href="index.php">Store<i class="fa fa-chevron-down"></i></a></li>
-                                <li  ><a href="k_about.php">About<i class="fa fa-chevron-down"></i></a></li>
-                                <li  ><a href="k_services.php">Services<i class="fa fa-chevron-down"></i></a></li>
-                                <li ><a href="k_memberships.php">Memberships<i class="fa fa-chevron-down"></i></a></li>
-                                <li ><a href="k_contact.php">Contact<i class="fa fa-chevron-down"></i></a></li>
+                                <li  ><a  href="index.php"  >Store<i class="fa fa-chevron-down"></i></a></li>
+                                <li  ><a href="k_about.php"  ><span onclick="style.backgroundColor = ''; style.backgroundcolor = '';">About </span>  <i class="fa fa-chevron-down"></i></a></li>
+                                <li  ><a href="k_services.php" ><span onclick="style.backgroundColor = ''; style.backgroundcolor = '';"></span> Services<i class="fa fa-chevron-down"></i></a></li>
+                                <li ><a href="k_memberships.php" ><span onclick="">Memberships</span> <i class="fa fa-chevron-down"></i></a></li>
+                                <li ><a href="k_contact.php"  >Contact<i class="fa fa-chevron-down"></i></a></li>
                             </ul>
                         </div>
 
@@ -772,3 +772,5 @@ $wish_count=mysqli_num_rows($sql2);
         </nav>
 
     </section>
+
+  

@@ -18,7 +18,11 @@ if (!isset($_SESSION['login_status'])) {
     $sql2 = mysqli_query($dbc, $qry2) or die(mysqli_error($dbc));
     $cart_total=mysqli_num_rows($sql2);
   
-   
+    $qry3 = "select * from  wishlist where  `customer_email`='$username'";
+
+    $sql3 = mysqli_query($dbc, $qry3) or die(mysqli_error($dbc));
+    
+    $wish_count=mysqli_num_rows($sql3);
 
 
 ?>
@@ -57,10 +61,10 @@ if (!isset($_SESSION['login_status'])) {
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2 style="color: grey;">Profile</h2>
+                        <h2 style="color: grey; background:none;">Profile</h2>
                         <div class="breadcrumb__option">
                         
-                            <a href="./index.php" style="color: grey;">Home</a>
+                            <a href="./index.php" style="color: grey; background:none; ">Home</a>
                             <span style="color:grey;">Profile</span>
                         </div>
                     </div>
@@ -68,7 +72,6 @@ if (!isset($_SESSION['login_status'])) {
             </div>
         </div>
     </section>
-
 
    
 <body class="profile_body">
@@ -107,7 +110,7 @@ if (!isset($_SESSION['login_status'])) {
             </div>
             <div class="row-cols-md-6">
                 <label for="order_details"> <?php echo $order_count; ?> </label>
-                <label for="wishlist_details">10</label>
+                <label for="wishlist_details"><?php echo $wish_count; ?></label>
                 <label for="cart_details"><?php echo $cart_total; ?></label>
             </div>
             </div>    
