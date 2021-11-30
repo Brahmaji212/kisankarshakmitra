@@ -97,7 +97,7 @@
 	 <div class="exercise_3">
 	  <h2>Enquiry</h2>
 	 </div>
-	 <form action="mail/contact.php" method="post" role="form" class="php-email-form">
+	 <form action="../mail/contact.php" method="post" role="form" class="php-email-form">
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				

@@ -48,6 +48,7 @@ while($row=mysqli_fetch_assoc($sql)){
     $total_price=$row['total_price'];
     $quantity=$row['quantity'];
 
+
     $insert="INSERT INTO `order_details` (`order_id`,`product_id`,`user_id`,`first_name`,`last_name`,`country`,`address1`,`address2`,`city`,`state`,`pin`,`phone`,`email`,`order_note`,`status`,`subtotal`,`total`,`quantity`,`booking_date`,`delivery_date`,`payment_method`)values('$order_id','$product_id','$username','$first_name','$last_name','$country','$address1','$address2','$city','$state','$pin','$phone','$email','$note','started','$total_price','$cart_total','$quantity','$booking_date','$delivery_date','$payment_method')";
     $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
 
