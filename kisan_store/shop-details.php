@@ -98,7 +98,7 @@ $prow_count=mysqli_num_rows($psql);
                                 src="cart_admin/backend/images//'.$prow['product_img'].' " alt="">';
                             
                                 ?>
-                            </div>
+                        </div>
                         <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
                                 src="img/product/details/thumb-1.jpg" alt="">
@@ -143,7 +143,7 @@ $prow_count=mysqli_num_rows($psql);
                                                 echo '<label style="color:red;">Out of Stock</label>';
                                             }
                                             else if($prow['product_stock'] <= 5){
-                                                echo '<label style="color:orange;">Hurry up, very less stock! </label>';
+                                                echo '<label style="color:orange;">Hurry up, few only left! </label>';
                                             } ?>
 
                             </span></li>
