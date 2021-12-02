@@ -106,7 +106,7 @@ body {
 
 .container.data
 {
-    padding-top: 0px;
+    padding-top: 10px;
     padding-bottom: 10px;
     
 
@@ -145,7 +145,17 @@ body {
 .about_profile
 {
     font-size: 20px;
-    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+    border: solid 9px rgb(82, 80, 80);
+    border-right-width: 40px;
+    border-left-width: 40px;
+   
+    border-inline-color: rgb(188, 247, 188);
+    
+    
+
+
 }
 .about_profile label
 {
@@ -154,10 +164,25 @@ body {
     align-items: center;
     text-align: center;
     color: rgb(235, 241, 238);
+    
+  
+  
+   
 }
 
+/* .about_profile label[for=wishlist]
+{
+    color:red;
+    border: white solid 2px;
+    padding-right: 20px;
+} */
 .profile_image a i:hover
 {
     /* padding-top: 10px; */
     color: #f35c5c;
+}
+.profile
+{
+    padding: 10px;
+    padding-left: 15px;
 }

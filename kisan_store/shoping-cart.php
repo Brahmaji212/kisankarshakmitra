@@ -319,9 +319,9 @@ if(isset($_GET['minus']))
                             <li class="active"><a href="./shop-grid.html">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="./shop-details.php">Shop Details</a></li>
                                     <li><a href="./shoping-cart.php">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./checkout.php">Check Out</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>

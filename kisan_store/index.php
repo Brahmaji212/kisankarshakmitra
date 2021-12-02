@@ -36,7 +36,7 @@ $wish_count=mysqli_num_rows($sql2);
 
 <!DOCTYPE html>
 <html lang="zxx">
-
+<!-- onClick=\'javascript: return confirm("Please confirm deletion");\'  -->
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
@@ -118,6 +118,30 @@ $wish_count=mysqli_num_rows($sql2);
 												.dropdown:hover .dropbtn {
 													background-color: #77b81e;
 												}
+                                                .featured__item:hover .featured__item__pic .info ul a i
+                                                {
+                                                    display: block;
+
+                                                }
+                                                .featured__item:hover .featured__item__pic .info ul a i:hover
+                                                {
+                                                    display: inline-block;
+                                                    transform: scaleX(1.03);
+                                                    transform: scaleY(1.03);
+                                                    transition-duration: 0.5s;
+
+                                                }
+
+                                                .info ul a i
+                                                {
+                                                    display: none;
+                                                    color: grey;
+                                                    padding-right: 5px;
+                                                    padding-top: 4px;
+                                                    width: 100%;
+                                                    font-size: 20px;
+                                                    
+                                                }
 											</style>
 
 
@@ -970,14 +994,22 @@ $wish_count=mysqli_num_rows($sql2);
                     
                     <div class="featured__item">
                     
-                        <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
-                         <ul class="featured__item__pic__hover">
+                        <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'  ">
+                        <div class="info">
+                        <ul  style="margin-left: 13%;" align="right">
+                            <a href="shop-details.php?id='.$prod_row['product_id'].'">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
+                        </ul> 
+                        </div>
+                        <ul class="featured__item__pic__hover">
+                         
                           <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
                           <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
                        </ul>
                        </div>
-                    
+                     
                       <div class="featured__item__text">
                             <h6><a href="#">  '.$prod_row["product_name"].' </a></h6>
                             <h5> ₹'.$prod_row["product_price"].'</h5>
@@ -998,6 +1030,13 @@ $wish_count=mysqli_num_rows($sql2);
                     <div class="featured__item">
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                        <div class="info">
+                        <ul  style="margin-left: 13%;" align="right">
+                            <a href="shop-details.php?id='.$prod_row['product_id'].'">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
+                        </ul> 
+                        </div>
                          <ul class="featured__item__pic__hover">
                           <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -1024,6 +1063,13 @@ $wish_count=mysqli_num_rows($sql2);
                     <div class="featured__item">
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                        <div class="info">
+                        <ul  style="margin-left: 13%;" align="right">
+                            <a href="shop-details.php?id='.$prod_row['product_id'].'">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
+                        </ul> 
+                        </div>
                          <ul class="featured__item__pic__hover">
                           <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -1050,6 +1096,13 @@ $wish_count=mysqli_num_rows($sql2);
                     <div class="featured__item">
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                        <div class="info">
+                        <ul  style="margin-left: 13%;" align="right">
+                            <a href="shop-details.php?id='.$prod_row['product_id'].'">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
+                        </ul> 
+                        </div>
                          <ul class="featured__item__pic__hover">
                           <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -1076,6 +1129,13 @@ $wish_count=mysqli_num_rows($sql2);
                     <div class="featured__item">
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                        <div class="info">
+                        <ul  style="margin-left: 13%;" align="right">
+                            <a href="shop-details.php?id='.$prod_row['product_id'].'">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
+                        </ul> 
+                        </div>
                          <ul class="featured__item__pic__hover">
                           <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -1102,6 +1162,13 @@ $wish_count=mysqli_num_rows($sql2);
                     <div class="featured__item">
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                        <div class="info">
+                        <ul  style="margin-left: 13%;" align="right">
+                            <a href="shop-details.php?id='.$prod_row['product_id'].'">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
+                        </ul> 
+                        </div>
                          <ul class="featured__item__pic__hover">
                           <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -1128,6 +1195,13 @@ $wish_count=mysqli_num_rows($sql2);
                     <div class="featured__item">
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                        <div class="info">
+                        <ul  style="margin-left: 13%;" align="right">
+                            <a href="shop-details.php?id='.$prod_row['product_id'].'">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
+                        </ul> 
+                        </div>
                          <ul class="featured__item__pic__hover">
                           <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -1155,6 +1229,13 @@ $wish_count=mysqli_num_rows($sql2);
                     <div class="featured__item">
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                        <div class="info">
+                        <ul  style="margin-left: 13%;" align="right">
+                            <a href="shop-details.php?id='.$prod_row['product_id'].'">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
+                        </ul> 
+                        </div>
                          <ul class="featured__item__pic__hover">
                           <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -1181,6 +1262,13 @@ $wish_count=mysqli_num_rows($sql2);
                     <div class="featured__item">
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                        <div class="info">
+                        <ul  style="margin-left: 13%;" align="right">
+                            <a href="shop-details.php?id='.$prod_row['product_id'].'">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
+                        </ul> 
+                        </div>
                          <ul class="featured__item__pic__hover">
                           <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -1207,6 +1295,13 @@ $wish_count=mysqli_num_rows($sql2);
                     <div class="featured__item">
                     
                         <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                        <div class="info">
+                        <ul  style="margin-left: 13%;" align="right">
+                            <a href="shop-details.php?id='.$prod_row['product_id'].'">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
+                        </ul> 
+                        </div>
                          <ul class="featured__item__pic__hover">
                           <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
                           <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
