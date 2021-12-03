@@ -62,6 +62,20 @@ while($row=mysqli_fetch_assoc($sql)){
 }
     if($sqlinsert & $sql1)
     {
+    
+       	include 'sentmail/ordermail.php';
+          
+        //   if(mail($to, $subject, $body, $header))
+        //   {
+        //     echo "Email has been sent.";
+        //     }
+        //     else
+        //     {
+        //     echo "Error !!";
+        //     }
+
+
+
         $stock=$row2['product_stock'];
         $product_stock=$stock-1;
         $sold=$row2['unit_sold'];

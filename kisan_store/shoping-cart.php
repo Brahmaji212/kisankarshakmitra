@@ -26,6 +26,10 @@ $product_img=$prow['product_img'];
 $product_price=$prow['product_price'];
 $total_price=$prow['product_price']*1;
 $quantity=1;
+if(isset($_GET['quantity']))
+{
+    $quantity=$_GET['quantity'];
+}
 if($_GET['product_id']==true){
 $checkqry = "select * from customer_cart where  customer_email='$username'";
   $checksql = mysqli_query($dbc, $checkqry) or die(mysqli_error($dbc));

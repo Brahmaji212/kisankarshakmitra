@@ -19,6 +19,7 @@ $pqury="select * from products where product_id='$product_id'";
 $psql=mysqli_query($dbc,$pqury) or die(mysqli_error($dbc));
 $prow_count=mysqli_num_rows($psql);
 }
+$qua=0;
 
 ?>
 
@@ -52,6 +53,13 @@ $prow_count=mysqli_num_rows($psql);
 	<link href="css/global.css" rel="stylesheet">
 	<!-- <link href="css/index.css" rel="stylesheet"> -->
 	<link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+<style>
+    form
+    {
+        align-items: vertical;
+    }
+</style>
+
 
 </head>
 
@@ -64,7 +72,8 @@ $prow_count=mysqli_num_rows($psql);
     <!-- Humberger Begin -->
    <?php include 'Head.php'; ?>
     <!-- Hero Section End -->
-
+    <?php if($prow_count > 0){ ?>
+    <?php while($prow=mysqli_fetch_assoc($psql)) { ?>
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
         <div class="container">
@@ -74,8 +83,8 @@ $prow_count=mysqli_num_rows($psql);
                         <h2>All details</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.php">Home</a>
-                            <a href="./index.php">Vegetables</a>
-                            <span>Vegetable’s Package</span>
+                            <a href="#"><?php echo $prow['product_category']; ?> </a>
+                            <span><?php echo $prow['product_subcategory']; ?></span>
                         </div>
                     </div>
                 </div>
@@ -85,8 +94,7 @@ $prow_count=mysqli_num_rows($psql);
     <!-- Breadcrumb Section End -->
 
     <!-- Product Details Section Begin -->
-   <?php if($prow_count > 0){ ?>
-    <?php while($prow=mysqli_fetch_assoc($psql)) { ?>
+   
     <section class="product-details spad">
         <div class="container"> 
             <div class="row">
@@ -98,7 +106,7 @@ $prow_count=mysqli_num_rows($psql);
                                 src="cart_admin/backend/images//'.$prow['product_img'].' " alt="">';
                             
                                 ?>
-                        </div>
+                            </div>
                         <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
                                 src="img/product/details/thumb-1.jpg" alt="">
@@ -126,14 +134,14 @@ $prow_count=mysqli_num_rows($psql);
                         <p> <?php echo $prow['product_description'] ?> </p>
                         <div class="product__details__quantity">
                             <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
+                                <!-- <div class="pro-qty">
+                                    <input type="text" name="quantity" value="<?php echo $qua; ?>">
                                     <input type="hidden" value="<?php echo $prow['product_id'] ?>">
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <?php  echo '<a href="shoping-cart.php?product_id='.$prow["product_id"].'" class="primary-btn">ADD TO CARD</a>'; ?>
-                        <a  href="wishlist.php?product_id=<?php echo $prow['product_id']; ?>" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <a  href="wishlist.php?product_id=<?php echo $prow['product_id']; ?>" class="heart-icon"><span class="icon_heart_alt" style=""></span></a>
                         <ul>
                             <li><b>Availability</b> 
                             <span>
