@@ -11,6 +11,10 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
+// $source='C:\\xampp\htdocs\\kkm\\kisan_store\\cart_admin\\backend\\images\\".$row["product_name"]"';
+// $dest='C:\\xampp\\htdocs\\kkm\\kisan_store\\sentmail\\img\\".$row["product_name"]"';
+// echo rename($source,$dest) ? "OK" : "Error";
+
 $mail = new PHPMailer();
 
 $mail-> isSMTP();
@@ -27,11 +31,33 @@ $mail -> Username = "brahmajig1999@gmail.com";
 
 $mail->Password = "brahmaji212";
 
-$mail -> Subject = " Your order is confirmed";
+$mail -> isHTML(true);
 
-$mail ->setFrom("$email");
+$mail ->addAttachment('img/tracktor.png','banana');
 
-$mail ->Body = " Your Order_id=$order_id , product_name=$product_name , product_id=$product_id and expected delivery date is $delivery_date";
+$mail -> Subject = "Your order is confirmed";
+
+$mail ->setFrom("brahmajig1999@gmail.com");
+
+$mail ->Body = " 
+<html>
+    <head> 
+        <title>email testing </title>
+    </head>
+    <body style='background-color:green;'>
+    <pre style='color:red; background-color:whitesmoke;'>
+    Your Order_id=$order_id,
+    product_name=$product_name,
+    product_id=$product_id 
+    and expected delivery date is $delivery_date
+    
+    
+    
+    </pre>
+    </body>
+</html>
+
+";
 
 $mail ->addAddress("$email");
 
@@ -47,3 +73,7 @@ else
 $mail ->smtpClose();
 
 ?>
+<!-- <img src='../cart_admin/backend/images//".$row['product_img']."'> -->
+<html>
+    <img src="img/tracktor.png" alt="">
+</html>
