@@ -36,7 +36,7 @@ $mail -> isHTML(true);
 
 $mail -> addAttachment($dest,$product_name);
 
-$mail -> Subject = "Your order is confirmed";
+$mail -> Subject = "$first_name, Your order is confirmed ";
 
 $mail ->setFrom("brahmajig1999@gmail.com");
 
@@ -47,10 +47,11 @@ $mail ->Body = "
     </head>
     <body>
     
-    Your Order_id=$order_id, <br>
-    product_name=$product_name, <br>
-    product_id=$product_id,  <br>
-    and expected delivery date is $delivery_date
+    Your Order id=$order_id, <br>
+    product name=$product_name, <br>
+    product id=$product_id,  <br>
+    booking date = $booking_date, <br>
+    and expected delivery date is $delivery_date.
     
     
     
