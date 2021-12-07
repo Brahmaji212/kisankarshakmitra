@@ -984,6 +984,41 @@ $wish_count=mysqli_num_rows($sql2);
                 </div>
             </div>
             <div class="row featured__filter">
+
+            <?php
+                $prod_qry = "select * from products where product_name='weat'";
+                $prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
+                $prod_row = mysqli_fetch_assoc($prod_sql);
+                    
+            echo '
+                <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat ">
+                    
+                    <div class="featured__item">
+                    
+                        <div class="featured__item__pic set-bg" data-setbg="cart_admin/backend/images//'.$prod_row['product_img'].'">
+                        <div class="info">
+                        <ul  style="margin-left: 13%;" align="right">
+                            <a href="shop-details.php?id='.$prod_row['product_id'].'">
+                                <i class="fa fa-info-circle" title="details"></i>
+                            </a>
+                        </ul> 
+                        </div>
+                         <ul class="featured__item__pic__hover">
+                          <li  style="margin-left: 13%;"><a href="wishlist.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-heart"></i></a></li> 
+                          <li  style="margin-left: 13%;"><a href="#"><i class="fa fa-retweet"></i></a></li>
+                          <li  style="margin-left: 13%;"><a href="shoping-cart.php?product_id='.$prod_row['product_id'].'"><i class="fa fa-shopping-cart"></i></a></li> 
+                       </ul>
+                       </div>
+                    
+                      <div class="featured__item__text">
+                            <h6><a href="#">  '.$prod_row["product_name"].' </a></h6>
+                            <h5> ₹'.$prod_row["product_price"].'</h5>
+                        </div>
+                    </div>
+                </div>';
+            ?>
+
+
             <?php
             $prod_qry = "select * from products where product_name='Bio-Fertilizer'";
             $prod_sql = mysqli_query($dbc, $prod_qry) or die(mysqli_error($dbc));
