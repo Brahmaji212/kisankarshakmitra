@@ -998,7 +998,7 @@ $wish_count=mysqli_num_rows($sql2);
                         <div class="info">
                         <ul  style="margin-left: 13%;" align="right">
                             <a href="shop-details.php?id='.$prod_row['product_id'].'">
-                                <i class="fa fa-info-circle"></i>
+                                <i class="fa fa-info-circle" title="details"></i>
                             </a>
                         </ul> 
                         </div>
@@ -1033,7 +1033,7 @@ $wish_count=mysqli_num_rows($sql2);
                         <div class="info">
                         <ul  style="margin-left: 13%;" align="right">
                             <a href="shop-details.php?id='.$prod_row['product_id'].'">
-                                <i class="fa fa-info-circle"></i>
+                                <i class="fa fa-info-circle" title="details"></i>
                             </a>
                         </ul> 
                         </div>
@@ -1066,7 +1066,7 @@ $wish_count=mysqli_num_rows($sql2);
                         <div class="info">
                         <ul  style="margin-left: 13%;" align="right">
                             <a href="shop-details.php?id='.$prod_row['product_id'].'">
-                                <i class="fa fa-info-circle"></i>
+                                <i class="fa fa-info-circle" title="details"></i>
                             </a>
                         </ul> 
                         </div>
@@ -1099,7 +1099,7 @@ $wish_count=mysqli_num_rows($sql2);
                         <div class="info">
                         <ul  style="margin-left: 13%;" align="right">
                             <a href="shop-details.php?id='.$prod_row['product_id'].'">
-                                <i class="fa fa-info-circle"></i>
+                                <i class="fa fa-info-circle" title="details"></i>
                             </a>
                         </ul> 
                         </div>
@@ -1132,7 +1132,7 @@ $wish_count=mysqli_num_rows($sql2);
                         <div class="info">
                         <ul  style="margin-left: 13%;" align="right">
                             <a href="shop-details.php?id='.$prod_row['product_id'].'">
-                                <i class="fa fa-info-circle"></i>
+                                <i class="fa fa-info-circle" title="details"></i>
                             </a>
                         </ul> 
                         </div>
@@ -1165,7 +1165,7 @@ $wish_count=mysqli_num_rows($sql2);
                         <div class="info">
                         <ul  style="margin-left: 13%;" align="right">
                             <a href="shop-details.php?id='.$prod_row['product_id'].'">
-                                <i class="fa fa-info-circle"></i>
+                                <i class="fa fa-info-circle" title="details"></i>
                             </a>
                         </ul> 
                         </div>
@@ -1198,7 +1198,7 @@ $wish_count=mysqli_num_rows($sql2);
                         <div class="info">
                         <ul  style="margin-left: 13%;" align="right">
                             <a href="shop-details.php?id='.$prod_row['product_id'].'">
-                                <i class="fa fa-info-circle"></i>
+                                <i class="fa fa-info-circle" title="details"></i>
                             </a>
                         </ul> 
                         </div>
@@ -1232,7 +1232,7 @@ $wish_count=mysqli_num_rows($sql2);
                         <div class="info">
                         <ul  style="margin-left: 13%;" align="right">
                             <a href="shop-details.php?id='.$prod_row['product_id'].'">
-                                <i class="fa fa-info-circle"></i>
+                                <i class="fa fa-info-circle" title="details"></i>
                             </a>
                         </ul> 
                         </div>
@@ -1265,7 +1265,7 @@ $wish_count=mysqli_num_rows($sql2);
                         <div class="info">
                         <ul  style="margin-left: 13%;" align="right">
                             <a href="shop-details.php?id='.$prod_row['product_id'].'">
-                                <i class="fa fa-info-circle"></i>
+                                <i class="fa fa-info-circle" title="details"></i>
                             </a>
                         </ul> 
                         </div>
@@ -1298,7 +1298,7 @@ $wish_count=mysqli_num_rows($sql2);
                         <div class="info">
                         <ul  style="margin-left: 13%;" align="right">
                             <a href="shop-details.php?id='.$prod_row['product_id'].'">
-                                <i class="fa fa-info-circle"></i>
+                                <i class="fa fa-info-circle" title="details"></i>
                             </a>
                         </ul> 
                         </div>
