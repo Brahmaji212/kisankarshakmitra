@@ -34,7 +34,7 @@ $mail->Password = "brahmaji212";
 
 $mail -> isHTML(true);
 
-$mail ->addAttachment('img/tracktor.png','banana');
+$mail -> addAttachment($dest,$product_name);
 
 $mail -> Subject = "Your order is confirmed";
 
@@ -45,16 +45,16 @@ $mail ->Body = "
     <head> 
         <title>email testing </title>
     </head>
-    <body style='background-color:green;'>
-    <pre style='color:red; background-color:whitesmoke;'>
-    Your Order_id=$order_id,
-    product_name=$product_name,
-    product_id=$product_id 
+    <body>
+    
+    Your Order_id=$order_id, <br>
+    product_name=$product_name, <br>
+    product_id=$product_id,  <br>
     and expected delivery date is $delivery_date
     
     
     
-    </pre>
+    
     </body>
 </html>
 
@@ -74,7 +74,3 @@ else
 $mail ->smtpClose();
 
 ?>
-<!-- <img src='../cart_admin/backend/images//".$row['product_img']."'> -->
-<html>
-    <img src="img/tracktor.png" alt="">
-</html>

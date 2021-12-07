@@ -44,6 +44,7 @@ while($row=mysqli_fetch_assoc($sql)){
     $product_id=$row['product_id'];
     $order_id=rand(11111,999999);
     $product_name=$row['product_name'];
+    $product_img=$row['product_img'];
     $cart_total=$row['cart_total'];
     $total_price=$row['total_price'];
     $quantity=$row['quantity'];
@@ -62,20 +63,23 @@ while($row=mysqli_fetch_assoc($sql)){
 }
     if($sqlinsert & $sql1)
     {
-    
+           // copying the product photo into order detils
+           $source="cart_admin/backend/images/$product_img";
+           $dest="sentmail/img/$product_img";
+   
+           if( !rename($source, $dest) ) {  
+               echo "File can't be moved!";  
+           }  
+           else {  
+               echo "File has been moved!";  
+           }
+
+        // including mail sent page
        	include 'sentmail/ordermail.php';
           
-        //   if(mail($to, $subject, $body, $header))
-        //   {
-        //     echo "Email has been sent.";
-        //     }
-        //     else
-        //     {
-        //     echo "Error !!";
-        //     }
+        
 
-
-
+    //  reducing stock and add orders
         $stock=$row2['product_stock'];
         $product_stock=$stock-1;
         $sold=$row2['unit_sold'];
@@ -100,12 +104,10 @@ while($row=mysqli_fetch_assoc($sql)){
             },1000);
          </script>';
 
-    // $delquery="update `customer_cart` set `Delete`='1' where `customer_email`='$username' and `product_id`='$product_id'";
-    // // "update customer_cart set `Delete`='1' where customer_email='$username' and id='$id'"
-    // $delsql=mysqli_query($dbc,$delquery) or die(mysqli_error($dbc));
+   
 
     $page = $_SERVER['PHP_SELF'];
-    $sec = "10";
+    $sec = "3";
     header("Refresh: $sec; url=$page?id=1");
  
     }
