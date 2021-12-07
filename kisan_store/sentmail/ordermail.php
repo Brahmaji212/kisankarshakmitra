@@ -36,7 +36,7 @@ $mail -> isHTML(true);
 
 $mail -> addAttachment($dest,$product_name);
 
-$mail -> Subject = "$first_name, Your order is confirmed ";
+$mail -> Subject = "$first_name ,Your order is confirmed ";
 
 $mail ->setFrom("brahmajig1999@gmail.com");
 
