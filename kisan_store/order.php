@@ -75,7 +75,7 @@ while($row=mysqli_fetch_assoc($sql)){
            }
 
         // including mail sent page
-       	include 'sentmail/ordermail.php';
+       	// include 'sentmail/ordermail.php';
           
         
 
