@@ -64,15 +64,15 @@ while($row=mysqli_fetch_assoc($sql)){
     if($sqlinsert & $sql1)
     {
            // copying the product photo into order detils
-           $source="cart_admin/backend/images/$product_img";
-           $dest="sentmail/img/$product_img";
+        //    $source="cart_admin/backend/images/$product_img";
+        //    $dest="sentmail/img/$product_img";
    
-           if( !rename($source, $dest) ) {  
-               echo "File can't be moved!";  
-           }  
-           else {  
-               echo "File has been moved!";  
-           }
+        //    if( !rename($source, $dest) ) {  
+        //        echo "File can't be moved!";  
+        //    }  
+        //    else {  
+        //        echo "File has been moved!";  
+        //    }
 
         // including mail sent page
        	// include 'sentmail/ordermail.php';
@@ -103,7 +103,7 @@ while($row=mysqli_fetch_assoc($sql)){
             clearInterval(downloadTimer);
             },1000);
          </script>';
-
+      
    
 
     $page = $_SERVER['PHP_SELF'];

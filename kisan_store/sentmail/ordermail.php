@@ -66,6 +66,15 @@ $mail ->addAddress("$email");
 if ($mail->send())
 {
     echo "email sent..!";
+    $dest="cart_admin/backend/images/$product_img";
+    $source="sentmail/img/$product_img";
+
+    if( !rename($source, $dest) ) {  
+        echo "File can't be moved!";  
+    }  
+    else {  
+        echo "File has been moved!";  
+    }
 }
 else
 {

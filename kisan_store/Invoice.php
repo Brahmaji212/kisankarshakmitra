@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include '../FPDF/fpdf.php';
 
 $server= "localhost";
@@ -78,12 +78,17 @@ class myPDF extends FPDF
         $select = "select * from order_details";
         $result = $dbc->query($select);       
         while($row = $result->fetch_object()){
+            $select1="select *from products where product_id=".$row->product_id."";
+            $result1=$dbc->query($select1);
+            $row1=$result1->fetch_object();
         $this ->Cell(10);
-        $this ->Cell(50,10,$row->order_id,1,0,'C');
-        $this ->Cell(50,10,$row->product_id,1,0,'C');
-        $this ->Cell(50,10,$row->booking_date,1,0,'C');
-        $this ->Cell(50,10,$row->delivery_date,1,0,'C');
-        $this ->Cell(50,10,'PRODUCT IMAGE',1,0,'C');
+        $this ->Cell(50,30,$row->order_id,1,0,'C');
+        $this ->Cell(50,30,$row->product_id,1,0,'C');
+        $this ->Cell(50,30,$row->booking_date,1,0,'C');
+        $this ->Cell(50,30,$row->delivery_date,1,0,'C');
+        $this ->Cell(50,30,$this-> Image('cart_admin/backend/images/'.$row1->product_img.'',225,125,25,25),1,0,'C');
+        // $this -> ;
+        
         $this->Ln();
 }
       
@@ -109,6 +114,6 @@ $pdf -> Output();
 
 <html>
     <body>
-        
+        <img src="" alt="">
     </body>
 </html>
