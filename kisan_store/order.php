@@ -39,7 +39,17 @@ $note=$_POST['note'];
 $booking_date=$_POST['booking_date'];
 $delivery_date=$_POST['delivery_date'];
 $payment_method=$_POST['payment'];
+$token="booked now";
 while($row=mysqli_fetch_assoc($sql)){
+
+    $order_qry="select * from order_details where user_id='$username'";
+    $order_sql=mysqli_query($dbc, $order_qry) or die(mysqli_error($dbc)); 
+    $order_row=mysqli_fetch_assoc($order_sql);
+    if($order_row['token']='booked now')
+    {
+        $update_orders = "update order_details set `token`='booked earlier' where  `user_id`='$username'";
+        $sqlupdate_orders = mysqli_query($dbc, $update_orders) or die(mysqli_error($dbc));
+    }
 
     $product_id=$row['product_id'];
     $order_id=rand(11111,999999);
@@ -50,7 +60,7 @@ while($row=mysqli_fetch_assoc($sql)){
     $quantity=$row['quantity'];
 
 
-    $insert="INSERT INTO `order_details` (`order_id`,`product_id`,`user_id`,`first_name`,`last_name`,`country`,`address1`,`address2`,`city`,`state`,`pin`,`phone`,`email`,`order_note`,`status`,`subtotal`,`total`,`quantity`,`booking_date`,`delivery_date`,`payment_method`)values('$order_id','$product_id','$username','$first_name','$last_name','$country','$address1','$address2','$city','$state','$pin','$phone','$email','$note','started','$total_price','$cart_total','$quantity','$booking_date','$delivery_date','$payment_method')";
+    $insert="INSERT INTO `order_details` (`order_id`,`product_id`,`user_id`,`first_name`,`last_name`,`country`,`address1`,`address2`,`city`,`state`,`pin`,`phone`,`email`,`order_note`,`status`,`subtotal`,`total`,`quantity`,`booking_date`,`delivery_date`,`payment_method`,`token`)values('$order_id','$product_id','$username','$first_name','$last_name','$country','$address1','$address2','$city','$state','$pin','$phone','$email','$note','started','$total_price','$cart_total','$quantity','$booking_date','$delivery_date','$payment_method','$token')";
     $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
 
     $removeqry = "update customer_cart set `Delete`='1' , `order_id`='$order_id' where customer_email='$username' and `product_id`='$product_id'";
@@ -77,7 +87,9 @@ while($row=mysqli_fetch_assoc($sql)){
         // including mail sent page
        	// include 'sentmail/ordermail.php';
           
-        
+        include 'Invoice.php';
+
+      
 
     //  reducing stock and add orders
         $stock=$row2['product_stock'];

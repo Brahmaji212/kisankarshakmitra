@@ -1,5 +1,6 @@
 <?php
 session_start();
+$username=$_SESSION['loginname'];
 include '../FPDF/fpdf.php';
 
 $server= "localhost";
@@ -34,7 +35,7 @@ class myPDF extends FPDF
     }
     function viewhead()
     {
-        $invoice_date=rand(1000,2000);
+        $invoice_date=rand(1000,10000);
         $date=date("d/m/Y");
 
         $this ->Cell(7);
@@ -62,33 +63,39 @@ class myPDF extends FPDF
     function headerTable()
     {
         $this ->SetFont('Times','B',12);
-        $this->Cell(10);
-        $this ->Cell(50,10,'ORDER ID',1,0,'C');
-        $this ->Cell(50,10,'PRODUCT ID',1,0,'C');
-        $this ->Cell(50,10,'BOOKING DATE',1,0,'C');
-        $this ->Cell(50,10,'DELIVERY DATE',1,0,'C');
-        $this ->Cell(50,10,'PRODUCT IMAGE',1,0,'C');
+        $this->Cell(20);
+        $this ->Cell(40,10,'ORDER ID',1,0,'C');
+        $this ->Cell(40,10,'PRODUCT NAME',1,0,'C');
+        $this ->Cell(40,10,'PRODUCT IMAGE',1,0,'C');
+        $this ->Cell(40,10,'QUANTITY',1,0,'C');
+        $this ->Cell(40,10,'UNIT PRICE',1,0,'C');
+        $this ->Cell(40,10,'TOTAL AMOUNT',1,0,'C');
+        
+
         $this ->Ln();
 
     }
     function viewTable($dbc)
     {
+        $username=$_SESSION['loginname'];
      
         $this ->SetFont('Times','',12); 
-        $select = "select * from order_details";
+        $select = "select * from order_details where user_id='$username' and token='booked now'";
         $result = $dbc->query($select);       
         while($row = $result->fetch_object()){
             $select1="select *from products where product_id=".$row->product_id."";
             $result1=$dbc->query($select1);
             $row1=$result1->fetch_object();
-        $this ->Cell(10);
-        $this ->Cell(50,30,$row->order_id,1,0,'C');
-        $this ->Cell(50,30,$row->product_id,1,0,'C');
-        $this ->Cell(50,30,$row->booking_date,1,0,'C');
-        $this ->Cell(50,30,$row->delivery_date,1,0,'C');
-        $this ->Cell(50,30,$this-> Image('cart_admin/backend/images/'.$row1->product_img.'',225,125,25,25),1,0,'C');
+        $this ->Cell(20);
+        $this ->Cell(40,30,$row->order_id,1,0,'C');
+        $this ->Cell(40,30,$row1->product_name,1,0,'C');
+        $this->Cell(40,30,$this->Image('cart_admin/backend/images/'.$row1->product_img.'', $this->GetX()+7, $this->GetY()+2, 25.78),1,0,'C');
+        $this ->Cell(40,30,$row->quantity,1,0,'C');
+        // $this ->Cell(50,30,$this-> Image('cart_admin/backend/images/'.$row1->product_img.'',225,125,25,25),1,0,'C');
         // $this -> ;
-        
+        $this ->Cell(40,30,$row1->product_price,1,0,'C');
+        $this ->Cell(40,30,$row->total,1,0,'C');
+            
         $this->Ln();
 }
       
@@ -105,7 +112,18 @@ $pdf ->head();
 $pdf ->viewhead($dbc);
 $pdf ->headerTable();
 $pdf ->viewTable($dbc);
-$pdf -> Output();
+
+
+if($sqlupdate_orders)
+{
+    echo "executed";
+}
+else
+{
+    echo "not";
+}
+$pdf -> Output('F','sentmail/img/invoice.pdf');
+
 
 ?>
 
