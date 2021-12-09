@@ -46,15 +46,23 @@ $mail ->Body = "
 <html>
     <head> 
         <title>email testing </title>
+        <style>
+        div .invoice
+        {
+            color:green;
+        }
+        </style>
     </head>
-    <body>
     
+    <body >
+    <div class='invoice'>
+
     Your Order id=$order_id, <br>
     product name=$product_name, <br>
     product id=$product_id,  <br>
     booking date = $booking_date, <br>
     and expected delivery date is $delivery_date.
-    
+    </div>
     
     
     
@@ -76,12 +84,12 @@ $mail ->addAddress("$email");
 
 if ($mail->send())
 {
-    echo "email sent..!";
+   
  
 }
 else
 {
-    echo "error";
+    
 }
 
 $mail ->smtpClose();
