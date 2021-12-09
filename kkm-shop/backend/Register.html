@@ -43,13 +43,7 @@
 							<i class="fa fa-user" aria-hidden="true"></i>
 						</span>
 					</div>
-					<div class="wrap-input100 " >
-						<input class="input100" type="text" name="mname" placeholder="Middle Name"> 
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-user" aria-hidden="true"></i>
-						</span>
-					</div>
+					
 					<div class="wrap-input100 " >
 						<input class="input100" type="text" name="lname" placeholder="Last Name" required> 
 						<span class="focus-input100"></span>
@@ -59,7 +53,15 @@
 					</div>
 
 					<div class="wrap-input100 " >
-						<input class="input100" type="text" name="email" placeholder="Email" required> 
+						<input class="input100" type="text" name="uname" placeholder="Username" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required> 
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 " >
+						<input class="input100" type="text" name="email" placeholder="Email" title="optional"> 
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
