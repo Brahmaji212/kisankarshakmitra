@@ -10,15 +10,15 @@ if ($admincount > 0) {
         // print_r($row);
 
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            $username = $_POST['email'];
+            $username = $_POST['uname'];
             $password = $_POST['pass'];
             
-            if ($row['email'] == $username && $row['conf_password'] == $password) {
+            if ($row['username'] == $username || $row['phone'] == $username && $row['conf_password'] == $password) {
                 session_start();
                 
                 $_SESSION['adminname'] = 1;
                 $_SESSION['login_status'] = 1;
-                $_SESSION['loginname'] = $username;
+                $_SESSION['loginname'] = $row['username'];
                 header('location: ../../kisan_store/index.php');
             } else {
                 echo "
@@ -33,8 +33,8 @@ if ($admincount > 0) {
     echo "
             <script>
             alert('Create An Account');
-            window.location.href = 'Register.php';
-            window.location.href = 'login.html';
+            window.location.href = 'Register.html';
+            
             </script>";
 }
 $dbc->close();
