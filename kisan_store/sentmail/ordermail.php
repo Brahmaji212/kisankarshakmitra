@@ -36,7 +36,8 @@ $mail -> isHTML(true);
 // $source="cart_admin/backend/images/$product_img";
 $source="sentmail/order_invoice/invoice.pdf";
 $mail -> addAttachment($source,'Order Invoice');
-
+// $dest="sentmail/img/invoice.pdf";
+// $mail -> addAttachment($dest,'invoice');
 $mail -> Subject = "$first_name ,Your order is confirmed ";
 
 $mail ->setFrom("brahmajig1999@gmail.com");
