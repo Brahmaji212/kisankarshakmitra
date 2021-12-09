@@ -40,16 +40,21 @@ $booking_date=$_POST['booking_date'];
 $delivery_date=$_POST['delivery_date'];
 $payment_method=$_POST['payment'];
 $token="booked now";
-while($row=mysqli_fetch_assoc($sql)){
 
-    $order_qry="select * from order_details where user_id='$username'";
-    $order_sql=mysqli_query($dbc, $order_qry) or die(mysqli_error($dbc)); 
-    $order_row=mysqli_fetch_assoc($order_sql);
-    if($order_row['token']='booked now')
-    {
-        $update_orders = "update order_details set `token`='booked earlier' where  `user_id`='$username'";
-        $sqlupdate_orders = mysqli_query($dbc, $update_orders) or die(mysqli_error($dbc));
-    }
+$order_qry="select * from order_details where user_id='$username'";
+$order_sql=mysqli_query($dbc, $order_qry) or die(mysqli_error($dbc)); 
+$order_row=mysqli_fetch_assoc($order_sql);
+$order_count=mysqli_num_rows($order_sql);
+for($i=0;$i<=$order_count;$i++)
+{
+if($order_row['token']='booked now')
+{
+    $update_orders = "update order_details set `token`='booked earlier' where  `user_id`='$username'";
+    $sqlupdate_orders = mysqli_query($dbc, $update_orders) or die(mysqli_error($dbc));
+}
+}
+
+while($row=mysqli_fetch_assoc($sql)){
 
     $product_id=$row['product_id'];
     $order_id=rand(11111,999999);
@@ -84,10 +89,14 @@ while($row=mysqli_fetch_assoc($sql)){
         //        echo "File has been moved!";  
         //    }
 
+        // redirecting to invoice.php   
+           include 'Invoice.php';
+
+
         // including mail sent page
-       	// include 'sentmail/ordermail.php';
+       	include 'sentmail/ordermail.php';
           
-        include 'Invoice.php';
+        
 
       
 

@@ -33,8 +33,9 @@ $mail -> Username = "brahmajig1999@gmail.com";
 $mail->Password = "brahmaji212";
 
 $mail -> isHTML(true);
-
-$mail -> addAttachment($dest,$product_name);
+// $source="cart_admin/backend/images/$product_img";
+$source="sentmail/order_invoice/invoice.pdf";
+$mail -> addAttachment($source,'Order Invoice');
 
 $mail -> Subject = "$first_name ,Your order is confirmed ";
 
@@ -60,21 +61,22 @@ $mail ->Body = "
 </html>
 
 ";
+// $dest="cart_admin/backend/images/$product_img";
+// $source="sentmail/img/$product_img";
+
+// if( !rename($source, $dest) ) {  
+//     echo "File can't be moved!";  
+// }  
+// else {  
+//     echo "File has been moved!";  
+// }
 
 $mail ->addAddress("$email");
 
 if ($mail->send())
 {
     echo "email sent..!";
-    $dest="cart_admin/backend/images/$product_img";
-    $source="sentmail/img/$product_img";
-
-    if( !rename($source, $dest) ) {  
-        echo "File can't be moved!";  
-    }  
-    else {  
-        echo "File has been moved!";  
-    }
+ 
 }
 else
 {
