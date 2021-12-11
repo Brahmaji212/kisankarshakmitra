@@ -20,7 +20,7 @@ if (!isset($_SESSION['login_status'])) {
     $username=$_SESSION['loginname'];
     $first_name=$_POST['first_name'];
     $last_name=$_POST['last_name'];
-    $middle_name=$_POST['middle_name'];
+    $user_name=$_POST['user_name'];
     $email=$_POST['email'];
     $alt_email=$_POST['alt_email'];
     $phone=$_POST['phone'];
@@ -33,14 +33,14 @@ if (!isset($_SESSION['login_status'])) {
     
     if (move_uploaded_file($tempname, $folder)) { 
 
-    $query="update `store_customer_registration` set `first_name`='$first_name',`middle_name`='$middle_name',`last_name`='$last_name',
+    $query="update `store_customer_registration` set `first_name`='$first_name',`username`='$user_name',`last_name`='$last_name',
     `email`='$email',`alt_email`='$alt_email',`phone`='$phone',`address1`='$address1',`address2`='$address2',`pin`='$pin',
-    `area`='$area', `state`='$state', `country`='$country',`profile_img` = '$filename' where  `email`='$username'";
+    `area`='$area', `state`='$state', `country`='$country',`profile_img` = '$filename' where  `username`='$username'";
     $sql = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
     }else{
-        $query="update `store_customer_registration` set `first_name`='$first_name',`middle_name`='$middle_name',`last_name`='$last_name',
+        $query="update `store_customer_registration` set `first_name`='$first_name',`username`='$user_name',`last_name`='$last_name',
         `email`='$email',`alt_email`='$alt_email',`phone`='$phone',`address1`='$address1',`address2`='$address2',`pin`='$pin',
-        `area`='$area', `state`='$state', `country`='$country' where  `email`='$username'";
+        `area`='$area', `state`='$state', `country`='$country' where  `username`='$username'";
         $sql = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
     }
     if($sql) {

@@ -164,7 +164,7 @@ if (!isset($_SESSION['login_status'])) {
                   />
                 </div>
                 <span class="font-weight-bold"><?php echo $row['first_name']." ".$row['last_name'] ?></span>
-                <span class="text-black-50"><?php echo $row['email'] ?></span><span> </span>
+                <span class="text-black-50"><?php echo $row['username'] ?></span><span> </span>
             </div>
             
         </div>
@@ -177,8 +177,8 @@ if (!isset($_SESSION['login_status'])) {
                 
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="labels">First Name</label><input type="text" name="first_name" class="form-control" placeholder="first name" value="<?php echo $row['first_name'] ?>" autocomplete="off"></div>
-                    <div class="col-md-6"><label class="labels">Middle Name</label><input type="text" name="middle_name" class="form-control" value="<?php echo $row['middle_name'] ?>" placeholder="middle name"  autocomplete="off"></div>
                     <div class="col-md-6"><label class="labels">Last Name</label><input type="text" name="last_name" class="form-control" value="<?php echo $row['last_name'] ?>" placeholder="last name"  autocomplete="off"></div>
+                    <div class="col-md-6"><label class="labels">User Name</label><input type="text" name="user_name" class="form-control" value="<?php echo $row['username'] ?>" placeholder="Username"  autocomplete="off"></div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone" class="form-control" placeholder="phone number" value="<?php echo $row['phone'] ?>"  autocomplete="off"> </div>
