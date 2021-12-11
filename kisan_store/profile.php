@@ -8,7 +8,7 @@ if (!isset($_SESSION['login_status'])) {
 }
 
     $username=$_SESSION['loginname'];
-    $qry = "select * from store_customer_registration where email='$username'";
+    $qry = "select * from store_customer_registration where username='$username'";
     $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
     $row = mysqli_fetch_assoc($sql);
     $qry1= "select * from order_details where user_id='$username'";
