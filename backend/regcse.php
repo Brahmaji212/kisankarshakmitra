@@ -7,7 +7,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $selqry = "select * from registercse where regemail='$regemail' or regcnfpass='$regcnfpass'";
   $selsql = mysqli_query($dbc, $selqry) or die(mysqli_error($dbc));
-  // print_r($selsql);
+  $count = mysqli_num_rows($selsql);
+  $count = 0;
+  if($count > 0)
+  {
+    $count = $count + 1;
+
+  }
 
   if (mysqli_num_rows($selsql) > 0) {
     echo '<script>';
@@ -17,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     if ($regpass == $regcnfpass) {
 
-      $query = "INSERT INTO `registercse`(`regid`, `regemail`, `regpass`, `regcnfpass`) VALUES (null,'$regemail', '$regpass', '$regcnfpass')";
+      $query = "INSERT INTO `registercse`(`regid`, `regemail`, `regpass`, `regcnfpass`) VALUES ('$count','$regemail', '$regpass', '$regcnfpass')";
       $sql = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
       if ($sql) {
         session_start();

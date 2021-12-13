@@ -130,7 +130,26 @@ $prod_row = mysqli_fetch_assoc($prod_sql);
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <div class="header__top__right">
+                        
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="header_main_1">
+                        <a href="index.php"><img src="img/kkm-logo.png" style="height:100px;">KISAN KARSHAK
+                            MITRA</a>
+                    </div>
+                </div>
+
+                
+                <div class="col-lg-6 col-md-6">
+                <div class="header__top__right">
+
+                <div class="header__top__right">
                          <!--    <div class="header__top__right__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -205,22 +224,6 @@ $prod_row = mysqli_fetch_assoc($prod_sql);
                                     </div>
                             </div>
                             </div>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="header_main_1">
-                        <a href="index.php"><img src="img/kkm-logo.png" style="height:100px;">KISAN KARSHAK
-                            MITRA</a>
-                    </div>
-                </div>
-
-                
-                <div class="col-lg-6">
                     <!-- <form action="#">
                        
                         <input type="text" placeholder="What do yo u need?">
@@ -236,6 +239,7 @@ $prod_row = mysqli_fetch_assoc($prod_sql);
                         <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>
                 </div> -->
+                </div>
             </div>
             <div class="humberger__open">
                 <i class="fa fa-bars"></i>
@@ -768,10 +772,10 @@ $prod_row = mysqli_fetch_assoc($prod_sql);
                         <div class="main_nav_menu ml-auto" style="padding: 0 0 0 337px;">
                             <ul class="standard_dropdown main_nav_dropdown">
                                 <li class="active" ><a href="index.php">Store<i class="fa fa-chevron-down"></i></a></li>
-                                <li  ><a href="../k_about.html">About<i class="fa fa-chevron-down"></i></a></li>
-                                <li  ><a href="../k_services.html">Services<i class="fa fa-chevron-down"></i></a></li>
-                                <li ><a href="../k_memberships.html">Memberships<i class="fa fa-chevron-down"></i></a></li>
-                                <li ><a href="../k_contact.html">Contact<i class="fa fa-chevron-down"></i></a></li>
+                                <li  ><a href="k_about.php">About<i class="fa fa-chevron-down"></i></a></li>
+                                <li  ><a href="k_services.php">Services<i class="fa fa-chevron-down"></i></a></li>
+                                <li ><a href="k_memberships.php">Memberships<i class="fa fa-chevron-down"></i></a></li>
+                                <li ><a href="k_contact.php">Contact<i class="fa fa-chevron-down"></i></a></li>
                             </ul>
                         </div>
 

@@ -16,12 +16,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $_SESSION['franchisein']=$franchisename;
     echo '<script>';
     echo 'alert("Submitted Successfully");';
-    echo 'window.location.href= "../dashboard/franchizedashboard.php"; 
+    echo 'window.location.href= "../Admin_panel/Franchise_dashboard.php"; 
           </script>';
   }else{
     echo '<script>';
     echo 'alert("Unable To Submit Details");';
-    echo 'window.location.href= "../dashboard/franchizedashboard.php"; 
+    echo 'window.location.href= "../Admin_panel/Franchise_dashboard.php"; 
           </script>';
   }
 }

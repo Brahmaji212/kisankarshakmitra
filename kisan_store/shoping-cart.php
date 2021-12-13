@@ -1,4 +1,4 @@
- <?php
+<?php
 error_reporting(0);
 session_start();
 
@@ -26,12 +26,16 @@ $product_img=$prow['product_img'];
 $product_price=$prow['product_price'];
 $total_price=$prow['product_price']*1;
 $quantity=1;
+if(isset($_GET['quantity']))
+{
+    $quantity=$_GET['quantity'];
+}
 if($_GET['product_id']==true){
 $checkqry = "select * from customer_cart where  customer_email='$username'";
   $checksql = mysqli_query($dbc, $checkqry) or die(mysqli_error($dbc));
   if (mysqli_num_rows($checksql) > 0) {
       
-    $checkqry1 = "select * from customer_cart where  customer_email='$username' and product_id='$product_id'";
+    $checkqry1 = "select * from customer_cart where  customer_email='$username' and product_id='$product_id' and `Delete`='0'";
     $checksql1 = mysqli_query($dbc, $checkqry1) or die(mysqli_error($dbc));
       if(mysqli_num_rows($checksql1) > 0){
     echo '<script>';
@@ -44,7 +48,7 @@ $checkqry = "select * from customer_cart where  customer_email='$username'";
   
   else { 
 
-$insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price')";
+$insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`,`Delete`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price','false')";
 $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
 
   }
@@ -52,14 +56,14 @@ $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
 else if($product_id == true){ 
   
    
-        $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price')";
+        $insert="INSERT INTO `customer_cart` (`product_id`,`customer_email`, `product_name`, `product_description`, `product_category`, `product_exp_date`, `product_stock`, `product_img`, `product_price`,`quantity`,`total_price`,`Delete`)values('$product_id','$username','$product_name','$product_des','$product_cat','$product_exp','$product_stock','$product_img','$product_price','$quantity','$total_price','false')";
         $sqlinsert=mysqli_query($dbc,$insert) or die(mysqli_error($dbc));
         $qry = "select * from  customer_cart where customer_email='$username'";
         $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
         $productcount=mysqli_num_rows($sql);
                             }
 }
-$qry = "select * from  customer_cart where  customer_email='$username'";
+$qry = "select * from  customer_cart where  `customer_email`='$username' and `Delete`='0'";
 
 $sql = mysqli_query($dbc, $qry) or die(mysqli_error($dbc));
 
@@ -72,8 +76,14 @@ if($productcount == 0){
     $cart_value=$productcount;
 }
 
+$qry2 = "select * from  wishlist where  `customer_email`='$username'";
+
+$sql2 = mysqli_query($dbc, $qry2) or die(mysqli_error($dbc));
+
+$wish_count=mysqli_num_rows($sql2);
+
 // for calculating cart total amount.
-$query = "SELECT * FROM customer_cart where customer_email='$username'";
+$query = "SELECT * FROM customer_cart where customer_email='$username' and `Delete`='0'";
         $query_run = mysqli_query($dbc,$query) or die(mysqli_error($dbc));
         
         while($num=mysqli_fetch_assoc($query_run))
@@ -193,10 +203,14 @@ if(isset($_GET['minus']))
 													text-decoration: none;
 													display: block;
                                                     text-align: left;
+                                                    background-color: white;
 												}
 
 												.dropdown-content a:hover {
-													background-color: #f1f1f1
+                                                    background-color: #b5aeae;
+                                                    transition-duration: 0.5s;
+                                                    padding: 5px 5px 5px 5px; 
+                                                    border-bottom: solid 1px green; 
 												}
 
 												.dropdown:hover .dropdown-content {
@@ -309,9 +323,9 @@ if(isset($_GET['minus']))
                             <li class="active"><a href="./shop-grid.html">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="./shop-details.php">Shop Details</a></li>
                                     <li><a href="./shoping-cart.php">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./checkout.php">Check Out</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
@@ -339,9 +353,15 @@ if(isset($_GET['minus']))
                                                              </i> &nbsp; Shoping-cart 
                                                      </a>
                                                     </a> 
-                                                    <a href="#"><i class="fa fa-heart animated faa-horizontal" style="color: green;"></i>&nbsp; Wish list  </a>
-                                                    <a href="#"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
-													<a href="#"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
+                                                    <a href="wishlist.php">
+                                                        <i class="fa fa-heart animated faa-horizontal" style="color: green;">
+                                                        <?php if($wish_count ==0){?>
+                                                            <?php } else if($wish_count > 0) { ?>
+                                                             <span> <?php $wish_value = $wish_count; echo $wish_value; ?> </span>
+                                                             <?php } ?>
+                                                    </i>&nbsp; &nbsp; Wish list  </a>
+                                                    <a href="your_orders.php"><i class="fa fa-opencart animated faa-horizontal" style="color: green;"></i>&nbsp; Your Orders </a>
+													<a href="profile.php?id=1"><i class="fa fa-user-circle animated faa-horizontal"style="color: green;"></i>&nbsp;  Profile </a>
 													<a href="backend/logout.php"><i class="fa fa-user animated faa-horizontal" style="color: green;"></i>&nbsp; Logout  </a>
 												</div>
 											</div>
@@ -439,7 +459,7 @@ if(isset($_GET['minus']))
                     <div class="shoping__cart__table">
                         <table>
                         <?php if ($productcount > 0) { ?>
-                            <?php while ($row = mysqli_fetch_assoc($sql)) { ?>
+
                             <thead >
                                 <tr>
                                     <th class="">Products</th>
@@ -449,7 +469,7 @@ if(isset($_GET['minus']))
                                     <th> Remove</th>
                                 </tr>
                             </thead>
-                            
+                            <?php while ($row = mysqli_fetch_assoc($sql)) { ?>
                             <tbody>
                                 <tr>
                                     <td class="shoping__cart__item">
@@ -473,7 +493,7 @@ if(isset($_GET['minus']))
                                     <?php echo "₹".$row['total_price'] ?>
                                     </td>
                                     
-                                    <?php echo '<td class="shoping__cart__item__close"><a href="cart_admin/remove/remove_from_cart.php?id='.$row['id'].'" ><span class="fa icon_close animated faa-bounce" onClick=\'javascript: return confirm("Please confirm deletion");\'></span></a></td>';?>
+                                    <?php echo '<td class="shoping__cart__item__close"><a href="cart_admin/remove/remove_from_cart.php?id='.$row['id'].'" onClick=\'javascript: return confirm("Please confirm deletion");\'><span class="fa icon_close animated faa-bounce" ></span></a></td>';?>
                                         
                                     
                                 </tr>

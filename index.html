@@ -94,20 +94,42 @@
 												.dropdown:hover .dropbtn {
 													background-color: #77b81e;
 												}
+												.kisansabha
+												{
+													padding-top: 15px;
+													padding-bottom: 15px;
+													padding-left: 7px;
+												}
+												.kisansabha a
+												{
+													text-align: center;
+													border: solid 1px green;
+													background-color:#77B81E;
+													padding-left: 20px;
+													padding-right: 20px;
+													padding-top: 10px;
+													padding-bottom: 10px;
+													color: white;
+													font-weight: 600;
+													border-radius: 10px;
+												}
+												.kisansabha a:hover
+												{
+													color: black;
+												}
 											</style>
 
 											<div class="dropdown">
 												<button class="button hvr-shutter-out-horizontal">Login</button>
 												<div class="dropdown-content">
 													<a href="backend/adminlogin.php">Super Admin</a>
-													<a href="backend/admin2login.php">Admin</a> 
-													<a href="backend/cselogin.php">Employee</a>
-													<a href="backend/franchiselogin.php">Franchise/Agent</a>
+													<a href="backend/admin2login.php">Admin</a>
+													<a href="backend/franchiselogin.php">Franchise</a>
+													<a href="backend/cselogin.php">CSE</a>
 												</div>
 											</div>
-
-
-
+											
+											
 
 										</div>
 									</div>
@@ -154,7 +176,7 @@
 								<!-- <li><a href="blog.html">Blog</a></li> -->
 								<li><a href="kkm-shop/index.php">Kisan Store</a></li>
 								<!-- <li><a href="gallery.html">Gallery</a></li> -->
-
+								
 								<ul class="nav navbar-nav ">
 									<li class="dropdown dropdown-large">
 										<a href="#" class="hvr-pulse" data-toggle="dropdown">Projects<b
@@ -202,6 +224,7 @@
 
 										</ul>
 									</li>
+									<li><a href="#">Directory</a></li>
 									<li><a href="CONTACT">Contact</a></li>
 								</ul>
 
@@ -343,19 +366,19 @@
 							</div>
 							<div class="col-sm-3">
 								<div class="offers_4">
-									<h2>6</h2>
+									<h2><script>document.write(new Date().getHours());</script></h2>
 									<p>Hours</p>
 								</div>
 							</div>
 							<div class="col-sm-3">
 								<div class="offers_4">
-									<h2>02</h2>
+									<h2><script>document.write(new Date().getMinutes());</script></h2>
 									<p>Minutes</p>
 								</div>
 							</div>
 							<div class="col-sm-3">
 								<div class="offers_4">
-									<h2>40</h2>
+									<h2><script>document.write(new Date().getSeconds());</script></h2>
 									<p>Seconds</p>
 								</div>
 							</div>

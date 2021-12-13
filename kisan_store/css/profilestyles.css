@@ -1,0 +1,188 @@
+body {
+    background: rgb(243, 247, 243)
+    
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: hsla(211, 94%, 52%, 0.788);
+    color: hsla(211, 90%, 50%, 0.781);
+    cursor: pointer;
+    border: solid 1px hsla(211, 96%, 51%, 0.76);
+}
+
+.add-experience .a{
+    text-decoration:none;
+    color:white;
+   
+}
+.add-experience
+{
+    
+    background-color:#007bff;
+    border-radius: 10px;
+}
+.profile_body
+{
+    background-color:rgba(207, 207, 205, 0.568);
+}
+.back
+{
+    padding-top: 10px;
+}   
+.back a
+{
+    color: grey;
+    background-color: none;
+}
+.back a:hover
+{
+    
+    color: green;
+    
+
+}
+
+.profile_body .profile_page 
+{
+    
+    padding-top: 10px;
+    padding-left: 91%;
+    
+}
+.profile_body .profile_page input
+{
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    color: grey;
+    font-weight: 600;
+    background-color: palegoldenrod;
+}
+.container.body
+{
+    background-color: rgb(255, 255, 255);
+    border: solid 5px rgb(127, 133, 127);
+    padding-right: 50%;
+    padding-left: 30%;
+    padding-bottom: 25px;
+    color: white;
+    /* background-image: url('../img/profile/background.png'); */
+    /* background-repeat: no-repeat; */
+    
+}
+
+.container.data
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+
+    
+    
+}
+.container.data label
+{
+    
+    background-color: transparent;
+    border: transparent;
+    text-align: center;
+    color:rgb(245, 237, 237);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+
+.card.badge
+{
+    padding-left: 0px;
+    background-color: rgb(71, 72, 73);
+    align-self: center;
+}
+
+.container.body .card a
+{
+    color: rgb(250, 243, 243);
+    padding-left: 350px;
+}
+.container.body .card a i:hover
+{
+    color: rgb(183, 247, 206);
+    
+}
+.about_profile
+{
+    font-size: 20px;
+    padding-top: 10px;
+    text-align: center;
+    border: solid 9px rgb(82, 80, 80);
+    border-right-width: 40px;
+    border-left-width: 40px;
+   
+    border-inline-color: rgb(188, 247, 188);
+    
+    
+
+
+}
+.about_profile label
+{
+    margin-right: 20px;
+    margin-left: 20px;
+    align-items: center;
+    text-align: center;
+    color: rgb(235, 241, 238);
+    
+  
+  
+   
+}
+
+/* .about_profile label[for=wishlist]
+{
+    color:red;
+    border: white solid 2px;
+    padding-right: 20px;
+} */
+.profile_image a i:hover
+{
+    /* padding-top: 10px; */
+    color: #f35c5c;
+}
+.profile
+{
+    padding: 10px;
+    padding-left: 15px;
+}
