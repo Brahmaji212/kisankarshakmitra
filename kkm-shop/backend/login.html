@@ -22,6 +22,17 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<!--===============================================================================================-->
+<style>
+	.show
+	{
+		align-content: right;
+		padding-left: 129px;
+		padding-bottom: 0px;
+	}
+
+</style>
+
+
 </head>
 
 <body>
@@ -33,13 +44,13 @@
 					<img src="../img/kkm-logo.png" alt="IMG">
 				</div>
 
-				<form method="POST" action="../../kisan_store/backend/login.php" class="login100-form " onSubmit="return checkPassword(this)">
+				<form method="POST" action="login.php" class="login100-form " onSubmit="return checkPassword(this)">
 					<span class="login100-form-title">
 					User Login
 					</span>
 
 					<div class="wrap-input100 ">
-						<input class="input100" type="text" name="email" placeholder="Email" required>
+						<input class="input100" type="text" name="uname" placeholder="Username/Phone" required>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -47,16 +58,17 @@
 					</div>
 
 					<div class="wrap-input100 ">
-						<input class="input100" type="password" id="psw" name="pass" placeholder="Password" placeholder="Password" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+						<input class="input100" type="password" id="psw" name="pass"  placeholder="Password" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 						<span class="focus-input100"></span>
 						<!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" -->
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
+						
 					</div>
-					
-					
-					
+					<div class="show">
+						<input type="checkbox" id="show" name="show"  onclick="Show();">  Show Password 
+					</div>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit">
 							Login
@@ -112,6 +124,15 @@
                pass.addEventListner('keyup',function() {
                    checkPassword(pass.value);
                });
+			}
+
+			function Show() {
+ 				 var x = document.getElementById("psw");
+  					if (x.type === "password") {
+    				x.type = "text";
+  					} else {
+    					x.type = "password";
+  					}
 			}
 
 	</script>

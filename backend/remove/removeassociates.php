@@ -7,8 +7,8 @@ $sql = mysqli_query($dbc, $removeqry) or die(mysqli_error($dbc));
 if ($sql) :
     echo '<script>';
     echo 'alert("Removed Successfully");';
-    echo 'window.location.href= "../dashboard/Associatedashboard.php"; 
+    echo 'window.location.href= "../Admin_panel/Associate_dashboard.php"; 
           </script>';
 else :
-    header('location : ../dashboard/Associatedashboard.php');
+    header('location : ../Admin_panel/Associate_dashboard.php');
 endif;

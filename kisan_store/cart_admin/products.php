@@ -215,7 +215,7 @@ $row1=mysqli_fetch_assoc($sql1);
                   <tr align="center">
                     <th scope="row"><input type="checkbox"  name="checkbox[]" value=' <?php echo $row["product_id"] ?>' id="checkbox"/></th>
                     <td class="tm-product-name"><?php echo $row['product_name'] ?> </td>
-                    <td><?php echo random_int(1000,10000) ?></td>
+                    <td><?php echo $row['unit_sold'] ?></td>
                     <td> <?php echo $row['product_stock'] ?></td>
                     <td> <?php echo $row['product_exp_date'] ?></td>
                     <td> <?php echo "₹".$row['product_price'] ?></td>

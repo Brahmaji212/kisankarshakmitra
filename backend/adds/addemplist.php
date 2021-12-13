@@ -16,12 +16,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $_SESSION['employeein']=$empname;
     echo '<script>';
     echo 'alert("Submitted Successfully");';
-    echo 'window.location.href= "../dashboard/employlist.php"; 
+    echo 'window.location.href= "../Admin_panel/Employe_dashboard.php"; 
           </script>';
   }else{
     echo '<script>';
     echo 'alert("Unable To Submit Details");';
-    echo 'window.location.href= "../dashboard/employlist.php"; 
+    echo 'window.location.href= "../Admin_panel/Employe_dashboard.php"; 
           </script>';
   }
 }

@@ -7,8 +7,8 @@ $sql = mysqli_query($dbc, $removeqry) or die(mysqli_error($dbc));
 if ($sql) :
     echo '<script>';
     echo 'alert("Removed Successfully");';
-    echo 'window.location.href= "../dashboard/franchizedashboard.php"; 
+    echo 'window.location.href= "../Admin_panel/Franchise_dashboard.php"; 
           </script>';
 else :
-    header('location : ../dashboard/franchizedashboard.php');
+    header('location : ../Admin_panel/Franchise_dashboard.php');
 endif;
